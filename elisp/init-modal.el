@@ -17,6 +17,7 @@
    '("h" . meow-keypad-start)
    '("l" . goto-line)
    '("o" . other-window)
+   '("q" . delete-other-windows)
    '("m" . magit)
    '("-" . split-window-below)
    '("\\" . split-window-right)

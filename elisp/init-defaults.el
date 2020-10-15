@@ -48,6 +48,7 @@
  show-paren-style 'parenthese
  ;; Overline no margin
  overline-margin 0
+ underline-minimum-offset 0
  tab-width 4
  ;; Don't show cursor in non selected window.
  cursor-in-non-selected-windows nil
@@ -58,9 +59,12 @@
  bidi-paragraph-direction 'left-to-right
  ;; Allow resize by pixels
  frame-resize-pixelwise t
- x-gtk-resize-child-frames nil)
+ x-gtk-resize-child-frames nil
+ x-underline-at-descent-line t)
 
+(add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'prog-mode-hook '+setup-delete-trailing-whitespace)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (unbind-key "C-x C-p")
 
