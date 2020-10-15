@@ -8,6 +8,20 @@
 (defun +elixir-post-self-insert-hook-setup ()
   (add-hook 'post-self-insert-hook '+elixir-handle-input nil t))
 
+(defun +elixir-handle-input ()
+  (unless (or (+in-string-p) (+in-comment-p))
+    (cond
+     ((looking-back ",,$" 2)
+      (backward-delete-char 2)
+      (insert "|> "))
+     ((looking-back "<-" 2))
+     ((looking-back "[[:graph:]]-" 2)
+      (backward-delete-char 1)
+      (insert "_"))
+     ((looking-back ";" 2)
+      (backward-delete-char 1)
+      (insert ":")))))
+
 (use-package inf-iex
   :hook
   (elixir-mode . inf-iex-minor-mode)
