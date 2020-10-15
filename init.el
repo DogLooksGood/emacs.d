@@ -1,0 +1,7 @@
+(require 'init-straight)
+(require 'init-modal)
+(require 'init-defaults)
+(require 'init-lsp)
+(require 'init-elixir)
+(require 'init-git)
+(require 'init-completion)
