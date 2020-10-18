@@ -4,11 +4,12 @@
 
 (custom-theme-set-faces
  'storybook
- `(default                        ((((type tty)))
+ `(default                        ((((type tty))
+									:background "#f8f8f8")
                                    (((type graphic))
                                     :background "#f8f8f8" :foreground "#333333")))
  `(hl-line                        ((((type graphic))
-                                    :background "#ffffff" :overline "#d0d0d0" :underline "#d0d0d0")
+                                    :background "#eeffee" :overline "#99cc99" :underline "#99cc99")
                                    (((type tty))
                                     :background "#ffffff")))
  `(cursor                         ((t (:background "black"))))
@@ -23,6 +24,7 @@
  `(font-lock-builtin-face         ((t ())))
  `(font-lock-variable-name-face   ((t ())))
  `(font-lock-type-face            ((t ())))
+ `(font-lock-preprocessor-face    ((t (:inherit font-lock-constant-face))))
  '(meow-keypad-indicator          ((t (:foreground "#ab3007" :bold t))))
  '(meow-insert-indicator          ((t (:foreground "green4" :bold t))))
  '(meow-normal-indicator          ((t (:foreground "purple4" :bold t))))
@@ -66,6 +68,7 @@
  '(web-mode-function-call-face    ((t ())))
  '(web-mode-function-name-face    ((t ())))
  '(web-mode-html-tag-face         ((t (:bold t))))
+ '(vertical-border                ((t (:foreground "grey20"))))
  '(web-mode-html-tag-bracket-face ((t (:inherit parenthesis)))))
 
 (and load-file-name

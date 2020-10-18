@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package posframe)
-
 (use-package selectrum
   :init
   (selectrum-mode 1))
@@ -47,13 +45,15 @@
   (company-global-modes '(not dired-mode dired-sidebar-mode))
   (company-tooltip-margin 0))
 
-(use-package company-posframe
-  :init
-  (company-posframe-mode 1)
-  :custom
-  (company-posframe-quickhelp-delay nil)
-  (company-posframe-show-indicator nil)
-  (company-posframe-show-metadata nil))
+(when window-system
+  (use-package posframe)
+  (use-package company-posframe
+	:init
+	(company-posframe-mode 1)
+	:custom
+	(company-posframe-quickhelp-delay nil)
+	(company-posframe-show-indicator nil)
+	(company-posframe-show-metadata nil)))
 
 (use-package ctrlf
   :init
@@ -77,12 +77,8 @@
       (company-abort)
     (yas-abort-snippet)))
 
-(defun +yas-start ()
-  (setq-local cursor-type '(hbar . 4)))
-
 (defun +yas-init ()
-  (yas-reload-all)
-  (add-hook 'yas/before-expand-snippet-hook '+yas-start))
+  (yas-reload-all))
 
 (advice-add '+yas-init :around #'+make-silent)
 
@@ -105,5 +101,12 @@
   (unbind-key "S-TAB" yas-keymap)
   :init
   (add-hook 'prog-mode-hook #'yas-minor-mode))
+
+(use-package deadgrep
+  :bind
+  (:map deadgrep-mode-map
+		("w" . 'deadgrep-edit-mode))
+  (:map deadgrep-edit-mode-map
+		("C-x C-s" . 'deadgrep-mode)))
 
 (provide 'init-completion)

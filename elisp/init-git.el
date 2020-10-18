@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package magit)
+(use-package magit
+  :commands (magit))
 
 (provide 'init-git)

@@ -1,9 +1,25 @@
+(require 'init-util)
+
 (defface +elixir-dim-face
   '((((class color) (background dark))
      (:foreground "grey60"))
     (((class color) (background light))
      (:foreground "grey40")))
   "Elixir dim face.")
+
+(defun +elixir-auto-module-name ()
+  (let* ((file-name (+smart-file-name))
+         (lib-file-name (cond
+                         ((string-prefix-p "lib/" file-name)
+                          (substring file-name 4))
+                         ((string-prefix-p "test/" file-name)
+                          (substring file-name 5))
+                         (t file-name))))
+    (message file-name)
+    (-> (replace-regexp-in-string "\.exs?$" "" lib-file-name)
+        (split-string "/")
+        (->> (-map #'to-pascal-case))
+        (string-join "."))))
 
 (defun +elixir-post-self-insert-hook-setup ()
   (add-hook 'post-self-insert-hook '+elixir-handle-input nil t))
@@ -40,7 +56,6 @@
                           '(("\\([_a-zA-Z0-9!?]+\\):" 1 'default)
                             (":[_a-zA-Z0-9\"!?]+" . font-lock-constant-face)
                             ("defmacro \\([a-zA-Z0-9!?_]+\\)" 1 font-lock-function-name-face)
-                            ("\\_<@[_a-zA-Z0-9!?]+\\_>" . 'default)
                             ("\\_<true\\_>" . font-lock-constant-face)
                             ("\\_<false\\_>" . font-lock-constant-face)
                             ("\\_<nil\\_>" . font-lock-constant-face)

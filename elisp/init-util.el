@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(use-package dash)
+(require 'subr-x)
 
 (defvar-local +smart-file-name-cache nil
   "Cache for the smart file name of current buffer.")
@@ -50,5 +52,14 @@ This function is slow, so we have to use cache."
   (cl-letf (((symbol-function 'message)
              (lambda (&rest args) nil)))
     (apply func args)))
+
+;;; Case transform
+
+(defun to-pascal-case (s)
+  (replace-regexp-in-string
+   "\\(\\(?:^\\|_\\)[a-z]\\)"
+   (lambda (c)
+	 (string-trim-left (upcase c) "_"))
+   s))
 
 (provide 'init-util)

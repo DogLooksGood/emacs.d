@@ -60,12 +60,21 @@
  ;; Allow resize by pixels
  frame-resize-pixelwise t
  x-gtk-resize-child-frames nil
- x-underline-at-descent-line t)
+ x-underline-at-descent-line t
+ indent-tabs-mode nil)
 
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'prog-mode-hook '+setup-delete-trailing-whitespace)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'subword-mode)
+;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+(blink-cursor-mode -1)
 
 (unbind-key "C-x C-p")
+
+(defun +quick-eval-bind ()
+  (interactive)
+  (bind-key "C-#" (call-interactively 'eval-defun)))
+(bind-key "C-*" '+quick-eval-bind)
 
 (provide 'init-defaults)
