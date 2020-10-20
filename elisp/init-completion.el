@@ -7,7 +7,7 @@
    company-active-map
    ("<tab>" . 'company-complete-selection)
    ("TAB" . 'company-complete-selection)
-   ("<escape>" . 'company-abort)
+   ("<escape>")
    ("RET")
    ("<return>")
    ("SPC")
@@ -80,13 +80,6 @@
       (company-complete-selection)
     (yas-next-field-or-maybe-expand)))
 
-(defun +yas-abort ()
-  "Abort completion or snippet."
-  (interactive)
-  (if company-candidates
-      (company-abort)
-    (yas-abort-snippet)))
-
 (defun +yas-init ()
   (yas-reload-all))
 
@@ -96,8 +89,7 @@
   :bind
   (:map
    yas-keymap
-   ("<escape>" . '+yas-abort)
-   ("C-u" . '+yas-abort)
+   ("<escape>")
    ("RET" . '+yas-next)
    ("<return>" . '+yas-next)
    ("M-<return>" . 'newline-and-indent)

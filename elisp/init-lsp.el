@@ -34,6 +34,7 @@
   :commands
   (lsp lsp-deferred)
   :custom
+  (lsp-completion-provider :capf)
   (lsp-enable-file-watchers nil)
   (lsp-keymap-prefix "C-l")
   (lsp-clients-elixir-server-executable "/home/tianshu/source/elixir-ls/release/language_server.sh"))
