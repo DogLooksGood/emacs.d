@@ -56,10 +56,8 @@ This function is slow, so we have to use cache."
 ;;; Case transform
 
 (defun to-pascal-case (s)
-  (replace-regexp-in-string
-   "\\(\\(?:^\\|_\\)[a-z]\\)"
-   (lambda (c)
-	 (string-trim-left (upcase c) "_"))
-   s))
+  (let* ((words (split-string s "-\\|_"))
+         (capwords (mapcar #'capitalize words)))
+    (string-join capwords "")))
 
 (provide 'init-util)

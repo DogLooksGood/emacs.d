@@ -47,7 +47,8 @@
 	   :repo "DogLooksgood/inf-iex"))
 
 (use-package elixir-mode
-  :hook (elixir-mode . nox-ensure)
+  :mode (("\\.eex\\'" . web-mode)
+         ("\\.leex\\'" . web-mode))
   :bind
   (:map elixir-mode-map
         ("C-c C-f" . 'elixir-format))
@@ -55,7 +56,6 @@
   (font-lock-add-keywords 'elixir-mode
                           '(("\\([_a-zA-Z0-9!?]+\\):" 1 'default)
                             (":[_a-zA-Z0-9\"!?]+" . font-lock-constant-face)
-                            ("defmacro \\([a-zA-Z0-9!?_]+\\)" 1 font-lock-function-name-face)
                             ("\\_<true\\_>" . font-lock-constant-face)
                             ("\\_<false\\_>" . font-lock-constant-face)
                             ("\\_<nil\\_>" . font-lock-constant-face)

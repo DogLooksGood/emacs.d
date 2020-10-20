@@ -1,9 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package selectrum
-  :init
-  (selectrum-mode 1))
-
 (use-package company
   :hook (company-mode . company-tng-mode)
   :bind
@@ -11,6 +7,7 @@
    company-active-map
    ("<tab>" . 'company-complete-selection)
    ("TAB" . 'company-complete-selection)
+   ("<escape>" . 'company-abort)
    ("RET")
    ("<return>")
    ("SPC")
@@ -59,10 +56,23 @@
   :init
   (ctrlf-mode 1))
 
-(use-package prescient)
-(use-package selectrum-prescient
+;; (use-package selectrum
+;;   :init
+;;   (selectrum-mode 1))
+;; (use-package prescient)
+;; (use-package selectrum-prescient
+;;   :init
+;;   (selectrum-prescient-mode 1))
+
+(use-package ivy
   :init
-  (selectrum-prescient-mode 1))
+  (ivy-mode 1)
+  :custom
+  (ivy-use-selectable-prompt t))
+
+(use-package counsel
+  :init
+  (counsel-mode 1))
 
 (defun +yas-next ()
   (interactive)

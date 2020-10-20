@@ -11,12 +11,13 @@
   (meow-global-mode 1)
   :config
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
+  (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
+  (add-to-list 'meow-normal-state-mode-list 'help-mode)
   (add-to-list 'meow-normal-state-mode-list 'deadgrep-edit-mode)
   (meow-leader-define-key
    '("L" . display-line-numbers-mode)
    '("k" . kill-buffer)
-   '("h" . meow-keypad-start)
-   '("l" . goto-line)
+   '("l" . meow-keypad-start)
    '("o" . other-window)
    '("q" . delete-other-windows)
    '("v" . magit)

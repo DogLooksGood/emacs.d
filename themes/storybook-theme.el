@@ -9,7 +9,7 @@
                                    (((type graphic))
                                     :background "#f8f8f8" :foreground "#333333")))
  `(hl-line                        ((((type graphic))
-                                    :background "#eeffee" :overline "#99cc99" :underline "#99cc99")
+                                    :background "#eeeeff" :overline "#9999cc" :underline "#9999cc")
                                    (((type tty))
                                     :background "#ffffff")))
  `(cursor                         ((t (:background "black"))))

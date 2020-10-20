@@ -2,6 +2,7 @@
 (require 'init-modal)
 (require 'init-defaults)
 (require 'init-lsp)
+(require 'init-web)
 (require 'init-lisp)
 (require 'init-elixir)
 (require 'init-git)

@@ -61,7 +61,8 @@
  frame-resize-pixelwise t
  x-gtk-resize-child-frames nil
  x-underline-at-descent-line t
- indent-tabs-mode nil)
+ indent-tabs-mode nil
+ read-process-output-max (* 1024 1024))
 
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'prog-mode-hook '+setup-delete-trailing-whitespace)
