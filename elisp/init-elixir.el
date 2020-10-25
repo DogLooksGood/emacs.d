@@ -63,4 +63,6 @@
   (modify-syntax-entry ?& "'" elixir-mode-syntax-table)
   (add-hook 'elixir-mode-hook '+elixir-post-self-insert-hook-setup))
 
+(use-package mix)
+
 (provide 'init-elixir)

@@ -48,6 +48,7 @@
 	:init
 	(company-posframe-mode 1)
 	:custom
+    (company-posframe-show-at-prefix )
 	(company-posframe-quickhelp-delay nil)
 	(company-posframe-show-indicator nil)
 	(company-posframe-show-metadata nil)))
@@ -56,29 +57,27 @@
   :init
   (ctrlf-mode 1))
 
-;; (use-package selectrum
-;;   :init
-;;   (selectrum-mode 1))
-;; (use-package prescient)
-;; (use-package selectrum-prescient
-;;   :init
-;;   (selectrum-prescient-mode 1))
-
-(use-package ivy
+(use-package selectrum
   :init
-  (ivy-mode 1)
-  :custom
-  (ivy-use-selectable-prompt t))
-
-(use-package counsel
+  (selectrum-mode 1))
+(use-package prescient)
+(use-package selectrum-prescient
   :init
-  (counsel-mode 1))
+  (selectrum-prescient-mode 1))
+
+;; (use-package ivy
+;;   :init
+;;   (ivy-mode 1)
+;;   :custom
+;;   (ivy-use-selectable-prompt t))
+;;
+;; (use-package counsel
+;;   :init
+;;   (counsel-mode 1))
 
 (defun +yas-next ()
   (interactive)
-  (if (company--active-p)
-      (company-complete-selection)
-    (yas-next-field-or-maybe-expand)))
+  (yas-next-field-or-maybe-expand))
 
 (defun +yas-init ()
   (yas-reload-all))
@@ -90,8 +89,8 @@
   (:map
    yas-keymap
    ("<escape>")
-   ("RET" . '+yas-next)
-   ("<return>" . '+yas-next)
+   ("RET" . 'yas-next-field-or-maybe-expand)
+   ("<return>" . 'yas-next-field-or-maybe-expand)
    ("M-<return>" . 'newline-and-indent)
    ("S-<return>" . 'yas-prev-field))
   :config

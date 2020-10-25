@@ -45,9 +45,6 @@ This function is slow, so we have to use cache."
                 (format " : %s " (project-root (project-current)))))
    (t (setq-local +project-name-cache ""))))
 
-(defun +setup-delete-trailing-whitespace ()
-  (add-hook 'before-save-hook 'delete-trailing-whitespace t t))
-
 (defun +make-silent (func &rest args)
   (cl-letf (((symbol-function 'message)
              (lambda (&rest args) nil)))
