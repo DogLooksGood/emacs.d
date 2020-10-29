@@ -8,7 +8,7 @@
 									:background "#f8f8f8")
                                    (((type graphic))
                                     :background "#fcf7e8" :foreground "#331c09")))
- `(hl-line                        ((((type graphic)))
+ `(hl-line                        ((((type graphic)) (:overline "#AAAAAA" :underline "#AAAAAA"))
                                    (((type tty))
                                     :background "#ffffff")))
  `(cursor                         ((t (:background "black"))))

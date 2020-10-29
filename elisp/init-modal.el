@@ -19,6 +19,10 @@
   (add-to-list 'meow-normal-state-mode-list 'mix-mode)
   (meow-leader-define-key
    '("d" . nox-show-doc)
+   '("<left>" . windmove-swap-states-left)
+   '("<right>" . windmove-swap-states-right)
+   '("<up>" . windmove-swap-states-up)
+   '("<down>" . windmove-swap-states-down)
    '("L" . display-line-numbers-mode)
    '("k" . kill-buffer)
    '("l" . meow-keypad-start)
@@ -30,9 +34,13 @@
    '("\\" . split-window-right)
    '("p" . project-find-file)
    '("b" . switch-to-buffer)
-   '("g" . deadgrep)
+   '("a" . deadgrep)
    '("f" . find-file)
    '("i" . imenu))
-  (meow-normal-define-key))
+  (meow-normal-define-key
+   '("<left>" . windmove-left)
+   '("<right>" . windmove-right)
+   '("<up>" . windmove-up)
+   '("<down>" . windmove-down)))
 
 (provide 'init-modal)
