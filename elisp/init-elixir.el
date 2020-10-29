@@ -63,6 +63,13 @@
   (modify-syntax-entry ?& "'" elixir-mode-syntax-table)
   (add-hook 'elixir-mode-hook '+elixir-post-self-insert-hook-setup))
 
-(use-package mix)
+(use-package mix
+  :commands
+  (mix-test mix-test-current-buffer mix-test-current-test)
+  :bind
+  (:map elixir-mode-map
+        (("C-c C-t t" . 'mix-test)
+         ("C-c C-t b" . 'mix-test-current-buffer)
+         ("C-c C-t c" . 'mix-test-current-test))))
 
 (provide 'init-elixir)

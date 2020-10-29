@@ -1,12 +1,18 @@
 ;;; -*- lexical-binding: t -*-
 
+(defun +yas-expand-or-company-complete ()
+  (interactive)
+  (let ((yas/fallback-behavior 'return-nil))
+    (or (yas/expand)
+        (company-complete-common))))
+
 (use-package company
   :hook (company-mode . company-tng-mode)
   :bind
   (:map
    company-active-map
-   ("<tab>" . 'company-complete-selection)
-   ("TAB" . 'company-complete-selection)
+   ("<tab>" . '+yas-expand-or-company-complete)
+   ("TAB" . '+yas-expand-or-company-complete)
    ("<escape>")
    ("RET")
    ("<return>")

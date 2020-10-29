@@ -14,3 +14,4 @@
 (require 'init-input-method)
 (require 'init-conf)
 (require 'init-visual)
+(require 'init-dashboard)

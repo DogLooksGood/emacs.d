@@ -16,6 +16,7 @@
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
   (add-to-list 'meow-normal-state-mode-list 'help-mode)
   (add-to-list 'meow-normal-state-mode-list 'deadgrep-edit-mode)
+  (add-to-list 'meow-normal-state-mode-list 'mix-mode)
   (meow-leader-define-key
    '("d" . nox-show-doc)
    '("L" . display-line-numbers-mode)

@@ -3,7 +3,7 @@
 (use-package popup)
 
 (use-package nox
-  :hook (((rust-mode elixir-mode) . nox-ensure))
+  :hook (((rust-mode elixir-mode js-mode) . nox-ensure))
   :straight
   (nox :type git
        :host github
@@ -12,7 +12,8 @@
   (nox-optimization-p nil)
   (nox-doc-major-mode 'markdown-mode)
   (nox-server-programs
-   '((elixir-mode . ("/home/tianshu/source/elixir-ls/release/language_server.sh"))))
+   '((elixir-mode . ("/home/tianshu/source/elixir-ls/release/language_server.sh"))
+     ((js-mode typescript-mode) . ("typescript-language-server" "--stdio"))))
   :bind
   (:map nox-mode-map
 		("M-d" . nox-show-doc)
