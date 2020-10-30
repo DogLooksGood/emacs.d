@@ -63,23 +63,23 @@
   :init
   (ctrlf-mode 1))
 
-;; (use-package selectrum
-;;   :init
-;;   (selectrum-mode 1))
-;; (use-package prescient)
-;; (use-package selectrum-prescient
-;;   :init
-;;   (selectrum-prescient-mode 1))
-
-(use-package ivy
+(use-package selectrum
   :init
-  (ivy-mode 1)
-  :custom
-  (ivy-use-selectable-prompt t))
-
-(use-package counsel
+  (selectrum-mode 1))
+(use-package prescient)
+(use-package selectrum-prescient
   :init
-  (counsel-mode 1))
+  (selectrum-prescient-mode 1))
+
+;; (use-package ivy
+;;   :init
+;;   (ivy-mode 1)
+;;   :custom
+;;   (ivy-use-selectable-prompt t))
+;;
+;; (use-package counsel
+;;   :init
+;;   (counsel-mode 1))
 
 (defun +yas-next ()
   (interactive)
