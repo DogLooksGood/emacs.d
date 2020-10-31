@@ -9,8 +9,11 @@
 (defvar +current-theme nil
   "Name for current theme")
 
-(defvar +theme-list
-  '(joker storybook printed))
+(if window-system
+    (defvar +theme-list
+      '(joker storybook printed))
+  (defvar +theme-list
+    '(storybook joker printed)))
 
 (set-display-table-slot standard-display-table
                         'vertical-border
@@ -33,7 +36,7 @@
 
 ;; Fonts
 
-(let ((font "Victor Mono-11"))
+(let ((font "Unifont-11"))
   (set-frame-font font)
   (add-to-list 'default-frame-alist (cons 'font font)))
 
