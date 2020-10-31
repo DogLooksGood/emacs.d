@@ -5,14 +5,14 @@
 (custom-theme-set-faces
  'storybook
  `(default                        ((((type tty))
-									:background "#f8f8f8")
+								    :background "#f8f8f8")
                                    (((type graphic))
                                     :background "#fcf7e8" :foreground "#331c09")))
- `(hl-line                        ((((type graphic)) (:overline "#AAAAAA" :underline "#AAAAAA"))
+ `(hl-line                        ((((type graphic)) (:box (:line-width (-1 . -3) :color "#edccb7" :style nil)))
                                    (((type tty))
                                     :background "#ffffff")))
  `(cursor                         ((t (:background "black"))))
- '(region                         ((t (:background "#b6e3fa"))))
+ '(region                         ((t (:background "#edccb7"))))
  `(font-lock-comment-face         ((t (:background "#e1f0e5" :extend t))))
  `(font-lock-doc-face             ((t (:background "#e1f0e5" :extend t))))
  `(font-lock-warning-face         ((t (:foreground "red"))))

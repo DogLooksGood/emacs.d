@@ -33,7 +33,7 @@
 
 ;; Fonts
 
-(let ((font "Victor Mono Medium-10"))
+(let ((font "Victor Mono-11"))
   (set-frame-font font)
   (add-to-list 'default-frame-alist (cons 'font font)))
 
