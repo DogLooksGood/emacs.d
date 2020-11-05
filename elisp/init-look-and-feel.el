@@ -36,7 +36,7 @@
 
 ;; Fonts
 
-(let ((font "Unifont-11"))
+(let ((font "Inconsolata-10"))
   (set-frame-font font)
   (add-to-list 'default-frame-alist (cons 'font font)))
 
@@ -63,8 +63,7 @@
                   (format-mode-line
                    '((:eval (when (functionp #'+smart-file-name) (+smart-file-name)))
                      "%* %m"
-                     (vc-mode vc-mode)
-                     " "))))))
+                     (vc-mode vc-mode)))))))
 
 
 (provide 'init-look-and-feel)
