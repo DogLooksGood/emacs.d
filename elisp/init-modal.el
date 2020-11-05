@@ -13,7 +13,6 @@
   (meow-esc-delay 0.001)
   :config
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
-  (add-to-list 'meow-normal-state-mode-list 'inf-iex-tracer-mode)
   (add-to-list 'meow-normal-state-mode-list 'help-mode)
   (add-to-list 'meow-normal-state-mode-list 'deadgrep-edit-mode)
   (add-to-list 'meow-normal-state-mode-list 'mix-mode)
@@ -124,10 +123,6 @@
    '("<escape>" . meow-last-buffer)
    '("S" . kmacro-start-macro)
    '("E" . kmacro-end-macro)
-   '("$" . apply-macro-to-region-lines)
-   '("<left>" . windmove-left)
-   '("<right>" . windmove-right)
-   '("<up>" . windmove-up)
-   '("<down>" . windmove-down)))
+   '("$" . apply-macro-to-region-lines)))
 
 (provide 'init-modal)

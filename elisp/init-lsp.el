@@ -25,8 +25,9 @@
     (nox-show-signature)))
 
 (defun +setup-nox ()
-  (add-hook 'company-completion-finished-hook '+nox-try-show-signature t t)
-  (add-hook 'post-self-insert-hook '+nox-try-show-signature t t))
+  ;; (add-hook 'company-completion-finished-hook '+nox-try-show-signature t t)
+  ;; (add-hook 'post-self-insert-hook '+nox-try-show-signature t t)
+  )
 
 (add-hook 'nox-managed-mode-hook '+setup-nox)
 
