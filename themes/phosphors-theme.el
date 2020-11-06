@@ -6,7 +6,6 @@
  'phosphors
  `(default                        ((((type tty)))
                                    (((type graphic))
-                                    :family "Fixedsys Excelsior"
                                     :height 110
                                     :background "#282828"
                                     :foreground "#33ff00")))
@@ -25,7 +24,14 @@
  `(font-lock-variable-name-face   ((t ())))
  `(font-lock-type-face            ((t ())))
  `(font-lock-preprocessor-face    ((t (:inherit font-lock-constant-face))))
- `(highlight                      ((t (:box (:line-width (-2 . -2))))))
+ `(highlight                      ((t (:background "#283e28"))))
+ `(company-tooltip-common         ((t ())))
+ `(company-tooltip-common-selection ((t (:inherit font-lock-constant-face :inverse-video t))))
+ `(company-tooltip                ((t (:background "#336633"))))
+ `(company-tooltip-selection      ((t (:inherit font-lock-constant-face :inverse-video t))))
+ `(company-tooltip-annotation     ((t (:inherit font-lock-comment-face))))
+ `(company-scrollbar-bg           ((t (:background "#303030"))))
+ `(company-scrollbar-fg           ((t (:background "#4E4E4E"))))
  '(meow-keypad-indicator          ((t ())))
  '(meow-insert-indicator          ((t ())))
  '(meow-normal-indicator          ((t ())))

@@ -37,7 +37,6 @@
  `joker
  `(default                        ((((type tty)))
                                    (((type graphic))
-                                    :family "Cascadia Code"
                                     :background "#373737"
                                     :foreground "#AFAFAF")))
  `(mc/cursor-face                 ((t (:background "#949494" :foreground "black"))))

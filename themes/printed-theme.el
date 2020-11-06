@@ -5,7 +5,6 @@
  `(default                        ((((type tty))
 									:background "#f8f8f8")
                                    (((type graphic))
-                                    :family "DejaVu Sans Mono"
                                     :background "#f8f8f8"
                                     :foreground "#333333")))
  `(hl-line                        ((((type graphic))

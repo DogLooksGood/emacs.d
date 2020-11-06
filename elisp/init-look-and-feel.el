@@ -37,7 +37,7 @@
 
 ;; Fonts
 
-(let ((font "Cascadia Mono-9"))
+(let ((font "monospace-10"))
   (set-frame-font font)
   (add-to-list 'default-frame-alist (cons 'font font)))
 
