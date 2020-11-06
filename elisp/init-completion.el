@@ -116,4 +116,12 @@
   (:map deadgrep-edit-mode-map
 		("C-x C-s" . 'deadgrep-mode)))
 
+(use-package smartparens
+  :bind
+  (:map smartparens-mode-map
+        ("M-r" . 'sp-raise-sexp)
+        ("C-M-t" . 'sp-transpose-hybrid-sexp)
+        ("C-)" . 'sp-forward-slurp-sexp)
+        ("C-}" . 'sp-forward-barf-sexp)))
+
 (provide 'init-completion)

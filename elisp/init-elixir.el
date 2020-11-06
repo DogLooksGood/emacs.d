@@ -47,6 +47,7 @@
 	   :repo "DogLooksgood/inf-iex"))
 
 (use-package elixir-mode
+  :hook (elixir-mode . smartparens-strict-mode)
   :mode (("\\.eex\\'" . web-mode)
          ("\\.leex\\'" . web-mode))
   :bind

@@ -5,7 +5,8 @@
  `(default                        ((((type tty))
 									:background "#f8f8f8")
                                    (((type graphic))
-                                    :background "#f8f8f8" :foreground "#333333")))
+                                    :background "#f8f8f8"
+                                    :foreground "#333333")))
  `(hl-line                        ((((type graphic))
                                     :background "#eeeeff" :overline "#9999cc" :underline "#9999cc")
                                    (((type tty))
