@@ -5,38 +5,39 @@
 (require 'joker-theme)
 (require 'storybook-theme)
 (require 'printed-theme)
+(require 'phosphors-theme)
 
 (defvar +current-theme nil
   "Name for current theme")
 
-(if window-system
-    (defvar +theme-list
-      '(joker storybook printed))
-  (defvar +theme-list
-    '(storybook joker printed)))
+(defvar +theme-list
+  '(joker storybook phosphors printed))
 
 (set-display-table-slot standard-display-table
                         'vertical-border
                         (make-glyph-code ?┃))
 
-(defun +change-theme ()
+(defun +change-theme (&optional no-msg)
   (interactive)
   (let ((theme (car +theme-list)))
 	(disable-theme theme)
 	(setq +theme-list (append (cdr +theme-list) (list theme)))
-    (load-theme (car +theme-list) t)))
+    (let ((this-theme (car +theme-list)))
+      (load-theme this-theme t)
+      (unless no-msg
+        (message "Load theme: %s" this-theme)))))
 
 (defun +reload-theme ()
   (interactive)
   (load-theme (car +theme-list) t))
 
-(+change-theme)
+(+change-theme t)
 
 (global-set-key (kbd "C-x ~") '+change-theme)
 
 ;; Fonts
 
-(let ((font "Unifont-11"))
+(let ((font "Cascadia Mono-9"))
   (set-frame-font font)
   (add-to-list 'default-frame-alist (cons 'font font)))
 

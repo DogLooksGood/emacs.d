@@ -37,12 +37,14 @@
  `joker
  `(default                        ((((type tty)))
                                    (((type graphic))
-                                    :background "#212121" :foreground "#AFAFAF")))
+                                    :family "Cascadia Code"
+                                    :background "#373737"
+                                    :foreground "#AFAFAF")))
  `(mc/cursor-face                 ((t (:background "#949494" :foreground "black"))))
  `(cursor                         ((t (:background "white"))))
  `(region                         ((t (:background "#174535"))))
  `(highlight-symbol-face          ((t ())))
- `(hl-line                        ((((type graphic)) :background "#272727")
+ `(hl-line                        ((((type graphic)) :background "#303030")
                                    (((type tty)))))
  `(yascroll:thumb-fringe          ((t (:background "#3F3F3F" :foreground "#3F3F3F"))))
  `(yascroll:thumb-text-area       ((t (:background "#3F3F3F" :foreground "#3F3F3F"))))
@@ -121,7 +123,7 @@
  `(org-document-title             ((t (:inherit font-lock-string-face))))
  `(org-code                       ((t (:inherit font-lock-constant-face))))
  `(line-number-current-line       ((((type tty)) :foreground "#D7AF00")
-                                   (((type graphic)) :foreground "#D7AF00" :background "#272727")))
+                                   (((type graphic)) :foreground "#D7AF00" :background "#303030")))
  `(parenthesis                    ((t (:foreground "#909090"))))
  `(term-color-blue                ((t (:foreground "#3366FF" :background "#3366FF"))))
  `(popup-tip-face                 ((t (:background "#303030" :foreground "#C5C5C5"))))

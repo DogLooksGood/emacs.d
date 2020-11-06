@@ -19,17 +19,6 @@
 		("M-d" . nox-show-doc)
         ("M-h" . nox-show-signature)))
 
-(defun +nox-try-show-signature (&optional _ignored)
-  (when (or (looking-back "(" 1)
-            (looking-back ", ?" 2))
-    (nox-show-signature)))
-
-(defun +setup-nox ()
-  ;; (add-hook 'company-completion-finished-hook '+nox-try-show-signature t t)
-  ;; (add-hook 'post-self-insert-hook '+nox-try-show-signature t t)
-  )
-
-(add-hook 'nox-managed-mode-hook '+setup-nox)
 
 ;; (use-package eglot
 ;;   :hook
@@ -42,7 +31,6 @@
 ;; 			   '(elixir-mode "/home/tianshu/source/elixir-ls/release/language_server.sh"))
 ;;   (add-to-list 'eglot-server-programs
 ;; 			   '(rust-mode "rust-analyzer")))
-
 
 ;; (use-package flycheck)
 ;;
