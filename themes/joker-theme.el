@@ -37,7 +37,7 @@
  `joker
  `(default                        ((((type tty)))
                                    (((type graphic))
-                                    :background "#212121" :foreground "#B6B6B0")))
+                                    :background "#212121" :foreground "#AFAFAF")))
  `(mc/cursor-face                 ((t (:background "#949494" :foreground "black"))))
  `(cursor                         ((t (:background "white"))))
  `(region                         ((t (:background "#174535"))))
@@ -67,6 +67,7 @@
  `(font-lock-function-name-face   ((t (:bold t))))
  `(font-lock-warning-face         ((t (:foreground "yellow"))))
  `(font-lock-preprocessor-face    ((t (:inherit font-lock-constant-face))))
+ `(button                         ((t (:foreground "#2299CC" :underline t))))
  `(meow-keypad-indicator          ((t (:foreground "#CC2F2F"))))
  `(meow-insert-indicator          ((t (:foreground "#00D787"))))
  `(meow-normal-indicator          ((t (:foreground "#CFA300"))))
