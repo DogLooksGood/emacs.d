@@ -13,4 +13,5 @@
 (add-to-list 'default-frame-alist '(internal-border-width . 15))
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
-(require 'init-look-and-feel)
+
+(require 'init-laf)

@@ -4,25 +4,26 @@
   (interactive)
   (let ((yas/fallback-behavior 'return-nil))
     (or (yas/expand)
-        (company-complete-common))))
+        (call-interactively #'company-indent-or-complete-common))))
 
 (use-package company
   :hook (company-mode . company-tng-mode)
   :bind
-  (:map
-   company-active-map
-   ("<tab>" . '+yas-expand-or-company-complete)
-   ("TAB" . '+yas-expand-or-company-complete)
-   ("<escape>")
-   ("RET")
-   ("<return>")
-   ("SPC")
-   :map
-   company-template-nav-map
-   ("RET" . 'company-template-forward-field)
-   ("<return>" . 'company-template-forward-field)
-   ("TAB")
-   ("<tab>"))
+  (:map company-mode-map
+        ("<tab>" . '+yas-expand-or-company-complete)
+        ("TAB" . '+yas-expand-or-company-complete))
+  (:map company-active-map
+        ("<tab>" . 'company-complete-common-or-cycle)
+        ("TAB" . 'company-complete-common-or-cycle)
+        ("<escape>")
+        ("RET")
+        ("<return>")
+        ("SPC"))
+  (:map company-template-nav-map
+        ("RET" . 'company-template-forward-field)
+        ("<return>" . 'company-template-forward-field)
+        ("TAB")
+        ("<tab>"))
   :init
   (require 'company-template)
   :hook
@@ -35,7 +36,7 @@
                        company-pseudo-tooltip-frontend
                        company-echo-metadata-frontend))
   (company-begin-commands '(self-insert-command))
-  (company-idle-delay 0)
+  (company-idle-delay 0.2)
   (company-tooltip-limit 10)
   (company-tooltip-align-annotations t)
   (company-tooltip-offset-display 'lines)

@@ -37,7 +37,7 @@
 
 ;; Fonts
 
-(let ((font "monospace-10"))
+(let ((font "DejaVu Sans Mono-9"))
   (set-frame-font font)
   (add-to-list 'default-frame-alist (cons 'font font)))
 
@@ -67,4 +67,4 @@
                      (vc-mode vc-mode)))))))
 
 
-(provide 'init-look-and-feel)
+(provide 'init-laf)

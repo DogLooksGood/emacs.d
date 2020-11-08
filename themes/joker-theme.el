@@ -37,7 +37,7 @@
  `joker
  `(default                        ((((type tty)))
                                    (((type graphic))
-                                    :background "#373737"
+                                    :background "#171717"
                                     :foreground "#AFAFAF")))
  `(mc/cursor-face                 ((t (:background "#949494" :foreground "black"))))
  `(cursor                         ((t (:background "white"))))

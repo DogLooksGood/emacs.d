@@ -6,7 +6,6 @@
  'phosphors
  `(default                        ((((type tty)))
                                    (((type graphic))
-                                    :height 110
                                     :background "#282828"
                                     :foreground "#33ff00")))
  `(hl-line                        ((((type graphic)))
@@ -41,12 +40,8 @@
  '(meow-normal-cursor             ((t (:inherit cursor))))
  '(meow-motion-cursor             ((t (:inherit cursor))))
  '(dired-directory                ((t (:bold t))))
- '(mode-line                      ((((type tty)))
-                                   (((type graphic))
-                                    (:foreground "#282828" :background "#33ff00"))))
- '(mode-line-inactive             ((((type tty)))
-                                   (((type graphic))
-                                    (:foreground "#282828" :background "#33cc33"))))
+ '(mode-line                      ((t (:bold t))))
+ '(mode-line-inactive             ((t (:bold t))))
  `(parenthesis                    ((t (:foreground "#909090"))))
  '(highlight-symbol-face          ((t ())))
  '(yascroll:thumb-fringe          ((t (:background "#606060" :foreground "#606060"))))
