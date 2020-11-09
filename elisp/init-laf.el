@@ -37,7 +37,7 @@
 
 ;; Fonts
 
-(let ((font "DejaVu Sans Mono-9"))
+(let ((font "Jetbrains Mono-9"))
   (set-frame-font font)
   (add-to-list 'default-frame-alist (cons 'font font)))
 

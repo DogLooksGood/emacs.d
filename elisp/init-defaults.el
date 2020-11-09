@@ -67,6 +67,8 @@
  truncate-partial-width-windows 100)
 
 (add-hook 'prog-mode-hook 'hl-line-mode)
+(add-hook 'conf-mode-hook 'hl-line-mode)
+(add-hook 'text-mode-hook 'hl-line-mode)
 (add-hook 'prog-mode-hook 'subword-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
