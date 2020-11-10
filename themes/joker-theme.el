@@ -78,7 +78,7 @@
  '(meow-normal-cursor             ((t (:background "#cc0"))))
  '(meow-motion-cursor             ((t (:background "#39f"))))
  `(cider-result-overlay-face      ((t (:background "black"))))
- `(mode-line                      ((t (:background "#171717"))))
+ `(mode-line                      ((t (:background "#232323"))))
  `(mode-line-inactive             ((t (:background "#303030"))))
  `(clojure-character-face         ((t (:inherit font-lock-constant-face))))
  `(highlight                      ((t (:underline "#00BBBB"))))
