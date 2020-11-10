@@ -11,7 +11,7 @@
   "Name for current theme")
 
 (defvar +theme-list
-  '(joker storybook printed))
+  '(storybook joker printed))
 
 (set-display-table-slot standard-display-table
                         'vertical-border
