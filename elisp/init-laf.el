@@ -11,7 +11,7 @@
   "Name for current theme")
 
 (defvar +theme-list
-  '(storybook joker printed))
+  '(storybook joker))
 
 (set-display-table-slot standard-display-table
                         'vertical-border
@@ -27,19 +27,23 @@
       (unless no-msg
         (message "Load theme: %s" this-theme)))))
 
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (set-window-scroll-bars
+             (minibuffer-window frame) 0 nil 0 nil t)
+            (set-window-fringes
+             (minibuffer-window frame) 0 0 nil t)))
+
+(defun +scale-prog-mode-function-name ()
+  (face-remap-add-relative 'font-lock-function-name-face :height 1.3))
+
+(add-hook 'prog-mode-hook '+scale-prog-mode-function-name)
+
 (defun +reload-theme ()
   (interactive)
   (load-theme (car +theme-list) t))
 
 (+change-theme t)
-
-(global-set-key (kbd "C-x ~") '+change-theme)
-
-;; Fonts
-
-(let ((font "Jetbrains Mono-9"))
-  (set-frame-font font)
-  (add-to-list 'default-frame-alist (cons 'font font)))
 
 ;; Mode Line
 

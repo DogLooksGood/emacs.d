@@ -17,3 +17,4 @@
 (require 'init-window)
 (require 'init-docker)
 (require 'init-dashboard)
+(require 'init-font)

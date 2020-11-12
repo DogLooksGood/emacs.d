@@ -122,7 +122,7 @@
  `(org-document-title             ((t (:inherit font-lock-string-face))))
  `(org-code                       ((t (:inherit font-lock-constant-face))))
  `(line-number-current-line       ((((type tty)) :foreground "#D7AF00")
-                                   (((type graphic)) :foreground "#D7AF00" :background "#303030")))
+                                   (((type graphic)) :inherit default  :foreground "#D7AF00" :background "#303030")))
  `(parenthesis                    ((t (:foreground "#909090"))))
  `(term-color-blue                ((t (:foreground "#3366FF" :background "#3366FF"))))
  `(popup-tip-face                 ((t (:background "#303030" :foreground "#C5C5C5"))))

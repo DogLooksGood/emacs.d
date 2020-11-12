@@ -56,7 +56,7 @@
  '(web-mode-html-tag-face         ((t ())))
  '(fringe                         ((t ())))
  `(line-number-current-line       ((((type graphic)) :overline "#d0d0d0" :underline "#d0d0d0")
-                                   (t (:bold t :background "#ffffff"))))
+                                   (t (:bold t :inherit default :background "#ffffff"))))
  '(mc/cursor-bar-face             ((t (:background "grey50" :height 1))))
  '(dired-subtree-depth-1-face     ((t (:background "grey90"))))
  '(dired-subtree-depth-2-face     ((t (:background "grey80"))))
