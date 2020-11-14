@@ -1,14 +1,14 @@
 ;; -*- lexical-binding: t -*-
 
-(use-package popup)
-
 (use-package flymake
+  :commands (flymake-mode)
   :bind
   (:map flymake-mode-map
         ("M-n" . 'flymake-goto-next-error)
         ("M-p" . 'flymake-goto-prev-error)))
 
 (use-package eglot
+  :commands (eglot-ensure eglot)
   :hook
   ((rust-mode c-mode elixir-mode) . eglot-ensure)
   :custom
