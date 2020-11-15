@@ -12,8 +12,9 @@
 (require 'storybook-theme)
 (require 'printed-theme)
 
-(add-to-list 'default-frame-alist '(internal-border-width . 20))
-(set-frame-parameter nil 'internal-border-width 20)
+(let ((margin 24))
+  (add-to-list 'default-frame-alist (cons 'internal-border-width margin))
+  (set-frame-parameter nil 'internal-border-width margin))
 
 (defvar +current-theme nil
   "Name for current theme")
