@@ -74,6 +74,7 @@
  '(web-mode-function-call-face    ((t ())))
  '(web-mode-function-name-face    ((t ())))
  '(web-mode-html-tag-face         ((t (:bold t))))
+ '(window-divider                 ((t ())))
  '(vertical-border                ((t (:foreground "#33ff00"))))
  '(web-mode-html-tag-bracket-face ((t (:inherit parenthesis)))))
 

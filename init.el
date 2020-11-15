@@ -17,5 +17,6 @@
 (require 'init-visual)
 (require 'init-window)
 (require 'init-docker)
+(require 'init-sidebar)
 (require 'init-font)
 ;; (require 'init-dashboard)

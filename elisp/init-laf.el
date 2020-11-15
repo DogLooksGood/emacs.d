@@ -1,17 +1,25 @@
 ;;; -*- lexical-binding: t -*-
 
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(blink-cursor-mode -1)
+(fringe-mode -1)
+
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
 (require 'joker-theme)
 (require 'storybook-theme)
 (require 'printed-theme)
-(require 'phosphors-theme)
+
+(add-to-list 'default-frame-alist '(internal-border-width . 20))
+(set-frame-parameter nil 'internal-border-width 20)
 
 (defvar +current-theme nil
   "Name for current theme")
 
 (defvar +theme-list
-  '(storybook joker))
+  '(storybook joker printed))
 
 (set-display-table-slot standard-display-table
                         'vertical-border
@@ -30,9 +38,7 @@
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (set-window-scroll-bars
-             (minibuffer-window frame) 0 nil 0 nil t)
-            (set-window-fringes
-             (minibuffer-window frame) 0 0 nil t)))
+             (minibuffer-window frame) 0 nil 0 nil t)))
 
 (defun +scale-prog-mode-function-name ()
   (face-remap-add-relative 'font-lock-function-name-face :height 1.3))
@@ -69,6 +75,5 @@
                    '((:eval (when (functionp #'+smart-file-name) (+smart-file-name)))
                      "%* %m"
                      (vc-mode vc-mode)))))))
-
 
 (provide 'init-laf)
