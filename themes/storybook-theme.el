@@ -10,7 +10,9 @@
                                     :background "#fcf7e8"
                                     :foreground "#331c09")))
  `(hl-line                        ((((type graphic))
-                                    (:inherit default :box (:line-width (-1 . -2) :color "#edccb7" :style nil)))
+                                    :inherit default
+                                    :extend t
+                                    :box (:line-width (-1 . -2) :color "#edccb7" :style nil))
                                    (((type tty))
                                     :background "#ffffff")))
  `(cursor                         ((t (:background "black"))))
