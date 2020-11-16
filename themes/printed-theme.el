@@ -56,6 +56,7 @@
  '(web-mode-html-attr-name-face   ((t ())))
  '(web-mode-html-tag-face         ((t ())))
  `(line-number-current-line       ((((type graphic))
+                                    :inherit default
                                     :background "#eeeeee"
                                     :overline "#9999cc" :underline "#9999cc")
                                    (t (:bold t :inherit default :background "#ffffff"))))
