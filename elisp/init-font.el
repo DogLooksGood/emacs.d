@@ -1,4 +1,4 @@
-(set-face-attribute 'default nil :font "Jetbrains Mono-10")
+(set-face-attribute 'default nil :font "IBM Plex Mono-10")
 
 (setq face-font-rescale-alist '(("等距更纱黑体 SC" . 1)))
 (dolist (charset '(kana han symbol cjk-misc bopomofo))

@@ -44,7 +44,7 @@
 (defun +scale-prog-mode-function-name ()
   (face-remap-add-relative 'font-lock-function-name-face :height 1.3))
 
-(add-hook 'prog-mode-hook '+scale-prog-mode-function-name)
+;; (add-hook 'prog-mode-hook '+scale-prog-mode-function-name)
 
 (defun +reload-theme ()
   (interactive)
