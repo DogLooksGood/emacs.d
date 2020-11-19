@@ -84,4 +84,10 @@
   (bind-key "C-#" (call-interactively 'eval-defun)))
 (bind-key "C-*" '+quick-eval-bind)
 
+(defun +reopen-file-with-sudo ()
+  (interactive)
+  (find-alternate-file (format "/sudo::%s" (buffer-file-name))))
+
+(global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
+
 (provide 'init-defaults)
