@@ -47,7 +47,7 @@
                                    (((type tty)))))
  `(yascroll:thumb-fringe          ((t (:background "#3F3F3F" :foreground "#3F3F3F"))))
  `(yascroll:thumb-text-area       ((t (:background "#3F3F3F" :foreground "#3F3F3F"))))
- `(window-divider                 ((t (:foreground "#3F3F3F"))))
+ `(window-divider                 ((t (:foreground "#606060"))))
  `(show-paren-match               ((t (:underline "#00AF5F"))))
  `(company-tooltip-common         ((t ())))
  `(company-tooltip-common-selection ((t (:inherit font-lock-constant-face :inverse-video t))))

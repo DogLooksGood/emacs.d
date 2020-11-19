@@ -5,6 +5,8 @@
 (menu-bar-mode -1)
 (blink-cursor-mode -1)
 (fringe-mode -1)
+(setq window-divider-default-places 'right-only)
+(window-divider-mode 1)
 
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
@@ -41,10 +43,10 @@
             (set-window-scroll-bars
              (minibuffer-window frame) 0 nil 0 nil t)))
 
-(defun +scale-prog-mode-function-name ()
-  (face-remap-add-relative 'font-lock-function-name-face :height 1.3))
+(defun +highlight-prog-mode-function-name ()
+  (face-remap-add-relative 'font-lock-function-name-face :underline t :extend t))
 
-;; (add-hook 'prog-mode-hook '+scale-prog-mode-function-name)
+(add-hook 'prog-mode-hook '+highlight-prog-mode-function-name)
 
 (defun +reload-theme ()
   (interactive)
