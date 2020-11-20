@@ -77,7 +77,8 @@
  '(web-mode-html-tag-face         ((t (:bold t))))
  '(window-divider                 ((t (:foreground "grey60"))))
  '(vertical-border                ((t (:foreground "grey20"))))
- '(web-mode-html-tag-bracket-face ((t (:inherit parenthesis)))))
+ '(web-mode-html-tag-bracket-face ((t (:inherit parenthesis))))
+ '(web-mode-doctype-face          ((t (:foreground "grey40")))))
 
 (and load-file-name
      (boundp 'custom-theme-load-path)
