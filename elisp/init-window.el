@@ -4,7 +4,7 @@
   :commands
   (ace-swap-window ace-window)
   :custom
-  (aw-keys '(?d ?h ?t ?n ?s)))
+  (aw-keys '(?a ?o ?e ?u ?i)))
 
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)

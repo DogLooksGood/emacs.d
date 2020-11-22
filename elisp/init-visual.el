@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package writeroom-mode
   :bind
   ("M-RET" . global-writeroom-mode)

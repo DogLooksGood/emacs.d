@@ -5,7 +5,8 @@
 (menu-bar-mode -1)
 (blink-cursor-mode -1)
 (fringe-mode -1)
-(setq window-divider-default-places 'right-only)
+(setq window-divider-default-places 'right-only
+      window-divider-default-right-width 1)
 (window-divider-mode 1)
 
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))

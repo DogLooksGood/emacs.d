@@ -1,4 +1,5 @@
 ;;; -*- lexical-binding: t -*-
+
 (use-package pass
   :commands (pass))
 
