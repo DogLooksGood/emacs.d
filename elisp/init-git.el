@@ -11,4 +11,11 @@
   :init
   (diff-hl-margin-mode t))
 
+(use-package dired-git-info
+  :bind
+  (:map dired-mode-map
+        ("v" . dired-git-info-mode))
+  :custom
+  (dgi-auto-hide-details-p nil))
+
 (provide 'init-git)

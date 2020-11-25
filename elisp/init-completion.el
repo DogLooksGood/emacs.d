@@ -64,14 +64,6 @@
   :init
   (ctrlf-mode 1))
 
-;; (use-package selectrum
-;;   :init
-;;   (selectrum-mode 1))
-;; (use-package prescient)
-;; (use-package selectrum-prescient
-;;   :init
-;;   (selectrum-prescient-mode 1))
-
 (use-package ivy
   :init
   (ivy-mode 1)

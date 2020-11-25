@@ -77,6 +77,8 @@
 
 ;;; project.el use C-x p
 (unbind-key "C-x C-p")
+;;; use C-x C-d for dired
+(bind-key "C-x C-d" #'dired)
 
 ;;; For elisp custom command debugging
 (defun +quick-eval-bind ()
