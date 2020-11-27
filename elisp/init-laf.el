@@ -74,13 +74,15 @@ Containing LEFT, and RIGHT aligned respectively."
               '((:eval
                  (+simple-mode-line-render
                   ;; left
-                  '((:eval (when (featurep 'meow) (meow-minimal-indicator)))
+                  '(" "
+                    (:eval (when (featurep 'meow) (meow-minimal-indicator)))
                     "%l:%c %p"
                     (:eval (when (bound-and-true-p rime-mode) (concat (rime-lighter) " ")))
                     (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line)))
                   ;; right
                   '((:eval (when (functionp #'+smart-file-name) (+smart-file-name)))
                     "%* %m"
-                    (vc-mode vc-mode))))))
+                    (vc-mode vc-mode)
+                    " ")))))
 
 (provide 'init-laf)
