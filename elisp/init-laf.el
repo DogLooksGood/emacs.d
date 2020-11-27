@@ -60,24 +60,27 @@
 (setq-default frame-title-format '("Emacs" (:eval (+project-name))))
 
 (defun +simple-mode-line-render (left right)
-  "Return a string of `window-width' length containing LEFT, and RIGHT
- aligned respectively."
-  (let* ((available-width (- (window-width) (length left) 2)))
-    (format (format " %%s %%%ds " available-width) left right)))
+  "Return a string of `window-width' length.
+Containing LEFT, and RIGHT aligned respectively."
+  (let ((available-width
+         (- (window-total-width)
+            (+ (length (format-mode-line left))
+               (length (format-mode-line right))))))
+    (append left
+            (list (format (format "%%%ds" available-width) ""))
+            right)))
 
 (setq-default mode-line-format
               '((:eval
                  (+simple-mode-line-render
                   ;; left
-                  (format-mode-line
-                   '((:eval (when (featurep 'meow) (meow-minimal-indicator)))
-                     " %l:%C "
-                     (:eval (when (bound-and-true-p rime-mode) (concat (rime-lighter) " ")))
-                     (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line))))
+                  '((:eval (when (featurep 'meow) (meow-minimal-indicator)))
+                    "%l:%c %p"
+                    (:eval (when (bound-and-true-p rime-mode) (concat (rime-lighter) " ")))
+                    (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line)))
                   ;; right
-                  (format-mode-line
-                   '((:eval (when (functionp #'+smart-file-name) (+smart-file-name)))
-                     "%* %m"
-                     (vc-mode vc-mode)))))))
+                  '((:eval (when (functionp #'+smart-file-name) (+smart-file-name)))
+                    "%* %m"
+                    (vc-mode vc-mode))))))
 
 (provide 'init-laf)

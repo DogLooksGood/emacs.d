@@ -1,8 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 
-(set-face-attribute 'default nil :font "Jetbrains Mono-11")
+(set-face-attribute 'default nil :font "Fira Code-12")
 
-(setq face-font-rescale-alist '(("等距更纱黑体 SC" . 1)))
+(setq face-font-rescale-alist '(("等距更纱黑体 SC" . 0.8)))
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
                     charset
@@ -15,7 +15,7 @@
 	        :repo "mickeynp/ligature.el")
   :config
   (ligature-set-ligatures 'elixir-mode
-                          '("->" "=>" "|>" "<-" ">=" "<=" "!=" "=="))
+                          '("->" "=>" "|>" "<-" ">=" "<=" "!=" "==" "::"))
   (ligature-set-ligatures 'clojure-mode
                           '("->" "->>" ">=" "<="))
   (global-ligature-mode t))
