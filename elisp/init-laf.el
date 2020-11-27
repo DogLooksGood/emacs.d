@@ -76,7 +76,7 @@ Containing LEFT, and RIGHT aligned respectively."
                   ;; left
                   '(" "
                     (:eval (when (featurep 'meow) (meow-minimal-indicator)))
-                    "%l:%c %p"
+                    "%l:%c %p "
                     (:eval (when (bound-and-true-p rime-mode) (concat (rime-lighter) " ")))
                     (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line)))
                   ;; right
