@@ -15,7 +15,7 @@
 	        :repo "mickeynp/ligature.el")
   :config
   (ligature-set-ligatures 'elixir-mode
-                          '("->" "=>" "|>" "<-" ">=" "<=" "!=" "==" "::"))
+                          '("->" "=>" "|>" "<-" ">=" "<=" "!=" "==" "::" "~>"))
   (ligature-set-ligatures 'clojure-mode
                           '("->" "->>" ">=" "<="))
   (global-ligature-mode t))

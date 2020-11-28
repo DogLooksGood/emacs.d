@@ -66,6 +66,8 @@
  ;; Don't truncate lines in a window narrower than 100 chars.
  truncate-partial-width-windows 100)
 
+(setq-default display-line-numbers-widen 4)
+
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'conf-mode-hook 'hl-line-mode)
 (add-hook 'text-mode-hook 'hl-line-mode)
