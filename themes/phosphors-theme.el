@@ -61,7 +61,7 @@
  '(web-mode-html-tag-face         ((t ())))
  '(fringe                         ((t ())))
  `(line-number                    ((t (:foreground "#339933"))))
- `(line-number-current-line       ((((type graphic)) :inherit hl-line)
+ `(line-number-current-line       ((((type graphic)):inherit hl-line)
                                    (t (:bold t :background "#ffffff"))))
  '(mc/cursor-bar-face             ((t (:background "grey50" :height 1))))
  '(dired-subtree-depth-1-face     ((t (:background "grey90"))))

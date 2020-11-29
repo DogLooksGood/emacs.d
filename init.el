@@ -19,4 +19,4 @@
 (require 'init-docker)
 (require 'init-sidebar)
 (require 'init-font)
-;; (require 'init-dashboard)
+(require 'init-dashboard)

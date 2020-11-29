@@ -20,7 +20,7 @@
  `(font-lock-warning-face         ((t (:foreground "red"))))
  `(font-lock-string-face          ((t (:background "#faece1"))))
  `(font-lock-function-name-face   ((t (:background "#e9defa"))))
- `(font-lock-keyword-face         ((t (:foreground "#0a3a45" :italic t))))
+ `(font-lock-keyword-face         ((t (:foreground "#0a3a45"))))
  `(font-lock-constant-face        ((t (:foreground "#381a8a"))))
  `(font-lock-builtin-face         ((t ())))
  `(font-lock-variable-name-face   ((t ())))

@@ -2,7 +2,7 @@
 
 (set-face-attribute 'default nil :font "Fira Code-10")
 
-(setq face-font-rescale-alist '(("等距更纱黑体 SC" . 0.8)))
+(setq-default face-font-rescale-alist '(("等距更纱黑体 SC" . 0.8)))
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
                     charset

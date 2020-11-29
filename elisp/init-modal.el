@@ -1,6 +1,13 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Support Find Thing
+(defun +meow-toggle-relative-line-number ()
+  (when display-line-numbers
+    (if (bound-and-true-p meow-insert-mode)
+        (setq display-line-numbers t)
+      (setq display-line-numbers 'relative))))
+
+(add-hook 'display-line-numbers-mode-hook '+meow-toggle-relative-line-number)
+
 (use-package meow
   :straight
   (meow :type git
@@ -8,6 +15,7 @@
 	:repo "DogLooksGood/meow"
     :branch "develop")
   :init
+  (add-hook 'meow-insert-mode-hook #'+meow-toggle-relative-line-number)
   (meow-global-mode 1)
   :custom
   (meow-esc-delay 0.001)

@@ -19,7 +19,7 @@
  `(font-lock-warning-face         ((t (:foreground "red"))))
  `(font-lock-string-face          ((t (:foreground "dark red"))))
  `(font-lock-function-name-face   ((t (:bold t))))
- `(font-lock-keyword-face         ((t (:foreground "DarkBlue" :italic t))))
+ `(font-lock-keyword-face         ((t (:foreground "DarkBlue"))))
  `(font-lock-constant-face        ((t (:foreground "Purple4"))))
  `(font-lock-builtin-face         ((t ())))
  `(font-lock-variable-name-face   ((t ())))
