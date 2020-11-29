@@ -74,11 +74,10 @@ Containing LEFT, and RIGHT aligned respectively."
               '((:eval
                  (+simple-mode-line-render
                   ;; left
-                  '(" "
-                    (:eval (when (featurep 'meow) (meow-minimal-indicator)))
-                    "%l:%c "
+                  '((:eval (when (featurep 'meow) (meow-minimal-indicator)))
+                    " %l:%c "
                     (-3 "%p")
-                    " "
+                    (:eval (propertize " " 'display '(height 1.3)))
                     (:eval (when (bound-and-true-p rime-mode) (concat (rime-lighter) " ")))
                     (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line)))
                   ;; right

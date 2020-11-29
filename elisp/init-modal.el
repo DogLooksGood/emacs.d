@@ -6,7 +6,7 @@
   (meow :type git
 	:host github
 	:repo "DogLooksGood/meow"
-        :branch "develop")
+    :branch "develop")
   :init
   (meow-global-mode 1)
   :custom

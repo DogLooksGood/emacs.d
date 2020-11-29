@@ -52,9 +52,25 @@ This function is slow, so we have to use cache."
 
 ;;; Case transform
 
-(defun to-pascal-case (s)
+(defun +to-pascal-case (s)
   (let* ((words (split-string s "-\\|_"))
          (capwords (mapcar #'capitalize words)))
     (string-join capwords "")))
+
+(defun +color-blend (c1 c2 alpha)
+  "Blend two colors C1 and C2 with ALPHA.
+C1 and C2 are hexidecimal strings.
+ALPHA is a number between 0.0 and 1.0 which corresponds to the
+influence of C1 on the result."
+  (ignore-errors
+    (apply #'(lambda (r g b)
+               format "#%02x%02x%02x"
+               (ash r -8)
+               (ash g -8)
+               (ash b -8))
+           (cl-mapcar
+            (lambda (x y)
+              (round (+ (* x alpha) (* y (- 1 alpha)))))
+            (color-values c1) (color-values c2)))))
 
 (provide 'init-util)

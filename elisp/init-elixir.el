@@ -18,7 +18,7 @@
     (message file-name)
     (-> (replace-regexp-in-string "\.exs?$" "" lib-file-name)
         (split-string "/")
-        (->> (-map #'to-pascal-case))
+        (->> (-map #'+to-pascal-case))
         (string-join "."))))
 
 (defun +elixir-post-self-insert-hook-setup ()
