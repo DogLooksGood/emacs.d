@@ -91,14 +91,12 @@
    ("RET" . 'yas-next-field-or-maybe-expand)
    ("<return>" . 'yas-next-field-or-maybe-expand)
    ("M-<return>" . 'newline-and-indent)
-   ("S-<return>" . 'yas-prev-field))
+   ("S-<return>" . 'yas-prev-field)
+   ("TAB")
+   ("S-TAB")
+   ("<tab>"))
   :config
   (+yas-init)
-  (unbind-key "<return>" yas-keymap)
-  (unbind-key "S-<return>" yas-keymap)
-  (unbind-key "<tab>" yas-keymap)
-  (unbind-key "TAB" yas-keymap)
-  (unbind-key "S-TAB" yas-keymap)
   :init
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
