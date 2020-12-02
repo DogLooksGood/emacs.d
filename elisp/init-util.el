@@ -36,6 +36,24 @@ This function is slow, so we have to use cache."
                  (project-root (project-current)))))
    (t (setq-local +smart-file-name-cache (buffer-name)))))
 
+(defface +modeline-dim-face
+  '((((class color) (background dark))
+     (:foreground "grey40"))
+    (((class color) (background light))
+     (:foreground "grey60")))
+  "Dim face in mode-line")
+
+(defun +smart-file-name-with-propertize ()
+  (let* ((fname (+smart-file-name))
+         (slist (split-string fname "/"))
+         (len (length slist))
+         (p-slist (-map-indexed (lambda (idx s)
+                                  (if (= idx (1- len))
+                                      s
+                                    (propertize s 'face '+modeline-dim-face)))
+                                slist)))
+    (string-join p-slist (propertize "/" 'face '+modeline-dim-face))))
+
 (defun +project-name ()
   "Get project name, which is used in title format."
   (cond

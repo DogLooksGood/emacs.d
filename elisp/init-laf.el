@@ -81,8 +81,10 @@ Containing LEFT, and RIGHT aligned respectively."
                     (:eval (when (bound-and-true-p rime-mode) (concat (rime-lighter) " ")))
                     (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line)))
                   ;; right
-                  '((:eval (when (functionp #'+smart-file-name) (+smart-file-name)))
-                    "%* %m"
+                  '((:propertize " %m " face font-lock-keyword-face)
+                    (:eval (when (functionp #'+smart-file-name-with-propertize)
+                             (+smart-file-name-with-propertize)))
+                    "[%*]"
                     (vc-mode vc-mode)
                     " ")))))
 
