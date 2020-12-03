@@ -1,12 +1,17 @@
-(defun rime-predicate-in-code-string-after-ascii-p ()
-  (and
-   (eq (plist-get (text-properties-at (point)) 'face) 'font-lock-string-face)
-   (rime-predicate-after-ascii-char-p)))
+;; (defun rime-predicate-in-code-string-after-ascii-p ()
+;;   (and
+;;    (eq (plist-get (text-properties-at (point)) 'face) 'font-lock-string-face)
+;;    (rime-predicate-after-ascii-char-p)))
+;;
+;; (defun rime-predicate-in-code-after-ascii-p ()
+;;   (and
+;;    (rime-predicate-prog-in-code-p)
+;;    (not (looking-back "\\cc" 1))))
 
-(defun rime-predicate-in-code-after-ascii-p ()
-  (and
-   (rime-predicate-prog-in-code-p)
-   (not (looking-back "\\cc" 1))))
+(defun rime-predicate-no-cc-in-current-line-p ()
+  (not
+   (string-match-p "^.*\\cc.*$"
+                   (buffer-substring-no-properties (line-beginning-position) (line-end-position)))))
 
 (use-package rime
   :commands (toggle-input-method)
@@ -21,9 +26,8 @@
   ((rime-disable-predicates '(meow-normal-mode-p
                               meow-motion-mode-p
                               meow-keypad-mode-p
-                              rime-predicate-in-code-string-after-ascii-p
-                              rime-predicate-in-code-after-ascii-p
-                              rime-predicate-after-alphabet-char-p))
+                              rime-predicate-prog-in-code-p
+                              rime-predicate-no-cc-in-current-line-p))
    (rime-inline-predicates '(rime-predicate-space-after-cc-p
                              rime-predicate-current-uppercase-letter-p))
    (rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g"))

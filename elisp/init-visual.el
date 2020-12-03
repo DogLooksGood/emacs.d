@@ -9,5 +9,6 @@
 
 (setq-default display-line-numbers-width 4)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'text-mode-hook 'display-line-numbers-mode)
 
 (provide 'init-visual)
