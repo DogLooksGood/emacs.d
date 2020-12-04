@@ -1,12 +1,17 @@
 ;;; -*- lexical-binding: t -*-
 
-(set-face-attribute 'default nil :font "Fira Code-10")
+(let ((font-family "Fira Code")
+      (font-size 10))
+  (when (member font-family (font-family-list))
+    (set-face-attribute 'default nil :font (format "%s-%d" font-family font-size))))
 
-(setq-default face-font-rescale-alist '(("等距更纱黑体 SC" . 0.8)))
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-                    charset
-                    (font-spec :family "等距更纱黑体 SC")))
+(let ((cn-font-family "Sarasa Mono SC"))
+  (when (member cn-font-family (font-family-list))
+    (setq-default face-font-rescale-alist `((,cn-font-family . 0.95)))
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font)
+                        charset
+                        (font-spec :family cn-font-family)))))
 
 (use-package ligature
   :straight
