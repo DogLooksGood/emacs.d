@@ -124,7 +124,7 @@
  `(org-document-title             ((t (:inherit font-lock-string-face))))
  `(org-code                       ((t (:inherit font-lock-constant-face))))
  `(treemacs-root-face             ((t (:inherit font-lock-function-name-face :height 1.4 :underline t))))
- `(line-number                    ((t (:foreground "#353535"))))
+ `(line-number                    ((t (:foreground "#353535" :inherit default))))
  `(line-number-current-line       ((((type tty)) :foreground "#D7AF00")
                                    (((type graphic)) :inherit default  :foreground "#D7AF00" :background "#303030")))
  `(parenthesis                    ((t (:foreground "#909090"))))
