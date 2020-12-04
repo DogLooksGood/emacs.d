@@ -64,8 +64,12 @@
  indent-tabs-mode nil
  read-process-output-max (* 1024 1024)
  ;; Don't truncate lines in a window narrower than 100 chars.
- truncate-partial-width-windows 100)
+ truncate-partial-width-windows 100
+ ;; Default line number width.
+ display-line-numbers-width 4)
 
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'conf-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'conf-mode-hook 'hl-line-mode)
 (add-hook 'text-mode-hook 'hl-line-mode)
