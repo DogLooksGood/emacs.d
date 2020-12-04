@@ -60,7 +60,9 @@ This function is slow, so we have to use cache."
    (+project-name-cache +project-name-cache)
    ((project-current)
     (setq-local +project-name-cache
-                (format " : %s " (project-root (project-current)))))
+                (-> (project-root (project-current))
+                    (string-trim-right "/")
+                    (file-name-base))))
    (t (setq-local +project-name-cache ""))))
 
 (defun +make-silent (func &rest args)

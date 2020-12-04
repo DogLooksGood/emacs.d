@@ -78,13 +78,12 @@ Containing LEFT, and RIGHT aligned respectively."
                     " %l:%c "
                     (-3 "%p")
                     (:eval (propertize " " 'display '(height 1.3)))
-                    (:eval (when (bound-and-true-p rime-mode) (concat (rime-lighter) " ")))
-                    (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line)))
+                    (:eval (when (bound-and-true-p rime-mode) (rime-lighter))))
                   ;; right
                   '((:propertize " %m " face font-lock-keyword-face)
-                    (:eval (when (functionp #'+smart-file-name-with-propertize)
-                             (+smart-file-name-with-propertize)))
+                    (:eval (+smart-file-name-with-propertize))
                     "[%*]"
+
                     (vc-mode vc-mode)
                     " ")))))
 
