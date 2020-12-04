@@ -62,7 +62,10 @@
  '(web-mode-html-attr-name-face   ((t ())))
  '(web-mode-html-tag-face         ((t ())))
  `(line-number-current-line       ((((type graphic))
-                                    :inherit hl-line)
+                                    :box (:line-width (-1 . -2) :color "#edccb7" :style nil)
+                                    :bold t
+                                    :foreground "#404040"
+                                    :inherit default)
                                    (t (:bold t :inherit default :background "#ffffff"))))
  '(mc/cursor-bar-face             ((t (:background "grey50" :height 1))))
  '(dired-subtree-depth-1-face     ((t (:background "grey90"))))
