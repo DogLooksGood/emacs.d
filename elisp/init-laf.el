@@ -82,9 +82,6 @@ Containing LEFT, and RIGHT aligned respectively."
                   ;; right
                   '((:propertize " %m " face font-lock-keyword-face)
                     (:eval (+smart-file-name-with-propertize))
-                    "[%*]"
-
-                    (vc-mode vc-mode)
-                    " ")))))
+                    "[%*]")))))
 
 (provide 'init-laf)
