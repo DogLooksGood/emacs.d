@@ -58,7 +58,9 @@
  `(line-number-current-line       ((((type graphic))
                                     :inherit default
                                     :background "#eeeeee"
-                                    :overline "#9999cc" :underline "#9999cc")
+                                    :overline "#9999cc"
+                                    :underline "#9999cc"
+                                    :bold t)
                                    (t (:bold t :inherit default :background "#ffffff"))))
  '(mc/cursor-bar-face             ((t (:background "grey50" :height 1))))
  '(dired-subtree-depth-1-face     ((t (:background "grey90"))))
