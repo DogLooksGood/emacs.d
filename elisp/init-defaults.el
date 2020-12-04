@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-(require 'init-util)
-
 (setq-default
  inhibit-startup-message t
  inhibit-x-resources t
@@ -63,8 +61,8 @@
  x-underline-at-descent-line t
  indent-tabs-mode nil
  read-process-output-max (* 1024 1024)
- ;; Don't truncate lines in a window narrower than 100 chars.
- truncate-partial-width-windows 100
+ ;; Don't truncate lines in a window narrower than 65 chars.
+ truncate-partial-width-windows 65
  ;; Default line number width.
  display-line-numbers-width 4)
 
@@ -76,18 +74,15 @@
 (add-hook 'prog-mode-hook 'subword-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 (blink-cursor-mode -1)
+(fringe-mode -1)
 
 ;;; project.el use C-x p
-(unbind-key "C-x C-p")
-;;; use C-x C-d for dired
-(bind-key "C-x C-d" #'dired)
-
-;;; For elisp custom command debugging
-(defun +quick-eval-bind ()
-  (interactive)
-  (bind-key "C-#" (call-interactively 'eval-defun)))
-(bind-key "C-*" '+quick-eval-bind)
+(global-unset-key (kbd "C-x C-p"))
+(global-set-key (kbd "C-x C-d") #'dired)
 
 (defun +reopen-file-with-sudo ()
   (interactive)

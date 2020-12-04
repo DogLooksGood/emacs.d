@@ -1,14 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(blink-cursor-mode -1)
-(fringe-mode -1)
-(setq window-divider-default-places 'right-only
-      window-divider-default-right-width 1)
-(window-divider-mode 1)
-
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
 (require 'joker-theme)
@@ -39,11 +30,6 @@
       (unless no-msg
         (message "Load theme: %s" this-theme)))))
 
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (set-window-scroll-bars
-             (minibuffer-window frame) 0 nil 0 nil t)))
-
 (defun +highlight-prog-mode-function-name ()
   (face-remap-add-relative 'font-lock-function-name-face :underline t :extend t))
 
@@ -56,8 +42,6 @@
 (+change-theme t)
 
 ;; Mode Line
-
-(setq-default frame-title-format '("Emacs" (:eval (+project-name))))
 
 (defun +simple-mode-line-render (left right)
   "Return a string of `window-width' length.
@@ -75,13 +59,13 @@ Containing LEFT, and RIGHT aligned respectively."
                  (+simple-mode-line-render
                   ;; left
                   '((:eval (when (featurep 'meow) (meow-minimal-indicator)))
-                    " %l:%c "
-                    (-3 "%p")
+                    " %l:%C "
+                    (:propertize (-3 "%p") face +modeline-dim-face)
                     (:eval (propertize " " 'display '(height 1.3)))
                     (:eval (when (bound-and-true-p rime-mode) (rime-lighter))))
                   ;; right
                   '((:propertize " %m " face font-lock-keyword-face)
-                    (:eval (+smart-file-name-with-propertize))
-                    "[%*]")))))
+                    (:eval (when (functionp '+smart-file-name-with-propertize) (+smart-file-name-with-propertize)))
+                    "[%*] ")))))
 
 (provide 'init-laf)

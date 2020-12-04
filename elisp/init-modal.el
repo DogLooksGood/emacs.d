@@ -6,8 +6,6 @@
         (setq display-line-numbers t)
       (setq display-line-numbers 'relative))))
 
-(add-hook 'display-line-numbers-mode-hook '+meow-toggle-relative-line-number)
-
 (use-package meow
   :straight
   (meow :type git
@@ -15,6 +13,7 @@
 	:repo "DogLooksGood/meow"
     :branch "develop")
   :init
+  (add-hook 'display-line-numbers-mode-hook '+meow-toggle-relative-line-number)
   (add-hook 'meow-insert-mode-hook #'+meow-toggle-relative-line-number)
   (meow-global-mode 1)
   :custom
@@ -32,6 +31,7 @@
    '("}" . meow-forward-barf)
    '(")" . meow-forward-slurp)
    '("e" . meow-eval-last-exp)
+   '("E" . eldoc-mode)
    '("r" . meow-raise-sexp)
    '("S" . meow-split-sexp)
    '("s" . meow-splice-sexp)

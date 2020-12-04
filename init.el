@@ -1,6 +1,6 @@
 (require 'init-straight)
+(require 'init-util)
 (require 'init-modal)
-(require 'init-defaults)
 (require 'init-edit)
 (require 'init-lsp)
 (require 'init-web)

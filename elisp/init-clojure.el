@@ -23,9 +23,6 @@
   (cljr-warn-on-eval t)
   (cljr-suppress-middleware-warnings t))
 
-(defun +enable-eldoc ()
-  (eldoc-mode t))
-
 (use-package cider
   :commands (cider-jack-in cider-jack-in-cljs cider-jack-in-clj&cljs)
   :bind
@@ -42,8 +39,6 @@
   (unbind-key "C-c C-p" cider-mode-map)
   :init
   (setq-default cider-default-cljs-repl 'shadow)
-  (add-hook 'cider-connected-hook '+enable-eldoc)
-  (add-hook 'clojure-mode-hook '+enable-eldoc)
   :custom
   (cider-font-lock-dynamically nil)
   (cider-font-lock-reader-conditionals nil)

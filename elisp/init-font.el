@@ -7,7 +7,7 @@
 
 (let ((cn-font-family "Sarasa Mono SC"))
   (when (member cn-font-family (font-family-list))
-    (setq-default face-font-rescale-alist `((,cn-font-family . 0.95)))
+    (setq-default face-font-rescale-alist `((,cn-font-family . 1)))
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
       (set-fontset-font (frame-parameter nil 'font)
                         charset

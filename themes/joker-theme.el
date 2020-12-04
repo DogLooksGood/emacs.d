@@ -68,7 +68,7 @@
  `(font-lock-warning-face         ((t (:foreground "yellow"))))
  `(font-lock-preprocessor-face    ((t (:inherit font-lock-constant-face))))
  `(button                         ((t (:foreground "#2299CC" :underline t))))
- `(meow-keypad-indicator          ((t (:foreground "black" :background "#CC2F2F"))))
+ `(meow-keypad-indicator          ((t (:foreground "black" :background "#EE4F4F"))))
  `(meow-insert-indicator          ((t (:foreground "black" :background "#00D787"))))
  `(meow-normal-indicator          ((t (:foreground "black" :background "#CFA300"))))
  `(meow-motion-indicator          ((t (:foreground "black" :background "#00AFD7"))))
