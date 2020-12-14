@@ -6,6 +6,8 @@
   :custom
   (aw-keys '(?a ?o ?e ?u ?i)))
 
+(windmove-default-keybindings 'meta)
+
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)

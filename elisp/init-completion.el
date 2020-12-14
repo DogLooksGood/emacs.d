@@ -49,16 +49,17 @@
   (company-global-modes '(not dired-mode dired-sidebar-mode))
   (company-tooltip-margin 0))
 
-(when window-system
-  (use-package posframe)
-  (use-package company-posframe
-	:init
-	(company-posframe-mode 1)
-	:custom
-    (company-posframe-show-at-prefix )
-	(company-posframe-quickhelp-delay nil)
-	(company-posframe-show-indicator nil)
-	(company-posframe-show-metadata nil)))
+;;; Company Posframe have a bug for unstable candidate position
+;; (when window-system
+;;   (use-package posframe)
+;;   (use-package company-posframe
+;; 	:init
+;; 	(company-posframe-mode -1)
+;; 	:custom
+;;     (company-posframe-show-at-prefix )
+;; 	(company-posframe-quickhelp-delay nil)
+;; 	(company-posframe-show-indicator nil)
+;; 	(company-posframe-show-metadata nil)))
 
 (use-package ctrlf
   :init
