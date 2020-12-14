@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(let ((font-family "Fira Code")
+(let ((font-family "Victor Mono")
       (font-size 10))
   (when (member font-family (font-family-list))
     (set-face-attribute 'default nil :font (format "%s-%d" font-family font-size))))

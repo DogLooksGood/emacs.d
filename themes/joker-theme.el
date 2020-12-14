@@ -57,8 +57,8 @@
  `(company-scrollbar-bg           ((t (:background "#303030"))))
  `(company-scrollbar-fg           ((t (:background "#4E4E4E"))))
  `(font-lock-comment-face         ((t (:foreground "#00AAAA" :italic t))))
- `(font-lock-string-face          ((t (:foreground "#E24C49" :italic t))))
- `(font-lock-doc-face             ((t (:foreground "#00AAAA"))))
+ `(font-lock-string-face          ((t (:foreground "#E24C49"))))
+ `(font-lock-doc-face             ((t (:foreground "#00AAAA" :italic t))))
  `(font-lock-builtin-face         ((t ())))
  `(font-lock-type-face            ((t ())))
  `(font-lock-variable-name-face   ((t ())))
@@ -149,7 +149,8 @@
  '(window-divider                 ((t ())))
  '(web-mode-function-call-face    ((t ())))
  '(web-mode-function-name-face    ((t ())))
- '(web-mode-html-tag-bracket-face ((t (:inherit parenthesis)))))
+ '(web-mode-html-tag-bracket-face ((t (:inherit parenthesis))))
+ '(css-selector                   ((t (:inherit font-lock-constant-face)))))
 
 (and load-file-name
      (boundp 'custom-theme-load-path)
