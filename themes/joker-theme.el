@@ -41,7 +41,7 @@
                                     :foreground "#AFAFAF")))
  `(mc/cursor-face                 ((t (:background "#949494" :foreground "black"))))
  `(cursor                         ((t (:background "white"))))
- `(region                         ((t (:background "#174535"))))
+ `(region                         ((t (:background "#173525"))))
  `(highlight-symbol-face          ((t ())))
  `(hl-line                        ((((type graphic)) :background "#303030")
                                    (((type tty)))))
