@@ -4,7 +4,8 @@
   :commands
   (ace-swap-window ace-window)
   :custom
-  (aw-keys '(?a ?o ?e ?u ?i)))
+  (aw-keys '(?a ?o ?e ?u ?i))
+  (aw-scope 'frame))
 
 (windmove-default-keybindings 'meta)
 

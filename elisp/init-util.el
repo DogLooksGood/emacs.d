@@ -42,16 +42,25 @@ This function is slow, so we have to use cache."
      (:foreground "grey60")))
   "Dim face in mode-line")
 
+(defvar-local +smart-file-name-with-propertize-cache nil
+  "Cache for performance, is a cons of (buffer-name . cached-value).")
+
 (defun +smart-file-name-with-propertize ()
-  (let* ((fname (+smart-file-name))
-         (slist (split-string fname "/"))
-         (len (length slist))
-         (p-slist (-map-indexed (lambda (idx s)
-                                  (if (= idx (1- len))
-                                      s
-                                    (propertize s 'face '+modeline-dim-face)))
-                                slist)))
-    (string-join p-slist (propertize "/" 'face '+modeline-dim-face))))
+  (if-let ((val (-when-let ((buf-name . val) +smart-file-name-with-propertize-cache)
+                  (when (string-equal buf-name (buffer-file-name))
+                    val))))
+      val
+    (let* ((fname (+smart-file-name))
+           (slist (split-string fname "/"))
+           (len (length slist))
+           (p-slist (-map-indexed (lambda (idx s)
+                                    (if (= idx (1- len))
+                                        s
+                                      (propertize s 'face '+modeline-dim-face)))
+                                  slist))
+           (val (string-join p-slist (propertize "/" 'face '+modeline-dim-face))))
+      (setq-local +smart-file-name-with-propertize-cache (cons (buffer-file-name) val))
+      val)))
 
 (defun +project-name ()
   "Get project name, which is used in title format."
