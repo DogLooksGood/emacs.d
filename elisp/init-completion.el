@@ -49,6 +49,10 @@
   (company-global-modes '(not dired-mode dired-sidebar-mode))
   (company-tooltip-margin 0))
 
+(use-package company-posframe
+  :init
+  (company-posframe-mode 1))
+
 (use-package ctrlf
   :init
   (ctrlf-mode 1))
