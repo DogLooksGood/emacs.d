@@ -64,7 +64,9 @@
  ;; Don't truncate lines in a window narrower than 65 chars.
  truncate-partial-width-windows 65
  ;; Default line number width.
- display-line-numbers-width 4)
+ display-line-numbers-width 4
+ ;; Window divider on right
+ window-divider-default-places 'right-only)
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'conf-mode-hook 'display-line-numbers-mode)
@@ -74,6 +76,7 @@
 (add-hook 'prog-mode-hook 'subword-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(window-divider-mode 1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)

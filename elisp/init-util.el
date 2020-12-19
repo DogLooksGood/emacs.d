@@ -3,9 +3,6 @@
 (use-package dash)
 (require 'subr-x)
 
-(defvar-local +smart-file-name-cache nil
-  "Cache for the smart file name of current buffer.")
-
 (defvar-local +project-name-cache nil
   "Cache for current project name.")
 
@@ -26,15 +23,17 @@ Result depends on syntax table's comment character."
 (defun +smart-file-name ()
   "Get current file name, if we are in project, the return relative path to the project root, otherwise return absolute file path.
 This function is slow, so we have to use cache."
-  (cond
-   (+smart-file-name-cache +smart-file-name-cache)
-   ((and (buffer-file-name (current-buffer))
-         (project-current))
-    (setq-local +smart-file-name-cache
-                (file-relative-name
-                 (buffer-file-name (current-buffer))
-                 (project-root (project-current)))))
-   (t (setq-local +smart-file-name-cache (buffer-name)))))
+  (let ((vc-dir (vc-root-dir)))
+    (cond
+     ((and (buffer-file-name (current-buffer)) vc-dir)
+      (file-relative-name (buffer-file-name (current-buffer)) vc-dir))
+     (t (buffer-name)))))
+
+(defmacro +measure-time (&rest body)
+  "Measure the time it takes to evaluate BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (message "%.06fs" (float-time (time-since time)))))
 
 (defface +modeline-dim-face
   '((((class color) (background dark))
