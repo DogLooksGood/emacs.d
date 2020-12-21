@@ -74,7 +74,7 @@
  `(meow-motion-indicator          ((t (:foreground "black" :background "#00AFD7"))))
  '(meow-keypad-cursor             ((t (:background "#c33"))))
  '(meow-insert-cursor             ((t (:background "#0f3"))))
- '(meow-normal-cursor             ((t (:background "#cc0"))))
+ '(meow-normal-cursor             ((t (:background "#dc0"))))
  '(meow-motion-cursor             ((t (:background "#39f"))))
  `(cider-result-overlay-face      ((t (:background "black"))))
  `(mode-line                      ((t (:background "#131313"))))

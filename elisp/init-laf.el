@@ -62,7 +62,7 @@ Containing LEFT, and RIGHT aligned respectively."
                   '((:eval (when (bound-and-true-p meow-mode) (meow-indicator)))
                     " %l:%C "
                     (:propertize (-3 "%p") face +modeline-dim-face)
-                    (:eval (propertize " " 'display '(height 1.3)))
+                    (:eval (propertize " " 'display '(height 1.5)))
                     (:eval (when (bound-and-true-p rime-mode) (rime-lighter))))
                   ;; right
                   '((:propertize " %m " face font-lock-keyword-face)
