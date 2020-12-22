@@ -69,9 +69,9 @@
 ;;   :init
 ;;   (company-posframe-mode 1))
 
-(use-package ctrlf
-  :init
-  (ctrlf-mode 1))
+;; (use-package ctrlf
+;;   :init
+;;   (ctrlf-mode 1))
 
 (use-package ivy
   :init
