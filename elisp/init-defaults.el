@@ -5,8 +5,9 @@
  inhibit-x-resources t
  inhibit-splash-screen t
  inhibit-startup-screen t
+ inhibit-startup-echo-area-message t
+ initial-major-mode 'emacs-lisp-mode
  frame-inhibit-implied-resize t
- initial-major-mode 'fundamental-mode
  initial-scratch-message ""
  hl-line-sticky-flag t
  ;; Prefer horizental split

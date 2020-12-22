@@ -2,9 +2,26 @@
 
 (defun +yas-expand-or-company-complete ()
   (interactive)
-  (let ((yas/fallback-behavior 'return-nil))
-    (or (yas/expand)
-        (call-interactively #'company-indent-or-complete-common))))
+  (or (yas/expand)
+      (call-interactively #'company-indent-or-complete-common)))
+
+(use-package yasnippet
+  :bind
+  (:map
+   yas-keymap
+   ("<escape>")
+   ("RET" . 'yas-next-field-or-maybe-expand)
+   ("<return>" . 'yas-next-field-or-maybe-expand)
+   ("M-RET" . 'yas-expand-snippet)
+   ("M-<return>" . 'yas-expand-snippet)
+   ("S-<return>" . 'yas-prev-field)
+   ("TAB")
+   ("S-TAB")
+   ("<tab>"))
+  :config
+  (let ((inhibit-message t)) (yas-reload-all))
+  :init
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (use-package company
   :hook (company-mode . company-tng-mode)
@@ -66,31 +83,6 @@
   :init
   (counsel-mode 1))
 
-(defun +yas-next ()
-  (interactive)
-  (yas-next-field-or-maybe-expand))
-
-(defun +yas-init ()
-  (yas-reload-all))
-
-(advice-add '+yas-init :around #'+make-silent)
-
-(use-package yasnippet
-  :bind
-  (:map
-   yas-keymap
-   ("<escape>")
-   ("RET" . 'yas-next-field-or-maybe-expand)
-   ("<return>" . 'yas-next-field-or-maybe-expand)
-   ("M-<return>" . 'newline-and-indent)
-   ("S-<return>" . 'yas-prev-field)
-   ("TAB")
-   ("S-TAB")
-   ("<tab>"))
-  :config
-  (+yas-init)
-  :init
-  (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (use-package deadgrep
   :bind
