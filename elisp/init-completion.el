@@ -39,7 +39,6 @@
   (company-idle-delay 0.2)
   (company-tooltip-limit 10)
   (company-tooltip-align-annotations t)
-  (company-tooltip-offset-display 'lines)
   (company-tooltip-width-grow-only t)
   (company-tooltip-idle-delay 0.1)
   (company-minimum-prefix-length 3)
@@ -49,9 +48,9 @@
   (company-global-modes '(not dired-mode dired-sidebar-mode))
   (company-tooltip-margin 0))
 
-(use-package company-posframe
-  :init
-  (company-posframe-mode 1))
+;; (use-package company-posframe
+;;   :init
+;;   (company-posframe-mode 1))
 
 (use-package ctrlf
   :init
