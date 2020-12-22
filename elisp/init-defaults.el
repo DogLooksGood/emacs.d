@@ -94,8 +94,8 @@
 
 (global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
 
-
-;;; Run GC when idle for 7 seconds.
+;;; Run GC when idle for 7 seconds or when Emacs is unfocused.
 (run-with-idle-timer 7 t #'garbage-collect)
+(add-hook 'focus-out-hook #'garbage-collect)
 
 (provide 'init-defaults)
