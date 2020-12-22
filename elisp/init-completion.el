@@ -83,7 +83,6 @@
   :init
   (counsel-mode 1))
 
-
 (use-package deadgrep
   :bind
   (:map deadgrep-mode-map

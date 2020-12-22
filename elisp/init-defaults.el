@@ -9,7 +9,7 @@
  initial-major-mode 'emacs-lisp-mode
  frame-inhibit-implied-resize t
  initial-scratch-message ""
- hl-line-sticky-flag t
+ hl-line-sticky-flag nil
  ;; Prefer horizental split
  split-height-threshold nil
  split-width-threshold 120
@@ -93,5 +93,9 @@
   (find-alternate-file (format "/sudo::%s" (buffer-file-name))))
 
 (global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
+
+
+;;; Run GC when idle for 7 seconds.
+(run-with-idle-timer 7 t #'garbage-collect)
 
 (provide 'init-defaults)
