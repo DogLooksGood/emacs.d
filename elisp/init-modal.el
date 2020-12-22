@@ -117,6 +117,7 @@
    '("r" . meow-replace)
    '("R" . meow-replace-save)
    '("s" . meow-search)
+   '("S" . meow-pop-search)
    '("t" . meow-tail)
    '("T" . meow-tail-expand)
    '("u" . undo)
