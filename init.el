@@ -1,4 +1,5 @@
 (require 'init-straight)
+(require 'init-font)
 (require 'init-util)
 (require 'init-modal)
 (require 'init-edit)
@@ -17,4 +18,3 @@
 (require 'init-window)
 (require 'init-docker)
 (require 'init-sidebar)
-(require 'init-font)
