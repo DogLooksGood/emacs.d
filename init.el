@@ -8,6 +8,7 @@
 (require 'init-lisp)
 (require 'init-clojure)
 (require 'init-elixir)
+(require 'init-python)
 (require 'init-markdown)
 (require 'init-git)
 (require 'init-org)

@@ -10,7 +10,7 @@
 (use-package eglot
   :commands (eglot-ensure eglot)
   :hook
-  ((rust-mode c-mode elixir-mode) . eglot-ensure)
+  ((rust-mode c-mode elixir-mode python-mode) . eglot-ensure)
   :custom
   (eglot-stay-out-of '())
   (eglot-ignored-server-capabilites '(:documentHighlightProvider))
