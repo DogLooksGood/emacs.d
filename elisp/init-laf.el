@@ -49,7 +49,8 @@ Containing LEFT, and RIGHT aligned respectively."
   (let ((available-width
          (- (window-total-width)
             (+ (length (format-mode-line left))
-               (length (format-mode-line right))))))
+               (length (format-mode-line right)))
+            1)))
     (append left
             (list (format (format "%%%ds" available-width) ""))
             right)))
@@ -58,7 +59,7 @@ Containing LEFT, and RIGHT aligned respectively."
               '((:eval
                  (+simple-mode-line-render
                   ;; left
-                  '((:eval (when (featurep 'meow) (meow-minimal-indicator)))
+                  '((:eval (when (bound-and-true-p meow-mode) (meow-indicator)))
                     " %l:%C "
                     (:propertize (-3 "%p") face +modeline-dim-face)
                     (:eval (propertize " " 'display '(height 1.3)))
@@ -66,6 +67,7 @@ Containing LEFT, and RIGHT aligned respectively."
                   ;; right
                   '((:propertize " %m " face font-lock-keyword-face)
                     (:eval (when (functionp '+smart-file-name-with-propertize) (+smart-file-name-with-propertize)))
-                    "[%*] ")))))
+                    "[%*] "
+                    (vc-mode vc-mode))))))
 
 (provide 'init-laf)

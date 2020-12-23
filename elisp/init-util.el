@@ -3,9 +3,6 @@
 (use-package dash)
 (require 'subr-x)
 
-(defvar-local +smart-file-name-cache nil
-  "Cache for the smart file name of current buffer.")
-
 (defvar-local +project-name-cache nil
   "Cache for current project name.")
 
@@ -26,15 +23,17 @@ Result depends on syntax table's comment character."
 (defun +smart-file-name ()
   "Get current file name, if we are in project, the return relative path to the project root, otherwise return absolute file path.
 This function is slow, so we have to use cache."
-  (cond
-   (+smart-file-name-cache +smart-file-name-cache)
-   ((and (buffer-file-name (current-buffer))
-         (project-current))
-    (setq-local +smart-file-name-cache
-                (file-relative-name
-                 (buffer-file-name (current-buffer))
-                 (project-root (project-current)))))
-   (t (setq-local +smart-file-name-cache (buffer-name)))))
+  (let ((vc-dir (vc-root-dir)))
+    (cond
+     ((and (buffer-file-name (current-buffer)) vc-dir)
+      (file-relative-name (buffer-file-name (current-buffer)) vc-dir))
+     (t (buffer-name)))))
+
+(defmacro +measure-time (&rest body)
+  "Measure the time it takes to evaluate BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (message "%.06fs" (float-time (time-since time)))))
 
 (defface +modeline-dim-face
   '((((class color) (background dark))
@@ -43,16 +42,25 @@ This function is slow, so we have to use cache."
      (:foreground "grey60")))
   "Dim face in mode-line")
 
+(defvar-local +smart-file-name-with-propertize-cache nil
+  "Cache for performance, is a cons of (buffer-name . cached-value).")
+
 (defun +smart-file-name-with-propertize ()
-  (let* ((fname (+smart-file-name))
-         (slist (split-string fname "/"))
-         (len (length slist))
-         (p-slist (-map-indexed (lambda (idx s)
-                                  (if (= idx (1- len))
-                                      s
-                                    (propertize s 'face '+modeline-dim-face)))
-                                slist)))
-    (string-join p-slist (propertize "/" 'face '+modeline-dim-face))))
+  (if-let ((val (-when-let ((buf-name . val) +smart-file-name-with-propertize-cache)
+                  (when (string-equal buf-name (buffer-file-name))
+                    val))))
+      val
+    (let* ((fname (+smart-file-name))
+           (slist (split-string fname "/"))
+           (len (length slist))
+           (p-slist (-map-indexed (lambda (idx s)
+                                    (if (= idx (1- len))
+                                        s
+                                      (propertize s 'face '+modeline-dim-face)))
+                                  slist))
+           (val (string-join p-slist (propertize "/" 'face '+modeline-dim-face))))
+      (setq-local +smart-file-name-with-propertize-cache (cons (buffer-file-name) val))
+      val)))
 
 (defun +project-name ()
   "Get project name, which is used in title format."

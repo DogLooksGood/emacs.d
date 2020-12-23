@@ -44,7 +44,9 @@
   :straight
   (inf-iex :type git
 	   :host github
-	   :repo "DogLooksgood/inf-iex"))
+	   :repo "DogLooksgood/inf-iex")
+  :custom
+  (inf-iex-default-iex-command "iex -S mix phx.server"))
 
 (use-package elixir-mode
   :hook (elixir-mode . electric-pair-local-mode)

@@ -2,9 +2,26 @@
 
 (defun +yas-expand-or-company-complete ()
   (interactive)
-  (let ((yas/fallback-behavior 'return-nil))
-    (or (yas/expand)
-        (call-interactively #'company-indent-or-complete-common))))
+  (or (yas/expand)
+      (call-interactively #'company-indent-or-complete-common)))
+
+(use-package yasnippet
+  :bind
+  (:map
+   yas-keymap
+   ("<escape>")
+   ("RET" . 'yas-next-field-or-maybe-expand)
+   ("<return>" . 'yas-next-field-or-maybe-expand)
+   ("M-RET" . 'yas-expand-snippet)
+   ("M-<return>" . 'yas-expand-snippet)
+   ("S-<return>" . 'yas-prev-field)
+   ("TAB")
+   ("S-TAB")
+   ("<tab>"))
+  :config
+  (let ((inhibit-message t)) (yas-reload-all))
+  :init
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (use-package company
   :hook (company-mode . company-tng-mode)
@@ -39,7 +56,6 @@
   (company-idle-delay 0.2)
   (company-tooltip-limit 10)
   (company-tooltip-align-annotations t)
-  (company-tooltip-offset-display 'lines)
   (company-tooltip-width-grow-only t)
   (company-tooltip-idle-delay 0.1)
   (company-minimum-prefix-length 3)
@@ -49,21 +65,13 @@
   (company-global-modes '(not dired-mode dired-sidebar-mode))
   (company-tooltip-margin 0))
 
-;;; Company Posframe have a bug for unstable candidate position
-;; (when window-system
-;;   (use-package posframe)
-;;   (use-package company-posframe
-;; 	:init
-;; 	(company-posframe-mode -1)
-;; 	:custom
-;;     (company-posframe-show-at-prefix )
-;; 	(company-posframe-quickhelp-delay nil)
-;; 	(company-posframe-show-indicator nil)
-;; 	(company-posframe-show-metadata nil)))
+;; (use-package company-posframe
+;;   :init
+;;   (company-posframe-mode 1))
 
-(use-package ctrlf
-  :init
-  (ctrlf-mode 1))
+;; (use-package ctrlf
+;;   :init
+;;   (ctrlf-mode 1))
 
 (use-package ivy
   :init
@@ -74,32 +82,6 @@
 (use-package counsel
   :init
   (counsel-mode 1))
-
-(defun +yas-next ()
-  (interactive)
-  (yas-next-field-or-maybe-expand))
-
-(defun +yas-init ()
-  (yas-reload-all))
-
-(advice-add '+yas-init :around #'+make-silent)
-
-(use-package yasnippet
-  :bind
-  (:map
-   yas-keymap
-   ("<escape>")
-   ("RET" . 'yas-next-field-or-maybe-expand)
-   ("<return>" . 'yas-next-field-or-maybe-expand)
-   ("M-<return>" . 'newline-and-indent)
-   ("S-<return>" . 'yas-prev-field)
-   ("TAB")
-   ("S-TAB")
-   ("<tab>"))
-  :config
-  (+yas-init)
-  :init
-  (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (use-package deadgrep
   :bind

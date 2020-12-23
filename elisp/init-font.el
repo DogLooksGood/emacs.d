@@ -1,9 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 
-(let ((font-family "Victor Mono")
-      (font-size 10))
+(let* ((font-family "Cascadia Code")
+       (font-size 10)
+       (font-spec (format "%s-%d" font-family font-size)))
   (when (member font-family (font-family-list))
-    (set-face-attribute 'default nil :font (format "%s-%d" font-family font-size))))
+    (set-face-attribute 'default nil :font font-spec)
+    (set-frame-font font-spec t nil)))
 
 (let ((cn-font-family "Sarasa Mono SC"))
   (when (member cn-font-family (font-family-list))
@@ -19,6 +21,8 @@
 	        :host github
 	        :repo "mickeynp/ligature.el")
   :config
+  (ligature-set-ligatures 'emacs-lisp-mode
+                          '("->" "->>"))
   (ligature-set-ligatures 'elixir-mode
                           '("->" "=>" "|>" "<-" ">=" "<=" "!=" "!==" "===" "==" "::" "++" "&&" "||" "<<" ">>" "#{"))
   (ligature-set-ligatures 'clojure-mode

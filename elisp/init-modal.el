@@ -1,11 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-(defun +meow-toggle-relative-line-number ()
-  (when display-line-numbers
-    (if (bound-and-true-p meow-insert-mode)
-        (setq display-line-numbers t)
-      (setq display-line-numbers 'relative))))
-
 (use-package meow
   :straight
   (meow :type git
@@ -13,16 +7,12 @@
 	:repo "DogLooksGood/meow"
     :branch "develop")
   :init
-  (add-hook 'display-line-numbers-mode-hook '+meow-toggle-relative-line-number)
-  (add-hook 'meow-insert-mode-hook #'+meow-toggle-relative-line-number)
   (meow-global-mode 1)
   :custom
   (meow-esc-delay 0.001)
   :config
+  (meow-setup-line-number)
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
-  (add-to-list 'meow-normal-state-mode-list 'help-mode)
-  (add-to-list 'meow-normal-state-mode-list 'deadgrep-edit-mode)
-  (add-to-list 'meow-normal-state-mode-list 'mix-mode)
   (meow-leader-define-key
    '("'" . meow-wrap-string)
    '("(" . meow-wrap-round)
@@ -127,6 +117,7 @@
    '("r" . meow-replace)
    '("R" . meow-replace-save)
    '("s" . meow-search)
+   '("S" . meow-pop-search)
    '("t" . meow-tail)
    '("T" . meow-tail-expand)
    '("u" . undo)

@@ -19,8 +19,9 @@
    (rime-inline-ascii-holder ?a)
    (default-input-method "rime")
    (rime-cursor "˰")
-   (rime-show-candidate 'posframe)
+   (rime-show-candidate 'minibuffer)
    (rime-title "RIME")
-   (rime-posframe-fixed-position t)))
+   ;; (rime-posframe-fixed-position t)
+   ))
 
 (provide 'init-input-method)
