@@ -72,6 +72,7 @@
  '(web-mode-function-call-face    ((t ())))
  '(web-mode-function-name-face    ((t ())))
  '(web-mode-html-tag-face         ((t (:bold t))))
+ '(web-mode-symbol-face           ((t (:inherit font-lock-constant-face))))
  '(window-divider                 ((t (:foreground "#000"))))
  '(vertical-border                ((t (:foreground "grey20"))))
  '(web-mode-html-tag-bracket-face ((t (:inherit parenthesis))))
