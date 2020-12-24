@@ -9,6 +9,7 @@
 (require 'init-clojure)
 (require 'init-elixir)
 (require 'init-python)
+(require 'init-rust)
 (require 'init-markdown)
 (require 'init-git)
 (require 'init-org)

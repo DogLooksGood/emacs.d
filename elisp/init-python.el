@@ -1,4 +1,28 @@
 
+(defun +python-semicolon ()
+  (interactive)
+  (if (or (+in-comment-p) (+in-string-p))
+      (call-interactively #'self-insert-command)
+    (self-insert-command 1 ?:)))
+
+
+(defun +python-minus ()
+  "Will insert a minus if we are after whitespace and not at the indentation,otherwise will insert a underscore."
+  (interactive)
+  (if (and (or (+in-comment-p)
+               (+in-string-p)
+               (and (equal 32 (char-before))
+		    (let ((pos (point)))
+		      (not (equal pos
+				  (save-mark-and-excursion
+				    (back-to-indentation)
+				    (point))))))))
+      (call-interactively #'self-insert-command)
+    (self-insert-command 1 ?_)))
+
+(bind-key ";" '+python-semicolon python-mode-map)
+(bind-key "-" '+python-minus python-mode-map)
+
 (use-package conda
   :commands (conda-env-activate conda-env-list)
   :config
