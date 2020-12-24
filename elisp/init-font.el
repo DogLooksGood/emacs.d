@@ -1,15 +1,17 @@
 ;;; -*- lexical-binding: t -*-
 
-(let* ((font-family "Cascadia Code")
+(let* ((font-family "Fira Code")
        (font-size 10)
        (font-spec (format "%s-%d" font-family font-size)))
-  (when (member font-family (font-family-list))
+  (if (not (member font-family (font-family-list)))
+      (message "Font '%s' not available!" font-family)
     (set-face-attribute 'default nil :font font-spec)
     (set-frame-font font-spec t nil)))
 
 (let ((cn-font-family "Sarasa Mono SC"))
-  (when (member cn-font-family (font-family-list))
-    (setq-default face-font-rescale-alist `((,cn-font-family . 1)))
+  (if (not (member cn-font-family (font-family-list)))
+      (message "Font '%s' not available!" cn-font-family)
+    (setq-default face-font-rescale-alist `((,cn-font-family . 1.0)))
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
       (set-fontset-font (frame-parameter nil 'font)
                         charset
