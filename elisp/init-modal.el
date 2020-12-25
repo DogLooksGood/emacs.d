@@ -102,7 +102,6 @@
    '("H" . meow-head-expand)
    '("i" . meow-insert)
    '("I" . meow-open-above)
-   '("DEL" . meow-open-above)
    '("j" . meow-join)
    '("J" . delete-indentation)
    '("k" . meow-kill)

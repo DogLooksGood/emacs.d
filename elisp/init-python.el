@@ -20,8 +20,11 @@
       (call-interactively #'self-insert-command)
     (self-insert-command 1 ?_)))
 
-(bind-key ";" '+python-semicolon python-mode-map)
-(bind-key "-" '+python-minus python-mode-map)
+(defun +init-python-keybinding ()
+  (bind-key ";" '+python-semicolon python-mode-map)
+  (bind-key "-" '+python-minus python-mode-map))
+
+(add-hook 'python-mode-hook #'+init-python-keybinding)
 
 (use-package conda
   :commands (conda-env-activate conda-env-list)
