@@ -41,7 +41,6 @@
    '("o" . delete-other-windows)
    '("L" . display-line-numbers-mode)
    '("k" . kill-buffer)
-   '("l" . meow-keypad-start)
    '("w" . ace-window)
    '("W" . ace-swap-window)
    '("o" . delete-other-windows)
