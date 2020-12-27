@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(let* ((font-family "Fira Code")
+(let* ((font-family "Victor Mono")
        (font-size 10)
        (font-spec (format "%s-%d" font-family font-size)))
   (if (not (member font-family (font-family-list)))

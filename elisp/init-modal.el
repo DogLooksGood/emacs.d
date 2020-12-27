@@ -1,18 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package meow
-  :straight
-  (meow :type git
-	:host github
-	:repo "DogLooksGood/meow")
-  :init
-  (meow-global-mode 1)
-  :custom
-  (meow-esc-delay 0.001)
-  :config
-  (meow-setup-line-number)
-  (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
-  (add-to-list 'meow-normal-state-mode-list 'py-shell-mode)
+(defun meow-setup ()
   (meow-leader-define-key
    '("'" . meow-wrap-string)
    '("(" . meow-wrap-round)
@@ -133,5 +121,26 @@
    '("^" . meow-pop-to-mark)
    '("<escape>" . meow-last-buffer)
    '("$" . apply-macro-to-region-lines)))
+
+(use-package meow
+  :straight
+  (meow :type git
+	:host github
+	:repo "DogLooksGood/meow")
+  :init
+  (meow-global-mode 1)
+  :custom
+  (meow-esc-delay 0.001)
+  (meow-select-on-exit t)
+  (meow-replace-state-name-list
+   '((normal . "Ꮚ•ꈊ•Ꮚ")
+     (insert . "Ꮚ`ꈊ´Ꮚ")
+     (keypad . "Ꮚ❛ꈊ❛Ꮚ")
+     (motion . "Ꮚ-ꈊ-Ꮚ")))
+  :config
+  (meow-setup-line-number)
+  (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
+  (add-to-list 'meow-normal-state-mode-list 'py-shell-mode)
+  (meow-setup))
 
 (provide 'init-modal)
