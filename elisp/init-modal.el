@@ -4,8 +4,7 @@
   :straight
   (meow :type git
 	:host github
-	:repo "DogLooksGood/meow"
-    :branch "develop")
+	:repo "DogLooksGood/meow")
   :init
   (meow-global-mode 1)
   :custom
@@ -87,7 +86,6 @@
    '(">" . meow-end-of-thing)
    '("a" . meow-append)
    '("A" . meow-open-below)
-   '("RET" . meow-open-below)
    '("b" . meow-back-word)
    '("B" . meow-back-symbol)
    '("c" . meow-change)

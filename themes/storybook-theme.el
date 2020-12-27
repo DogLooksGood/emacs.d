@@ -88,7 +88,14 @@
  '(web-mode-html-tag-bracket-face ((t (:inherit parenthesis))))
  '(web-mode-doctype-face          ((t (:foreground "grey40"))))
  '(web-mode-symbol-face           ((t (:inherit font-lock-constant-face))))
- '(css-selector                   ((t (:inherit font-lock-constant-face)))))
+ '(css-selector                   ((t (:inherit font-lock-constant-face))))
+ '(markdown-header-face-1         ((t (:bold t :height 2.2))))
+ '(markdown-header-face-2         ((t (:bold t :height 1.8))))
+ '(markdown-header-face-3         ((t (:bold t :height 1.4))))
+ '(markdown-header-face-4         ((t (:bold t :height 1.2))))
+ '(markdown-header-face-5         ((t (:bold t :height 1.2))))
+ '(markdown-header-face-6         ((t (:bold t :height 1.2))))
+ '(markdown-header-face-7         ((t (:bold t :height 1.2)))))
 
 (and load-file-name
      (boundp 'custom-theme-load-path)

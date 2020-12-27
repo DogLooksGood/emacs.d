@@ -11,7 +11,7 @@
 (let ((cn-font-family "Sarasa Mono SC"))
   (if (not (member cn-font-family (font-family-list)))
       (message "Font '%s' not available!" cn-font-family)
-    (setq-default face-font-rescale-alist `((,cn-font-family . 1.0)))
+    (setq-default face-font-rescale-alist `((,cn-font-family . 0.9)))
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
       (set-fontset-font (frame-parameter nil 'font)
                         charset

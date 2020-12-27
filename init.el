@@ -20,3 +20,4 @@
 (require 'init-window)
 (require 'init-docker)
 (require 'init-sidebar)
+(require 'init-telega)
