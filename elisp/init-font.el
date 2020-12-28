@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(let* ((font-family "Victor Mono")
+(let* ((font-family "Fira Code")
        (font-size 10)
        (font-spec (format "%s-%d" font-family font-size)))
   (if (not (member font-family (font-family-list)))
@@ -24,7 +24,7 @@
 	        :repo "mickeynp/ligature.el")
   :config
   (ligature-set-ligatures 'emacs-lisp-mode
-                          '("->" "->>"))
+                          '("->" "->> <= >="))
   (ligature-set-ligatures 'elixir-mode
                           '("->" "=>" "|>" "<-" ">=" "<=" "!=" "!==" "===" "==" "::" "++" "&&" "||" "<<" ">>" "#{"))
   (ligature-set-ligatures 'clojure-mode

@@ -43,6 +43,9 @@
 
 ;; Mode Line
 
+;;; bench mark modeline.
+;; (+measure-time (format-mode-line mode-line-format))
+
 (defun +simple-mode-line-render (left right)
   "Return a string of `window-width' length.
 Containing LEFT, and RIGHT aligned respectively."
@@ -67,7 +70,7 @@ Containing LEFT, and RIGHT aligned respectively."
                   ;; right
                   '((:propertize " %m " face font-lock-keyword-face)
                     (:eval (when (functionp '+smart-file-name-with-propertize) (+smart-file-name-with-propertize)))
-                    "[%*] "
-                    (vc-mode vc-mode))))))
+                    (vc-mode vc-mode)
+                    " ")))))
 
 (provide 'init-laf)

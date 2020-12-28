@@ -45,22 +45,31 @@ This function is slow, so we have to use cache."
 (defvar-local +smart-file-name-with-propertize-cache nil
   "Cache for performance, is a cons of (buffer-name . cached-value).")
 
+(defun +smart-file-name-cached ()
+  (-when-let ((buf-name p f) +smart-file-name-with-propertize-cache)
+    (when (string-equal buf-name (buffer-file-name))
+      (let ((face (cond
+                   ((buffer-modified-p) 'font-lock-string-face)
+                   (buffer-read-only 'font-lock-comment-face)
+                   (t nil))))
+        (concat (propertize p 'face '+modeline-dim-face) (propertize f 'face face))))))
+
 (defun +smart-file-name-with-propertize ()
-  (if-let ((val (-when-let ((buf-name . val) +smart-file-name-with-propertize-cache)
-                  (when (string-equal buf-name (buffer-file-name))
-                    val))))
-      val
+  (if-let ((cached (+smart-file-name-cached)))
+      cached
     (let* ((fname (+smart-file-name))
            (slist (split-string fname "/"))
-           (len (length slist))
-           (p-slist (-map-indexed (lambda (idx s)
-                                    (if (= idx (1- len))
-                                        s
-                                      (propertize s 'face '+modeline-dim-face)))
-                                  slist))
-           (val (string-join p-slist (propertize "/" 'face '+modeline-dim-face))))
-      (setq-local +smart-file-name-with-propertize-cache (cons (buffer-file-name) val))
-      val)))
+           (p (concat (string-join (-butlast slist) "/") "/"))
+           (f (-last-item slist)))
+      (setq-local +smart-file-name-with-propertize-cache (list (buffer-file-name) p f))
+      (+smart-file-name-cached))))
+
+(defun +file-vc-state-with-propertize ()
+  (when-let ((sym (vc-state (buffer-file-name (current-buffer)))))
+    (format "%s" sym)))
+
+(defun +vc-branch ()
+  (car (vc-git-branches)))
 
 (defun +project-name ()
   "Get project name, which is used in title format."
