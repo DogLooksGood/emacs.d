@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (defun meow-setup ()
+  (setq meow-cheatsheet-layout meow-cheatsheet-layout-dvp)
   (meow-leader-define-key
    '("'" . meow-wrap-string)
    '("(" . meow-wrap-round)
@@ -120,7 +121,8 @@
    '("@" . recenter)
    '("^" . meow-pop-to-mark)
    '("<escape>" . meow-last-buffer)
-   '("$" . apply-macro-to-region-lines)))
+   '("$" . apply-macro-to-region-lines)
+   '("'" . quoted-insert)))
 
 (use-package meow
   :straight
