@@ -112,4 +112,11 @@ influence of C1 on the result."
               (round (+ (* x alpha) (* y (- 1 alpha)))))
             (color-values c1) (color-values c2)))))
 
+(defun +my-throw-error (&rest args)
+  (when (equal (car args) "Text is read-only")
+    a))
+
+;; (advice-add 'message :after #'+my-throw-error)
+;; (advice-remove 'message #'+my-throw-error)
+
 (provide 'init-util)

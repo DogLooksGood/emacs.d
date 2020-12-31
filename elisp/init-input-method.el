@@ -20,8 +20,6 @@
    (default-input-method "rime")
    (rime-cursor "˰")
    (rime-show-candidate 'minibuffer)
-   (rime-title "RIME")
-   ;; (rime-posframe-fixed-position t)
-   ))
+   (rime-title (char-to-string 12563))))
 
 (provide 'init-input-method)
