@@ -2,7 +2,10 @@
 projects
 eln-cache
 auto-save-list
-straight
+straight/build
+straight/build-cache.el
+straight/modified
+straight/repos
 transient
 rime
 recentf
