@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (defun meow-setup ()
+  (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
    '("j" . meow-next)
    '("k" . meow-prev))
@@ -75,7 +76,7 @@
    '("u" . undo)
    '("v" . meow-visit)
    '("e" . meow-next-word)
-   '("e" . meow-next-symbol)
+   '("E" . meow-next-symbol)
    '("y" . meow-save)
    '("p" . meow-yank)
    '("z" . meow-pop-selection)

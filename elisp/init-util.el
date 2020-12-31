@@ -23,10 +23,12 @@ Result depends on syntax table's comment character."
 (defun +smart-file-name ()
   "Get current file name, if we are in project, the return relative path to the project root, otherwise return absolute file path.
 This function is slow, so we have to use cache."
-  (let ((vc-dir (vc-root-dir)))
+  (let ((vc-dir (vc-root-dir))
+        (bfn (buffer-file-name (current-buffer))))
     (cond
-     ((and (buffer-file-name (current-buffer)) vc-dir)
-      (file-relative-name (buffer-file-name (current-buffer)) vc-dir))
+     ((and bfn vc-dir)
+      (file-relative-name bfn vc-dir))
+     (bfn bfn)
      (t (buffer-name)))))
 
 (defmacro +measure-time (&rest body)

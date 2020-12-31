@@ -134,6 +134,10 @@
   :custom
   (meow-esc-delay 0.001)
   (meow-select-on-exit t)
+  (meow-selection-command-fallback
+   '((meow-replace . meow-replace-char)
+     (meow-change . meow-change-char)
+     (meow-save . meow-save-char)))
   (meow-replace-state-name-list
    '((normal . "Ꮚ•ꈊ•Ꮚ")
      (insert . "Ꮚ`ꈊ´Ꮚ")
