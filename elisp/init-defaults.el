@@ -69,6 +69,8 @@
  ;; Window divider on right
  window-divider-default-places 'right-only)
 
+(fset 'yes-or-no-p 'y-or-n-p)
+
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'conf-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)

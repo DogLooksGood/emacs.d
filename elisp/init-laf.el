@@ -35,8 +35,9 @@
 
 (add-hook 'prog-mode-hook '+highlight-prog-mode-function-name)
 
-(defun +reload-theme ()
+(defun +reload-font-and-theme ()
   (interactive)
+  (+load-font)
   (load-theme (car +theme-list) t))
 
 (+change-theme t)

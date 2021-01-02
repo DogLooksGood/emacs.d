@@ -36,7 +36,7 @@
    '("q" . delete-window)
    '("v" . magit)
    '("$" . +change-theme)
-   '("~" . +reload-theme)
+   '("~" . +reload-font-and-theme)
    '("-" . split-window-below)
    '("\\" . split-window-right)
    '("p" . project-find-file)
@@ -82,7 +82,7 @@
    '("e" . meow-line)
    '("f" . meow-find)
    '("F" . meow-find-expand)
-   '("g" . meow-keyboard-quit)
+   '("g" . meow-cancel-selection)
    '("G" . goto-line)
    '("h" . meow-head)
    '("H" . meow-head-expand)
@@ -137,7 +137,8 @@
   (meow-selection-command-fallback
    '((meow-replace . meow-replace-char)
      (meow-change . meow-change-char)
-     (meow-save . meow-save-char)))
+     (meow-save . meow-save-char)
+     (meow-cancel-selection . keyboard-quit)))
   (meow-replace-state-name-list
    '((normal . "Ꮚ•ꈊ•Ꮚ")
      (insert . "Ꮚ`ꈊ´Ꮚ")
