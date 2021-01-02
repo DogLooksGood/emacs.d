@@ -1,21 +1,23 @@
 ;;; -*- lexical-binding: t -*-
 
-(let* ((font-family "Fira Code")
-       (font-size 10)
-       (font-spec (format "%s-%d" font-family font-size)))
-  (if (not (member font-family (font-family-list)))
+(defvar +font-family "Fira Code")
+(defvar +ufont-family "Sarasa Mono SC")
+(defvar +font-size 10)
+
+(let* ((font-spec (format "%s-%d" +font-family +font-size)))
+  (if (not (member +font-family (font-family-list)))
       (message "Font '%s' not available!" font-family)
     (set-face-attribute 'default nil :font font-spec)
     (set-frame-font font-spec t nil)))
 
-(let ((cn-font-family "Sarasa Mono SC"))
-  (if (not (member cn-font-family (font-family-list)))
-      (message "Font '%s' not available!" cn-font-family)
-    (setq-default face-font-rescale-alist `((,cn-font-family . 0.95)))
+(let ((ufont-family +ufont-family))
+  (if (not (member ufont-family (font-family-list)))
+      (message "Font '%s' not available!" ufont-family)
+    (setq-default face-font-rescale-alist `((,ufont-family . 0.95)))
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
       (set-fontset-font (frame-parameter nil 'font)
                         charset
-                        (font-spec :family cn-font-family)))))
+                        (font-spec :family ufont-family)))))
 
 (use-package ligature
   :straight
