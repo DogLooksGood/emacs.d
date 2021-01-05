@@ -7,9 +7,7 @@
   :hook
   ((dired-mode . diff-hl-dired-mode)
    (prog-mode . diff-hl-mode)
-   (conf-mode . diff-hl-mode))
-  :init
-  (diff-hl-margin-mode t))
+   (conf-mode . diff-hl-mode)))
 
 (use-package dired-git-info
   :bind

@@ -67,11 +67,11 @@
    '("9" . digit-argument)
    '("0" . digit-argument)
    '("-" . negative-argument)
-   '(";" . meow-reverse)
+   '("<tab>" . meow-reverse)
+   '(";" . meow-beginning-of-thing)
+   '("/" . meow-end-of-thing)
    '("," . meow-inner-of-thing)
    '("." . meow-bounds-of-thing)
-   '("<" . meow-beginning-of-thing)
-   '(">" . meow-end-of-thing)
    '("a" . meow-append)
    '("A" . meow-open-below)
    '("b" . meow-back-word)
@@ -122,7 +122,8 @@
    '("^" . meow-pop-to-mark)
    '("<escape>" . meow-last-buffer)
    '("$" . apply-macro-to-region-lines)
-   '("'" . quoted-insert)))
+   '("'" . meow-beginning-of-thing)
+   '("\"" . meow-end-of-thing)))
 
 (use-package meow
   :straight
