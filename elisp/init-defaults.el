@@ -67,7 +67,7 @@
  ;; Default line number width.
  display-line-numbers-width 4
  ;; Window divider on right
- window-divider-default-places 'right-only
+ window-divider-default-places t
  ;; Don't display comp warnings
  warning-suppress-log-types '((comp)))
 
@@ -81,7 +81,7 @@
 (add-hook 'prog-mode-hook 'subword-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(window-divider-mode 1)
+
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
