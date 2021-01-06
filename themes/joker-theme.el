@@ -45,6 +45,7 @@
  `(highlight-symbol-face          ((t ())))
  `(hl-line                        ((((type graphic)) :background "#303030")
                                    (((type tty)))))
+ '(fringe                         ((t ())))
  `(yascroll:thumb-fringe          ((t (:background "#3F3F3F" :foreground "#3F3F3F"))))
  `(yascroll:thumb-text-area       ((t (:background "#3F3F3F" :foreground "#3F3F3F"))))
  `(window-divider                 ((t (:foreground "#606060"))))

@@ -14,6 +14,7 @@
                                     :background "#ffffff")))
  `(cursor                         ((t (:background "black"))))
  '(region                         ((t (:background "#b6e3fa"))))
+ '(fringe                         ((t ())))
  `(font-lock-comment-face         ((t (:foreground "dark green" :italic t))))
  `(font-lock-doc-face             ((t (:foreground "dark green" :italic t))))
  `(font-lock-warning-face         ((t (:foreground "red"))))

@@ -21,3 +21,4 @@
 (require 'init-docker)
 (require 'init-sidebar)
 (require 'init-telega)
+(require 'init-misc)

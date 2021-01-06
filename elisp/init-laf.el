@@ -59,18 +59,24 @@ Containing LEFT, and RIGHT aligned respectively."
             (list (format (format "%%%ds" available-width) ""))
             right)))
 
-(setq-default mode-line-format
-              '((:eval
-                 (+simple-mode-line-render
-                  ;; left
-                  '((:eval (meow-indicator))
-                    " %l:%C "
-                    (:propertize (-3 "%p") face +modeline-dim-face)
-                    (:eval (propertize " " 'display '(height 1.2)))
-                    (:eval (when (bound-and-true-p rime-mode) (rime-lighter))))
-                  ;; right
-                  '((:propertize " %m " face font-lock-keyword-face)
-                    (:eval (when (functionp '+smart-file-name-with-propertize) (+smart-file-name-with-propertize)))
-                    " ")))))
+(setq-default frame-title-format
+              '((:eval (when (functionp '+smart-file-name-with-propertize) (+smart-file-name-with-propertize)))
+                " [%*] %m"))
+
+(setq-default mode-line-format nil)
+
+;; (setq-default mode-line-format
+;;               '((:eval
+;;                  (+simple-mode-line-render
+;;                   ;; left
+;;                   '((:eval (meow-indicator))
+;;                     " %l:%C "
+;;                     (:propertize (-3 "%p") face +modeline-dim-face)
+;;                     (:eval (propertize " " 'display '(height 1.2)))
+;;                     (:eval (when (bound-and-true-p rime-mode) (rime-lighter))))
+;;                   ;; right
+;;                   '((:propertize " %m " face font-lock-keyword-face)
+;;                     (:eval (when (functionp '+smart-file-name-with-propertize) (+smart-file-name-with-propertize)))
+;;                     " ")))))
 
 (provide 'init-laf)

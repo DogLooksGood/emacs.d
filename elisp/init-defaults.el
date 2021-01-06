@@ -85,7 +85,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(fringe-mode -1)
+;; (fringe-mode -1)
 (add-hook 'after-init-hook (lambda () (blink-cursor-mode -1)))
 
 ;;; project.el use C-x p
