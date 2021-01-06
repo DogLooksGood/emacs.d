@@ -139,7 +139,9 @@
    '((meow-replace . meow-replace-char)
      (meow-change . meow-change-char)
      (meow-save . meow-save-char)
-     (meow-cancel-selection . keyboard-quit)))
+     (meow-cancel-selection . keyboard-quit)
+     (meow-kill . meow-C-k)
+     (meow-delete . meow-C-d)))
   ;; (meow-replace-state-name-list
   ;;  '((normal . "Ꮚ•ꈊ•Ꮚ")
   ;;    (insert . "Ꮚ`ꈊ´Ꮚ")
