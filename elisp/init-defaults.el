@@ -67,7 +67,9 @@
  ;; Default line number width.
  display-line-numbers-width 4
  ;; Window divider on right
- window-divider-default-places 'right-only)
+ window-divider-default-places 'right-only
+ ;; Don't display comp warnings
+ warning-suppress-log-types '((comp)))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
