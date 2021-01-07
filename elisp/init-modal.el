@@ -123,7 +123,11 @@
    '("<escape>" . meow-last-buffer)
    '("$" . apply-macro-to-region-lines)
    '("'" . meow-beginning-of-thing)
-   '("\"" . meow-end-of-thing)))
+   '("\"" . meow-end-of-thing)
+   '("<" . windmove-left)
+   '(">" . windmove-right)
+   '("E" . windmove-up)
+   '("U" . windmove-down)))
 
 (use-package meow
   :straight
