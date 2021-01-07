@@ -60,7 +60,7 @@ Containing LEFT, and RIGHT aligned respectively."
             right)))
 
 (setq-default frame-title-format
-              '((:eval (when (functionp '+smart-file-name-with-propertize) (+smart-file-name-with-propertize)))
+              '((:eval (when (functionp '+smart-file-name-truncated) (+smart-file-name-truncated)))
                 " [%*] %m"))
 
 (setq-default mode-line-format nil)

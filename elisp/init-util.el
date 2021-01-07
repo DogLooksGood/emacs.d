@@ -56,6 +56,11 @@ This function is slow, so we have to use cache."
                    (t nil))))
         (concat (propertize p 'face '+modeline-dim-face) (propertize f 'face face))))))
 
+(defun +smart-file-name-cached-no-propertize ()
+  (-when-let ((buf-name p f) +smart-file-name-with-propertize-cache)
+    (when (string-equal buf-name (buffer-file-name))
+      (string-truncate-left (concat p f) 30))))
+
 (defun +smart-file-name-with-propertize ()
   (if-let ((cached (+smart-file-name-cached)))
       cached
@@ -65,6 +70,16 @@ This function is slow, so we have to use cache."
            (f (-last-item slist)))
       (setq-local +smart-file-name-with-propertize-cache (list (buffer-file-name) p f))
       (+smart-file-name-cached))))
+
+(defun +smart-file-name-truncated ()
+  (if-let ((cached (+smart-file-name-cached-no-propertize)))
+      cached
+    (let* ((fname (+smart-file-name))
+           (slist (split-string fname "/"))
+           (p (concat (string-join (-butlast slist) "/") "/"))
+           (f (-last-item slist)))
+      (setq-local +smart-file-name-with-propertize-cache (list (buffer-file-name) p f))
+      (+smart-file-name-cached-no-propertize))))
 
 (defun +file-vc-state-with-propertize ()
   (when-let ((sym (vc-state (buffer-file-name (current-buffer)))))
