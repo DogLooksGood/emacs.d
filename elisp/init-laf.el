@@ -61,7 +61,8 @@ Containing LEFT, and RIGHT aligned respectively."
 
 (setq-default frame-title-format
               '((:eval (when (functionp '+smart-file-name-truncated) (+smart-file-name-truncated)))
-                " [%*] %m"))
+                " [%*] %m "
+                (:eval (when (bound-and-true-p rime-mode) (rime-lighter)))))
 
 (setq-default mode-line-format nil)
 
