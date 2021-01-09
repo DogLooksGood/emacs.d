@@ -114,7 +114,7 @@
  `(swiper-match-face-2            ((t (:foreground "white"))))
  `(swiper-match-face-3            ((t (:foreground "white"))))
  `(swiper-match-face-4            ((t (:foreground "white"))))
- `(ivy-current-match              ((t (:inverse-video t))))
+ `(ivy-current-match              ((t (:inherit font-lock-string-face))))
  `(ivy-minibuffer-match-highlight ((t (:foreground "#00D7D7"))))
  `(ivy-minibuffer-match-face-1    ((t ())))
  `(ivy-minibuffer-match-face-2    ((t ())))
