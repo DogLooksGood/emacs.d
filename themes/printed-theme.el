@@ -34,7 +34,7 @@
  '(meow-insert-cursor             ((t (:background "#014f39"))))
  '(meow-normal-cursor             ((t (:background "#9b034c"))))
  '(meow-motion-cursor             ((t (:background "#035063"))))
- '(dired-directory                ((t (:bold t))))
+ '(dired-directory                ((t (:inherit font-lock-keyword-face))))
  '(mode-line                      ((((type tty)) (:background "grey70"))
                                    (((type graphic)) (:overline "#aaa":foreground "#303030"))))
  '(mode-line-inactive             ((((type tty)) (:background "grey80"))

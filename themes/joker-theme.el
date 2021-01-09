@@ -141,7 +141,7 @@
  `(rime-indicator-dim-face        ((t (:foreground "grey40"))))
  `(tooltip                        ((t ())))
  `(parinfer-error-face            ((t (:underline (:style wave :color "red")))))
- '(dired-directory                ((t (:bold t))))
+ '(dired-directory                ((t (:inherit font-lock-keyword-face))))
  '(web-mode-html-attr-name-face   ((t ())))
  '(web-mode-html-tag-face         ((t ())))
  '(imenu-list-entry-face-0        ((t ())))
