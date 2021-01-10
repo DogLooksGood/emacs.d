@@ -2,7 +2,6 @@
 (require 'init-font)
 (require 'init-util)
 (require 'init-modal)
-(require 'init-edit)
 (require 'init-lsp)
 (require 'init-web)
 (require 'init-lisp)

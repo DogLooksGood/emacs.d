@@ -129,7 +129,9 @@
    '("<" . windmove-left)
    '(">" . windmove-right)
    '("E" . windmove-up)
-   '("U" . windmove-down)))
+   '("U" . windmove-down)
+   '("<f3>" . meow-start-kmacro)
+   '("<f4>" . meow-end-or-call-kmacro)))
 
 (use-package meow
   :straight
