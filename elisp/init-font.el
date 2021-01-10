@@ -29,7 +29,7 @@
 	        :repo "mickeynp/ligature.el")
   :config
   (ligature-set-ligatures 'emacs-lisp-mode
-                          '("->" "->> <= >="))
+                          '("->" "->>" "<=" ">="))
   (ligature-set-ligatures 'elixir-mode
                           '("->" "=>" "|>" "<-" ">=" "<=" "!=" "!==" "===" "==" "::" "++" "&&" "||" "<<" ">>"))
   (ligature-set-ligatures 'clojure-mode
