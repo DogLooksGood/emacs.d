@@ -18,8 +18,8 @@
    (rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g"))
    (rime-inline-ascii-holder ?a)
    (default-input-method "rime")
-   (rime-cursor "˰")
-   (rime-show-candidate 'minibuffer)
+   (rime-cursor "|")
+   (rime-show-candidate 'message)
    (rime-title (char-to-string 12563))))
 
 (provide 'init-input-method)

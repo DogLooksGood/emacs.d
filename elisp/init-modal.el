@@ -43,8 +43,7 @@
    '("b" . switch-to-buffer)
    '("a" . deadgrep)
    '("f" . find-file)
-   '("i" . imenu)
-   '("z" . iedit-mode))
+   '("i" . imenu))
   (meow-normal-define-key
    '("*" . meow-expand-0)
    '("=" . meow-expand-9)
