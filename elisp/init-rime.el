@@ -22,4 +22,4 @@
    (rime-show-candidate 'message)
    (rime-title (char-to-string 12563))))
 
-(provide 'init-input-method)
+(provide 'init-rime)

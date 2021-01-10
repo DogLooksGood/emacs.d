@@ -14,7 +14,7 @@
 (require 'init-org)
 (require 'init-completion)
 (require 'init-pass)
-(require 'init-input-method)
+(require 'init-rime)
 (require 'init-conf)
 (require 'init-window)
 (require 'init-docker)
