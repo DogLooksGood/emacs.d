@@ -81,6 +81,7 @@
    '("p" . meow-yank)
    '("z" . meow-pop-selection)
    '("Z" . meow-pop-all-selection)
+   '("?" . meow-cheatsheet)
    '("&" . meow-query-replace)
    '("%" . meow-query-replace-regexp)
    '("<escape>" . meow-last-buffer)))
@@ -95,6 +96,11 @@
   :custom
   (meow-esc-delay 0.001)
   (meow-select-on-exit t)
+  (meow-replace-state-name-list
+   '((normal . "Ꮚ•ꈊ•Ꮚ")
+     (insert . "Ꮚ`ꈊ´Ꮚ")
+     (keypad . "Ꮚ'ꈊ'Ꮚ")
+     (motion . "Ꮚ-ꈊ-Ꮚ")))
   :config
   (meow-setup-line-number)
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)

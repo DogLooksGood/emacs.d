@@ -139,12 +139,9 @@
 	:repo "DogLooksGood/meow")
   :init
   (meow-global-mode 1)
-  :bind
-  (:map meow-keymap
-        ("<f3>" . meow-start-kmacro)
-        ("<f4>" . meow-end-or-call-kmacro))
   :custom
   (meow-esc-delay 0.001)
+  (meow-keypad-describe-delay 1.0)
   (meow-select-on-exit t)
   (meow-selection-command-fallback
    '((meow-replace . meow-page-down)
