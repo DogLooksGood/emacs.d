@@ -65,15 +65,27 @@
   (company-global-modes '(not dired-mode dired-sidebar-mode))
   (company-tooltip-margin 0))
 
-(use-package ivy
-  :init
-  (ivy-mode 1)
-  :custom
-  (ivy-use-selectable-prompt t))
+;; (use-package ivy
+;;   :init
+;;   (ivy-mode -1)
+;;   :custom
+;;   (ivy-use-selectable-prompt t))
+;;
+;; (use-package counsel
+;;   :init
+;;   (counsel-mode -1))
 
-(use-package counsel
+(use-package selectrum
   :init
-  (counsel-mode 1))
+  (selectrum-mode 1))
+
+(use-package prescient)
+(use-package selectrum-prescient
+  :init
+  (selectrum-prescient-mode 1))
+(use-package company-prescient
+  :init
+  (company-prescient-mode 1))
 
 (use-package deadgrep
   :bind
