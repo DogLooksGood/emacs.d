@@ -150,12 +150,11 @@
      (meow-cancel-selection . meow-page-up)
      (meow-kill . meow-C-k)
      (meow-delete . meow-C-d)))
-  ;; (meow-replace-state-name-list
-  ;;  '((normal . "Ꮚ•ꈊ•Ꮚ")
-  ;;    (insert . "Ꮚ`ꈊ´Ꮚ")
-  ;;    (keypad . "Ꮚ'ꈊ'Ꮚ")
-  ;;    (motion . "Ꮚ-ꈊ-Ꮚ")))
-  ;; (meow-setup-indicator)
+  (meow-replace-state-name-list
+   '((normal . "Ꮚ•ꈊ•Ꮚ")
+     (insert . "Ꮚ`ꈊ´Ꮚ")
+     (keypad . "Ꮚ'ꈊ'Ꮚ")
+     (motion . "Ꮚ-ꈊ-Ꮚ")))
   :config
   (meow-setup-line-number)
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
