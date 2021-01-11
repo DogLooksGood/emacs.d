@@ -19,5 +19,6 @@
 (require 'init-window)
 (require 'init-docker)
 (require 'init-sidebar)
+(require 'init-modeline)
 (require 'init-telega)
 (require 'init-misc)
