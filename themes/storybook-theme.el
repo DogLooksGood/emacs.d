@@ -8,7 +8,7 @@
 								    :background "#f8f8f8")
                                    (((type graphic))
                                     :background "#fcf7e8"
-                                    :foreground "#331c09")))
+                                    :foreground "#442c09")))
  `(hl-line                        ((((type graphic))
                                     :box (:line-width (-1 . -2) :color "#edccb7" :style nil))
                                    (((type tty))
