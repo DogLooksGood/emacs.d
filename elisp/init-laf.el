@@ -2,6 +2,9 @@
 
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
+(defvar +after-change-theme-hook nil
+  "Hooks called after theme is changed.")
+
 (require 'joker-theme)
 (require 'storybook-theme)
 (require 'printed-theme)
@@ -28,7 +31,8 @@
     (let ((this-theme (car +theme-list)))
       (load-theme this-theme t)
       (unless no-msg
-        (message "Load theme: %s" this-theme)))))
+        (message "Load theme: %s" this-theme))
+      (run-hook-with-args '+after-change-theme-hook this-theme))))
 
 (defun +highlight-prog-mode-function-name ()
   (face-remap-add-relative 'font-lock-function-name-face :underline t :extend t))
