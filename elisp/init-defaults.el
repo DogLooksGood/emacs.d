@@ -77,7 +77,6 @@
 (add-hook 'conf-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'conf-mode-hook 'hl-line-mode)
-(add-hook 'text-mode-hook 'hl-line-mode)
 (add-hook 'prog-mode-hook 'subword-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -97,8 +96,8 @@
   (find-alternate-file (format "/sudo::%s" (buffer-file-name))))
 
 (global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
-(global-set-key (kbd "<f7>") #'profiler-start)
-(global-set-key (kbd "<f8>") #'profiler-report)
+;; (global-set-key (kbd "<f7>") #'profiler-start)
+;; (global-set-key (kbd "<f8>") #'profiler-report)
 
 ;;; Run GC when idle for 7 seconds or when Emacs is unfocused.
 (run-with-idle-timer 7 t #'garbage-collect)
