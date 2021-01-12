@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(defvar-local +org-last-in-latex nil)
+
 (defun +org-post-command-hook ()
   (ignore-errors
     (let ((in-latex (rime-predicate-org-latex-mode-p)))
@@ -26,11 +28,28 @@
       (add-hook 'post-command-hook '+org-post-command-hook nil t)
     (remove-hook 'post-command-hook '+org-post-command-hook t)))
 
+;;; Org babel
+
+(defun +org-redisplay-inline-images ()
+  (when org-inline-image-overlays
+    (org-redisplay-inline-images)))
+
+(defun +org-babel-setup ()
+  (setq org-babel-)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)))
+  (setq org-confirm-babel-evaluate nil)
+  (add-hook 'org-babel-after-execute-hook '+org-redisplay-inline-images))
+
 (use-package org
   :straight (:type built-in)
   :bind
   (:map org-mode-map
-        ("<f8>" . org-latex-edit-mode)))
+        ("<f8>" . org-latex-edit-mode))
+  :config
+  (require 'org-tempo)
+  (+org-babel-setup))
 
 ;;; Update latex options after change theme.
 
@@ -75,10 +94,11 @@
 
 ;;; install latex with
 ;;; pacman -S texlive-bin texlive-most
+;;; install xdot
+;;; pacman -S xdot
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
-(defvar-local +org-last-in-latex nil)
 
 (provide 'init-org)
