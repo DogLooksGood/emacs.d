@@ -10,3 +10,5 @@ recentf
 tramp
 .cache
 private.el
+org-roam.db
+bookmarks

@@ -85,7 +85,14 @@
  '(markdown-header-face-4         ((t (:bold t :height 1.2))))
  '(markdown-header-face-5         ((t (:bold t :height 1.2))))
  '(markdown-header-face-6         ((t (:bold t :height 1.2))))
- '(markdown-header-face-7         ((t (:bold t :height 1.2)))))
+ '(markdown-header-face-7         ((t (:bold t :height 1.2))))
+ '(org-level-1         ((t (:bold t :height 2.2))))
+ '(org-level-2         ((t (:bold t :height 1.8))))
+ '(org-level-3         ((t (:bold t :height 1.4))))
+ '(org-level-4         ((t (:bold t :height 1.2))))
+ '(org-level-5         ((t (:bold t :height 1.2))))
+ '(org-level-6         ((t (:bold t :height 1.2))))
+ '(org-level-7         ((t (:bold t :height 1.2)))))
 
 (and load-file-name
      (boundp 'custom-theme-load-path)

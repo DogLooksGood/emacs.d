@@ -66,7 +66,6 @@
    '("9" . digit-argument)
    '("0" . digit-argument)
    '("-" . negative-argument)
-   '("<tab>" . indent-for-tab-command)
    '(";" . meow-end-of-thing)
    '("/" . meow-visit)
    '("?" . meow-cheatsheet)
@@ -143,11 +142,12 @@
   (meow-keypad-describe-delay 0.5)
   (meow-select-on-exit t)
   (meow-selection-command-fallback
-   '((meow-replace . meow-page-down)
+   '((meow-replace . meow-page-up)
      (meow-change . meow-change-char)
      (meow-save . meow-save-char)
-     (meow-cancel-selection . meow-page-up)
      (meow-kill . meow-C-k)
+     (meow-cancel-selection . meow-keyboard-quit)
+     (meow-reverse . meow-page-down)
      (meow-delete . meow-C-d)))
   ;; (meow-replace-state-name-list
   ;;  '((normal . "Ꮚ•ꈊ•Ꮚ")
