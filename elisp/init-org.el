@@ -19,12 +19,12 @@
       (when in-latex
         (setq +org-last-in-latex t)))))
 
-(define-minor-mode org-latex-edit-mode
+(define-minor-mode org-latex-auto-toggle
   "Auto toggle latex overlay when cursor enter/leave."
   nil
   nil
   nil
-  (if org-latex-edit-mode
+  (if org-latex-auto-toggle
       (add-hook 'post-command-hook '+org-post-command-hook nil t)
     (remove-hook 'post-command-hook '+org-post-command-hook t)))
 
@@ -35,7 +35,6 @@
     (org-redisplay-inline-images)))
 
 (defun +org-babel-setup ()
-  (setq org-babel-)
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python . t)))
@@ -46,7 +45,7 @@
   :straight (:type built-in)
   :bind
   (:map org-mode-map
-        ("<f8>" . org-latex-edit-mode))
+        ("<f8>" . org-latex-auto-toggle))
   :config
   (require 'org-tempo)
   (+org-babel-setup))
