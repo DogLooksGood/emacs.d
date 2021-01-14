@@ -22,3 +22,4 @@
 (require 'init-modeline)
 (require 'init-telega)
 (require 'init-misc)
+(require 'init-server)

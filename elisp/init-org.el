@@ -82,7 +82,8 @@
   (:map org-roam-mode-map
         ("C-x C-r l" . org-roam)
         ("C-x C-r f" . org-roam-find-file)
-        ("C-x C-r g" . org-roam-graph))
+        ("C-x C-r g" . org-roam-graph)
+        ("C-x C-r c" . org-roam-db-build-cache))
   (:map org-mode-map
         ("<f7>" . org-roam-insert)
         ("C-x C-r i" . org-roam-insert)
@@ -91,6 +92,21 @@
   ;; https://www.orgroam.com/manual.html#Roam-Protocol
   (require 'org-roam-protocol))
 
+(use-package org-roam-server
+  :ensure t
+  :config
+  (setq org-roam-server-host "0.0.0.0"
+        org-roam-server-port 8080
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files t
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
+
 ;;; install latex with
 ;;; pacman -S texlive-bin texlive-most
 ;;; install xdot
@@ -98,6 +114,5 @@
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
-
 
 (provide 'init-org)
