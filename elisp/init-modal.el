@@ -19,7 +19,7 @@
    '("," . meow-pop-marker)
    '("." . meow-find-ref)
    '(";" . meow-comment)
-   '("q" . meow-quit)
+   '("q" . quoted-insert)
    '("@ u" . smerge-keep-upper)
    '("@ l" . smerge-keep-lower)
    '("@ a" . smerge-keep-all)

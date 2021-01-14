@@ -160,6 +160,7 @@
  '(markdown-header-face-5         ((t (:bold t :height 1.2))))
  '(markdown-header-face-6         ((t (:bold t :height 1.2))))
  '(markdown-header-face-7         ((t (:bold t :height 1.2))))
+ '(telega-entity-type-code        ((t (:inherit font-lock-string-face))))
  '(org-table           ((t (:foreground "grey80"))))
  '(org-level-1         ((t (:bold t :height 2.2))))
  '(org-level-2         ((t (:bold t :height 1.8))))
