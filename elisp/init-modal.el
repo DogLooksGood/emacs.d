@@ -2,6 +2,8 @@
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-dvp)
+  (meow-motion-overwrite-define-key
+   '("q" . meow-quit))
   (meow-leader-define-key
    '("'" . meow-wrap-string)
    '("(" . meow-wrap-round)
