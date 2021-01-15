@@ -14,4 +14,5 @@
     (load-file private-conf)))
 
 (require 'init-defaults)
+(require 'init-straight)
 (require 'init-laf)
