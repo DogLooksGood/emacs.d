@@ -74,6 +74,7 @@
  '(dired-subtree-depth-4-face     ((t (:background "grey90"))))
  '(dired-subtree-depth-5-face     ((t (:background "grey80"))))
  '(dired-subtree-depth-6-face     ((t (:background "grey70"))))
+ '(isearch                        ((t (:background "#ff99a5"))))
  `(ivy-current-match              ((t (:background "#EAC5A0"))))
  `(ivy-minibuffer-match-highlight ((t (:foreground "#00D7D7"))))
  `(ivy-minibuffer-match-face-1    ((t ())))
