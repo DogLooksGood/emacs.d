@@ -109,7 +109,7 @@
    '("S" . meow-pop-search)
    '("t" . meow-right)
    '("T" . meow-right-expand)
-   '("u" . undo)
+   '("u" . meow-undo)
    '("v" . meow-reverse)
    '("w" . meow-next-word)
    '("W" . meow-next-symbol)

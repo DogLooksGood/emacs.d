@@ -48,7 +48,11 @@
         ("<f8>" . org-latex-auto-toggle))
   :config
   (require 'org-tempo)
-  (+org-babel-setup))
+  (+org-babel-setup)
+  :custom
+  (org-html-preamble nil)
+  (org-html-postamble nil)
+  (org-html-checkbox-type 'unicode))
 
 ;;; Update latex options after change theme.
 
@@ -114,5 +118,38 @@
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
+
+
+;;; Export with inline CSS
+
+(defun +org-export-inline-css (exporter)
+  "Insert custom inline css"
+  (when (eq exporter 'html)
+    (let ((css-path (expand-file-name "assets/org.css" user-emacs-directory))
+          (js-path (expand-file-name "assets/org.js" user-emacs-directory)))
+      (setq org-html-preamble
+            "<div id=\"toggle-theme\">dark theme</div>")
+      (setq org-html-head-include-default-style nil)
+      (setq org-html-head (concat
+                           "<style type=\"text/css\">\n"
+                           "<!--/*--><![CDATA[/*><!--*/\n"
+                           (with-temp-buffer
+                             (insert-file-contents css-path)
+                             (buffer-string))
+                           "/*]]>*/-->\n"
+                           "</style>\n"))
+      (setq org-html-postamble
+            (concat
+             "<script type=\"text/javascript\">\n"
+             "<!--/*--><![CDATA[/*><!--*/\n"
+             (with-temp-buffer
+               (insert-file-contents js-path)
+               (buffer-string))
+             "/*]]>*/-->\n"
+             "</script>")))))
+
+(add-hook 'org-export-before-processing-hook '+org-export-inline-css)
+
+;; (use-package htmlize)
 
 (provide 'init-org)
