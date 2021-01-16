@@ -275,7 +275,7 @@ h2 {
   line-height: 2.5em;
 }
 h2::before {
-  content: "🞛 ";
+  content: "◉ ";
 }
 h3::before {
   content: "✸ ";
@@ -360,6 +360,41 @@ a:hover {
   background: var(--bg-block);
 }
 
+#toggle-toc {
+  display: none;
+}
+
+.toc-show {
+  display: block!important;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 2em;
+    line-height: 2em;
+    display: block;
+  }
+  #table-of-contents {
+    background: var(--bg);
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+  }
+  #table-of-contents a {
+    color: var(--clr);
+  }
+}
+
 @media only screen and (min-width: 1024px) {
   #table-of-contents {
     font-size: 0.8rem;
@@ -387,7 +422,9 @@ a:hover {
 
 #toggle-theme {
   border-width: 0;
-  padding: 15px;
+  line-height: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
   background: var(--bg-block);
   color: var(--clr-code);
 }

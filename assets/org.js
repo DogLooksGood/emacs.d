@@ -1,14 +1,25 @@
-toggleBtn = document.getElementById('toggle-theme')
+let toggleThemeBtn = document.getElementById('toggle-theme')
+let toggleTocBtn = document.getElementById('toggle-toc')
 
-toggleBtn.addEventListener('click', function() {
+toggleThemeBtn.addEventListener('click', function() {
   if (document.body.dataset.theme == 'dark') {
     document.body.dataset.theme = 'light'
-    toggleBtn.innerHTML = 'dark theme'
+    toggleThemeBtn.innerHTML = 'dark theme'
   } else {
     document.body.dataset.theme = 'dark'
-    toggleBtn.innerHTML = 'light theme'
+    toggleThemeBtn.innerHTML = 'light theme'
   }
 
   document.body.classList.add('theme-transition')
   setTimeout(() => document.body.classList.remove('theme-transition'), 500)
+})
+
+
+let toc = document.getElementById('table-of-contents')
+
+toggleTocBtn.addEventListener('click', function() {
+  toc.classList.add('toc-show')
+  toc.addEventListener('click', function() {
+    toc.classList.remove('toc-show')
+  })
 })

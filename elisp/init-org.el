@@ -170,7 +170,9 @@
     (let ((css-path (expand-file-name "assets/org.css" user-emacs-directory))
           (js-path (expand-file-name "assets/org.js" user-emacs-directory)))
       (setq org-html-preamble
-            "<div id=\"toggle-theme\">dark theme</div>")
+            (concat
+             "<div id=\"toggle-theme\">dark theme</div>"
+             "<div id=\"toggle-toc\">&#9776;</div>"))
       (setq org-html-head-include-default-style nil)
       (setq org-html-head (concat
                            "<style type=\"text/css\">\n"
