@@ -1,5 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 
+;;; Latex support
+;;; install latex with
+;;; pacman -S texlive-bin texlive-most
+;;; install xdot
+;;; pacman -S xdot
+
 (defvar-local +org-last-in-latex nil)
 
 (defun +org-post-command-hook ()
@@ -28,6 +34,16 @@
       (add-hook 'post-command-hook '+org-post-command-hook nil t)
     (remove-hook 'post-command-hook '+org-post-command-hook t)))
 
+;;; Update latex options after change theme.
+
+(defun +org-update-latex-option-by-theme (theme)
+  (when (bound-and-true-p org-format-latex-options)
+    (setq org-format-latex-options
+          (plist-put org-format-latex-options :theme theme))))
+
+(+org-update-latex-option-by-theme (car +theme-list))
+(add-hook '+after-change-theme-hook '+org-update-latex-option-by-theme)
+
 ;;; Org babel
 
 (defun +org-redisplay-inline-images ()
@@ -50,18 +66,7 @@
   (require 'org-tempo)
   (+org-babel-setup)
   :custom
-  (org-html-preamble nil)
-  (org-html-postamble nil)
   (org-html-checkbox-type 'unicode))
-
-;;; Update latex options after change theme.
-
-(defun +org-update-latex-option-by-theme (theme)
-  (when (bound-and-true-p org-format-latex-options)
-    (setq org-format-latex-options
-          (plist-put org-format-latex-options :theme theme))))
-
-(add-hook '+after-change-theme-hook '+org-update-latex-option-by-theme)
 
 ;;; Org Roam
 
@@ -111,103 +116,63 @@
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20))
 
-;;; install latex with
-;;; pacman -S texlive-bin texlive-most
-;;; install xdot
-;;; pacman -S xdot
-
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
-;;; Export with inline CSS
+(use-package htmlize)
 
-(defvar +org-css-themes
-  '((dark . joker)
-    (light . storybook)))
-
-(defvar +org-css-this-theme nil)
-
-(defun +org-css-parse-interpolate-clause (clause)
-  (-let* (((th f a k) (split-string clause ":"))
-          (fs (intern f))
-          (as (intern (concat ":" a)))
-          (req-theme (alist-get (intern th) +org-css-themes))
-          (_ (unless (equal req-theme +org-css-this-theme)
-               (disable-theme +org-css-this-theme)
-               (load-theme req-theme t)
-               (setq +org-css-this-theme req-theme))))
-    (let ((v (face-attribute fs as)))
-      (unless (equal v 'unspecified)
-        (if k
-            (plist-get v (intern (concat ":" k)))
-          v)))))
-
-(defun +org-css-find-interpolate-value (s)
-  (let* ((clauses (-> s
-                      (string-trim-left "#{")
-                      (string-trim-right "}")
-                      (split-string "|")))
-         (vals (-keep #'+org-css-parse-interpolate-clause clauses)))
-        (or (car vals) "initial")))
-
-(defun +org-css-face-interpolate ()
-  (let ((inhibit-redisplay t))
-    (goto-char (point-min))
-    (setq +org-css-this-theme (car +theme-list))
-    (while (re-search-forward "#{.+?}" nil t)
-      (-let* ((beg (match-beginning 0))
-              (end (match-end 0))
-              (s (buffer-substring-no-properties beg end))
-              (v (+org-css-find-interpolate-value s)))
-        (delete-region beg end)
-        (insert v)))
-    (disable-theme +org-css-this-theme)
-    (load-theme (car +theme-list) t)))
-
-(defun +org-export-inline-css (exporter)
-  "Insert custom inline css"
-  (when (eq exporter 'html)
-    (let ((css-path (expand-file-name "assets/org.css" user-emacs-directory))
-          (js-path (expand-file-name "assets/org.js" user-emacs-directory)))
-      (setq org-html-preamble
-            (concat
-             "<div id=\"toggle-theme\">dark theme</div>"
-             "<div id=\"toggle-toc\">&#9776;</div>"))
-      (setq org-html-head-include-default-style nil)
-      (setq org-html-head (concat
-                           "<style type=\"text/css\">\n"
-                           "<!--/*--><![CDATA[/*><!--*/\n"
-                           (with-temp-buffer
-                             (insert-file-contents css-path)
-                             (+org-css-face-interpolate)
-                             (buffer-string))
-                           "/*]]>*/-->\n"
-                           "</style>\n"))
-      (setq org-html-postamble
-            (concat
-             "<script type=\"text/javascript\">\n"
-             "<!--/*--><![CDATA[/*><!--*/\n"
-             (with-temp-buffer
-               (insert-file-contents js-path)
-               (buffer-string))
-             "/*]]>*/-->\n"
-             "</script>")))))
-
-(add-hook 'org-export-before-processing-hook '+org-export-inline-css)
-
-(use-package htmlize
+(use-package org-html-themify
+  :straight
+  (org-html-themify
+   :type git
+   :host github
+   :repo "DogLooksGood/org-html-themify"
+   :files ("*.el" "*.js" "*.css"))
+  :hook (org-mode . org-html-themify-mode)
   :custom
-  (htmlize-face-overrides
-   '(
-     font-lock-keyword-face (:foreground "var(--clr-keyword)" :background "var(--bg-keyword)")
-     font-lock-constant-face (:foreground "var(--clr-constant)" :background "var(--bg-constant)")
-     font-lock-comment-face (:foreground "var(--clr-comment)" :background "var(--bg-comment)")
-     font-lock-comment-delimiter-face (:foreground "var(--clr-comment-delimiter)" :background "var(--bg-comment-delimiter)")
-     font-lock-function-name-face (:foreground "var(--function-clr-name)" :background "var(--function-bg-name)")
-     font-lock-variable-name-face (:foreground "var(--clr-variable)" :background "var(--bg-variable)")
-     font-lock-preprocessor-face (:foreground "var(--clr-preprocessor)" :background "var(--bg-preprocessor)")
-     font-lock-doc-face (:foreground "var(--clr-doc)" :background "var(--bg-doc)")
-     font-lock-builtin-face (:foreground "var(--clr-builtin)" :background "var(--bg-builtin)")
-     font-lock-string-face (:foreground "var(--clr-string)" :background "var(--bg-string)"))))
+  (org-html-themify-themes
+   '((dark . joker)
+     (light . storybook))))
+
+;;; Roam backlinks
+
+(defun org-roam-server-insert-backlinks (file)
+  "Insert the backlinks string for the FILE."
+  (save-mark-and-excursion
+    (when file
+      (when-let* ((backlinks (org-roam--get-backlinks file))
+                  (grouped-backlinks (--group-by (nth 0 it) backlinks)))
+        (goto-char (point-max))
+        (insert "\n#+html: <div id=\"backlinks\"><ul>\n")
+        (insert "\n#+html: <h2>Backlinks</h2>\n")
+        (mapc
+         (-lambda ((g . bls))
+           (insert
+            (format "#+html: <li>\n")
+            (format "[[file:%s][%s]]\n" g (s-replace-regexp "^[0-9]\\{14\\}-" "" (file-name-base g))))
+           (mapc
+            (lambda (bl)
+              (let ((info (nth 2 bl))
+                    (from (nth 0 bl)))
+                (insert
+                 (format "#+html: <div class=\"backlink-outline\">\n")
+                 (if-let ((outline (car (plist-get info :outline))))
+                     (format "%s\n" outline)
+                   "")
+                 (format "#+html: </div><div class=\"backlink-content\">\n")
+                 (format "  %s\n" (plist-get info :content))
+                 (format "#+html: </div>"))))
+            bls)
+           (insert "</li>\n"))
+         grouped-backlinks)
+        (insert "\n#+html: </ul></div>")))))
+
+(defun org-export-backlink (exporter)
+  (org-roam-server-insert-backlinks (buffer-file-name)))
+
+(add-hook 'org-export-before-processing-hook 'org-export-backlink)
+
+
+
 
 (provide 'init-org)
