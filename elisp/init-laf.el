@@ -6,16 +6,15 @@
 (use-package joker-theme :straight (joker-theme :type git :host github :repo "DogLooksGood/joker-theme"))
 (use-package storybook-theme :straight (storybook-theme :type git :host github :repo "DogLooksGood/storybook-theme"))
 (use-package printed-theme :straight (printed-theme :type git :host github :repo "DogLooksGood/printed-theme"))
+(use-package solarized-theme)
+(use-package zenburn-theme)
 
 (let ((margin 24))
   (add-to-list 'default-frame-alist (cons 'internal-border-width margin))
   (set-frame-parameter nil 'internal-border-width margin))
 
-(defvar +current-theme nil
-  "Name for current theme")
-
 (defvar +theme-list
-  '(storybook joker printed))
+  '(storybook joker printed solarized-dark zenburn))
 
 (set-display-table-slot standard-display-table
                         'vertical-border

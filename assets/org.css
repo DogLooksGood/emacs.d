@@ -148,21 +148,41 @@ summary {
 }
 
 :root {
-  --clr: #442c09;
-  --clr-code: #0a3a45;
-  --bg: #fcf7e8;
-  --bg-code: #d3dbc5;
-  --bc-block: #a8a296;
-  --bg-block: #ede4d1;
-  --clr-link: #381a8a;
-  --clr-title: #000000;
-  --clr-todo: initial;
-  --bg-todo: #faece1;
-  --clr-done: initial;
-  --bg-done: #e1f0e5;
-  --ts-clr: #0a3a45;
+  --bc-block: #{light:mode-line:box:color|light:hl-line:background};
+  --clr: #{light:default:foreground};
+  --clr-code: #{light:font-lock-keyword-face:foreground};
+  --bg: #{light:default:background};
+  --bg-code: #{light:mode-line:background};
+  --bg-block: #{light:mode-line:background};
+  --clr-link: #{light:font-lock-constant-face:foreground};
+  --clr-title: #{light:default:foreground};
+  --clr-todo: #{light:font-lock-string-face:foreground};
+  --bg-todo: #{light:font-lock-string-face:background};
+  --clr-done: #{light:font-lock-comment-face:foreground};
+  --bg-done: #{light:font-lock-comment-face:background};
+  --ts-clr: #{light:font-lock-keyword-face:foreground};
   --mg: 20px;
   --w-toc: 300px;
+  --bg-keyword: #{light:font-lock-keyword-face:background};
+  --clr-keyword: #{light:font-lock-keyword-face:foreground};
+  --bg-constant: #{light:font-lock-constant-face:background};
+  --clr-constant: #{light:font-lock-constant-face:foreground};
+  --bg-comment: #{light:font-lock-comment-face:background};
+  --clr-comment: #{light:font-lock-comment-face:foreground};
+  --bg-comment-delimiter: #{light:font-lock-comment-delimiter-face:background};
+  --clr-comment-delimiter: #{light:font-lock-comment-delimiter-face:foreground};
+  --bg-function: #{light:font-lock-function-name-face:background};
+  --clr-function: #{light:font-lock-function-name-face:foreground};
+  --bg-variable: #{light:font-lock-variable-name-face:background};
+  --clr-variable: #{light:font-lock-variable-name-face:foreground};
+  --bg-preprocessor: #{light:font-lock-preprocessor-face:background};
+  --clr-preprocessor: #{light:font-lock-preprocessor-face:foreground};
+  --bg-doc: #{light:font-lock-doc-face:background};
+  --clr-doc: #{light:font-lock-doc-face:foreground};
+  --bg-builtin: #{light:font-lock-builtin-face:background};
+  --clr-builtin: #{light:font-lock-builtin-face:foreground};
+  --bg-string: #{light:font-lock-string-face:background};
+  --clr-string: #{light:font-lock-string-face:foreground};
 }
 
 html {
@@ -178,19 +198,41 @@ body {
 }
 
 body[data-theme='dark'] {
-  --clr: #AFAFAF;
-  --clr-code: #CFA300;
-  --bg: #171717;
-  --bg-code: #131313;
-  --bc-block: #303030;
-  --bg-block: #1F1F1F;
-  --clr-link: #b762de;
-  --clr-title: #ffffff;
-  --clr-todo: #E24C49;
-  --bg-todo: transparent;
-  --clr-done: #00AAAA;
-  --bg-done: transparent;
-  --ts-clr: #2299CC;
+  --bc-block: #{dark:mode-line:box:color|dark:hl-line:background};
+  --clr: #{dark:default:foreground};
+  --clr-code: #{dark:font-lock-keyword-face:foreground};
+  --bg: #{dark:default:background};
+  --bg-code: #{dark:mode-line:background};
+  --bg-block: #{dark:mode-line:background};
+  --clr-link: #{dark:font-lock-constant-face:foreground};
+  --clr-title: #{dark:default:foreground};
+  --clr-todo: #{dark:font-lock-string-face:foreground};
+  --bg-todo: #{dark:font-lock-string-face:background};
+  --clr-done: #{dark:font-lock-comment-face:foreground};
+  --bg-done: #{dark:font-lock-comment-face:background};
+  --ts-clr: #{dark:font-lock-keyword-face:foreground};
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: #{dark:font-lock-keyword-face:background};
+  --clr-keyword: #{dark:font-lock-keyword-face:foreground};
+  --bg-constant: #{dark:font-lock-constant-face:background};
+  --clr-constant: #{dark:font-lock-constant-face:foreground};
+  --bg-comment: #{dark:font-lock-comment-face:background};
+  --clr-comment: #{dark:font-lock-comment-face:foreground};
+  --bg-comment-delimiter: #{dark:font-lock-comment-delimiter-face:background};
+  --clr-comment-delimiter: #{dark:font-lock-comment-delimiter-face:foreground};
+  --bg-function: #{dark:font-lock-function-name-face:background};
+  --clr-function: #{dark:font-lock-function-name-face:foreground};
+  --bg-variable: #{dark:font-lock-variable-name-face:background};
+  --clr-variable: #{dark:font-lock-variable-name-face:foreground};
+  --bg-preprocessor: #{dark:font-lock-preprocessor-face:background};
+  --clr-preprocessor: #{dark:font-lock-preprocessor-face:foreground};
+  --bg-doc: #{dark:font-lock-doc-face:background};
+  --clr-doc: #{dark:font-lock-doc-face:foreground};
+  --bg-builtin: #{dark:font-lock-builtin-face:background};
+  --clr-builtin: #{dark:font-lock-builtin-face:foreground};
+  --bg-string: #{dark:font-lock-string-face:background};
+  --clr-string: #{dark:font-lock-string-face:foreground};
 }
 
 

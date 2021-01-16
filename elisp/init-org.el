@@ -119,8 +119,49 @@
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
-
 ;;; Export with inline CSS
+
+(defvar +org-css-themes
+  '((dark . solarized)
+    (light . printed)))
+
+(defvar +org-css-this-theme nil)
+
+(defun +org-css-parse-interpolate-clause (clause)
+  (-let* (((th f a k) (split-string clause ":"))
+          (fs (intern f))
+          (as (intern (concat ":" a)))
+          (req-theme (alist-get (intern th) +org-css-themes))
+          (_ (unless (equal req-theme +org-css-this-theme)
+               (disable-theme +org-css-this-theme)
+               (load-theme req-theme t)
+               (setq +org-css-this-theme req-theme))))
+    (let ((v (face-attribute fs as)))
+      (unless (equal v 'unspecified)
+        (if k
+            (plist-get v (intern (concat ":" k)))
+          v)))))
+
+(defun +org-css-find-interpolate-value (s)
+  (let* ((clauses (-> s
+                      (string-trim-left "#{")
+                      (string-trim-right "}")
+                      (split-string "|")))
+         (vals (-keep #'+org-css-parse-interpolate-clause clauses)))
+        (or (car vals) "initial")))
+
+(defun +org-css-face-interpolate ()
+  (goto-char (point-min))
+  (setq +org-css-this-theme (car +theme-list))
+  (while (re-search-forward "#{.+?}" nil t)
+    (-let* ((beg (match-beginning 0))
+            (end (match-end 0))
+            (s (buffer-substring-no-properties beg end))
+            (v (+org-css-find-interpolate-value s)))
+      (delete-region beg end)
+      (insert v)))
+  (disable-theme +org-css-this-theme)
+  (load-theme (car +theme-list) t))
 
 (defun +org-export-inline-css (exporter)
   "Insert custom inline css"
@@ -135,6 +176,7 @@
                            "<!--/*--><![CDATA[/*><!--*/\n"
                            (with-temp-buffer
                              (insert-file-contents css-path)
+                             (+org-css-face-interpolate)
                              (buffer-string))
                            "/*]]>*/-->\n"
                            "</style>\n"))
@@ -150,6 +192,19 @@
 
 (add-hook 'org-export-before-processing-hook '+org-export-inline-css)
 
-;; (use-package htmlize)
+(use-package htmlize
+  :custom
+  (htmlize-face-overrides
+   '(
+     font-lock-keyword-face (:foreground "var(--clr-keyword)" :background "var(--bg-keyword)")
+     font-lock-constant-face (:foreground "var(--clr-constant)" :background "var(--bg-constant)")
+     font-lock-comment-face (:foreground "var(--clr-comment)" :background "var(--bg-comment)")
+     font-lock-comment-delimiter-face (:foreground "var(--clr-comment-delimiter)" :background "var(--bg-comment-delimiter)")
+     font-lock-function-name-face (:foreground "var(--function-clr-name)" :background "var(--function-bg-name)")
+     font-lock-variable-name-face (:foreground "var(--clr-variable)" :background "var(--bg-variable)")
+     font-lock-preprocessor-face (:foreground "var(--clr-preprocessor)" :background "var(--bg-preprocessor)")
+     font-lock-doc-face (:foreground "var(--clr-doc)" :background "var(--bg-doc)")
+     font-lock-builtin-face (:foreground "var(--clr-builtin)" :background "var(--bg-builtin)")
+     font-lock-string-face (:foreground "var(--clr-string)" :background "var(--bg-string)"))))
 
 (provide 'init-org)
