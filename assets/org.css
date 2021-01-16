@@ -5,7 +5,7 @@
 }
 
 html {
-	line-height: 1.15;
+	line-height: 1.35;
 	-webkit-text-size-adjust: 100%;
 }
 
@@ -148,12 +148,14 @@ summary {
 }
 
 :root {
-  --bc-block: #{light:mode-line:box:color|light:hl-line:background};
+  --bc-tb: #{light:mode-line:box:color|light:hl-line:background};
+  --bc-block: #{light:org-meta-line:foreground|light:org-meta-line:background};
   --clr: #{light:default:foreground};
   --clr-code: #{light:font-lock-keyword-face:foreground};
   --bg: #{light:default:background};
   --bg-code: #{light:mode-line:background};
-  --bg-block: #{light:mode-line:background};
+  --bg-tb-hd: #{light:mode-line:background};
+  --bg-block: #{light:org-block:background};
   --clr-link: #{light:font-lock-constant-face:foreground};
   --clr-title: #{light:default:foreground};
   --clr-todo: #{light:font-lock-string-face:foreground};
@@ -198,12 +200,14 @@ body {
 }
 
 body[data-theme='dark'] {
-  --bc-block: #{dark:mode-line:box:color|dark:hl-line:background};
+  --bc-tb: #{dark:mode-line:box:color|dark:hl-line:background};
+  --bc-block: #{dark:org-meta-line:foreground|dark:org-meta-line:background};
   --clr: #{dark:default:foreground};
   --clr-code: #{dark:font-lock-keyword-face:foreground};
   --bg: #{dark:default:background};
+  --bg-tb-hd: #{dark:mode-line:background};
   --bg-code: #{dark:mode-line:background};
-  --bg-block: #{dark:mode-line:background};
+  --bg-block: #{dark:org-block:background};
   --clr-link: #{dark:font-lock-constant-face:foreground};
   --clr-title: #{dark:default:foreground};
   --clr-todo: #{dark:font-lock-string-face:foreground};
@@ -323,12 +327,15 @@ pre {
 
 table {
   width: 100%;
-  border-color: var(--bc-block);
-  background: var(--bg-block);
+  border: 2px solid var(--bc-tb);
+}
+
+thead {
+  background: var(--bg-tb-hd);
 }
 
 td, th {
-  border: thin solid var(--bc-block);
+  border: thin solid var(--bc-tb);
 }
 
 li {

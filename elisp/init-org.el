@@ -122,8 +122,8 @@
 ;;; Export with inline CSS
 
 (defvar +org-css-themes
-  '((dark . solarized)
-    (light . printed)))
+  '((dark . joker)
+    (light . storybook)))
 
 (defvar +org-css-this-theme nil)
 
@@ -151,17 +151,18 @@
         (or (car vals) "initial")))
 
 (defun +org-css-face-interpolate ()
-  (goto-char (point-min))
-  (setq +org-css-this-theme (car +theme-list))
-  (while (re-search-forward "#{.+?}" nil t)
-    (-let* ((beg (match-beginning 0))
-            (end (match-end 0))
-            (s (buffer-substring-no-properties beg end))
-            (v (+org-css-find-interpolate-value s)))
-      (delete-region beg end)
-      (insert v)))
-  (disable-theme +org-css-this-theme)
-  (load-theme (car +theme-list) t))
+  (let ((inhibit-redisplay t))
+    (goto-char (point-min))
+    (setq +org-css-this-theme (car +theme-list))
+    (while (re-search-forward "#{.+?}" nil t)
+      (-let* ((beg (match-beginning 0))
+              (end (match-end 0))
+              (s (buffer-substring-no-properties beg end))
+              (v (+org-css-find-interpolate-value s)))
+        (delete-region beg end)
+        (insert v)))
+    (disable-theme +org-css-this-theme)
+    (load-theme (car +theme-list) t)))
 
 (defun +org-export-inline-css (exporter)
   "Insert custom inline css"
