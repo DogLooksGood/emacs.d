@@ -1,4 +1,4 @@
-;; Mode Line
+;; Mode Line  -*- lexical-binding: t; -*-
 
 ;;; bench mark modeline.
 ;; (+measure-time (format-mode-line mode-line-format))
@@ -25,7 +25,8 @@ Containing LEFT, and RIGHT aligned respectively."
                     (:eval (propertize " " 'display '(height 1.2)))
                     (:eval (rime-lighter)))
                   ;; right
-                  '((:propertize " %m " face font-lock-keyword-face)
+                  '((:propertize mode-name face font-lock-keyword-face)
+                    " "
                     (:eval (+smart-file-name-with-propertize))
                     " ")))))
 

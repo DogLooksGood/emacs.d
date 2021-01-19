@@ -13,15 +13,12 @@
 (require 'joker-theme)
 (require 'storybook-theme)
 
-(use-package solarized-theme)
-(use-package zenburn-theme)
-
 (let ((margin 24))
   (add-to-list 'default-frame-alist (cons 'internal-border-width margin))
   (set-frame-parameter nil 'internal-border-width margin))
 
 (defvar +theme-list
-  '(storybook joker printed solarized-dark zenburn))
+  '(storybook joker printed))
 
 (set-display-table-slot standard-display-table
                         'vertical-border

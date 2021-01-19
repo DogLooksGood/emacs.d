@@ -2,6 +2,10 @@
 
 (use-package rime
   :commands (toggle-input-method)
+  :straight
+  (rime :type git
+        :host github
+        :repo "DogLooksGood/emacs-rime")
   :bind
   (:map
    rime-active-mode-map

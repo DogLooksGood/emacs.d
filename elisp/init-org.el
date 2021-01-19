@@ -119,7 +119,9 @@
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
-(use-package htmlize)
+(use-package htmlize
+  :custom
+  (htmlize-face-overrides '(clojure-keyword-face (:foreground "var(--clr-constant)" :background "var(--bg-constant)"))))
 
 (use-package org-html-themify
   :straight
@@ -133,46 +135,5 @@
   (org-html-themify-themes
    '((dark . joker)
      (light . storybook))))
-
-;;; Roam backlinks
-
-;; (defun org-roam-server-insert-backlinks (file)
-;;   "Insert the backlinks string for the FILE."
-;;   (save-mark-and-excursion
-;;     (when file
-;;       (when-let* ((backlinks (org-roam--get-backlinks file))
-;;                   (grouped-backlinks (--group-by (nth 0 it) backlinks)))
-;;         (goto-char (point-max))
-;;         (insert "\n#+html: <div id=\"backlinks\"><ul>\n")
-;;         (insert "\n#+html: <h2>Backlinks</h2>\n")
-;;         (mapc
-;;          (-lambda ((g . bls))
-;;            (insert
-;;             (format "\n#+html: <li>\n")
-;;             (format "[[file:%s][%s]]\n" g (s-replace-regexp "^[0-9]\\{14\\}-" "" (file-name-base g))))
-;;            (mapc
-;;             (lambda (bl)
-;;               (let ((info (nth 2 bl))
-;;                     (from (nth 0 bl)))
-;;                 (insert
-;;                  (format "\n#+html: <div class=\"backlink-outline\">\n")
-;;                  (if-let ((outline (car (plist-get info :outline))))
-;;                      (format "%s\n" outline)
-;;                    "")
-;;                  (format "\n#+html: </div><div class=\"backlink-content\">\n")
-;;                  (format "%s\n" (plist-get info :content))
-;;                  (format "\n#+html: </div>"))))
-;;             bls)
-;;            (insert "</li>\n"))
-;;          grouped-backlinks)
-;;         (insert "\n#+html: </ul></div>\n")))))
-;;
-;; (defun org-export-backlink (exporter)
-;;   (org-roam-server-insert-backlinks (buffer-file-name)))
-;;
-;; (add-hook 'org-export-before-processing-hook 'org-export-backlink)
-
-
-
 
 (provide 'init-org)

@@ -8,7 +8,7 @@
 (defun +load-font ()
   (let* ((font-spec (format "%s-%d" +font-family +font-size)))
     (if (not (member +font-family (font-family-list)))
-        (message "Font '%s' not available!" font-family)
+        (message "Font '%s' not available!" +font-family)
       (set-face-attribute 'default nil :font font-spec)
       (set-frame-font font-spec t nil)))
 
