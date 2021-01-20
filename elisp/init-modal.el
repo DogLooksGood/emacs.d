@@ -84,7 +84,7 @@
    '("f" . meow-find)
    '("F" . meow-find-expand)
    '("g" . meow-cancel-selection)
-   '("G" . goto-line)
+   '("G" . meow-goto-line)
    '("h" . meow-left)
    '("H" . meow-left-expand)
    '("i" . meow-insert)

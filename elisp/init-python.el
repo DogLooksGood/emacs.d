@@ -1,10 +1,8 @@
-
 (defun +python-semicolon ()
   (interactive)
   (if (or (+in-comment-p) (+in-string-p))
       (call-interactively #'self-insert-command)
     (self-insert-command 1 ?:)))
-
 
 (defun +python-minus ()
   "Will insert a minus if we are after whitespace and not at the indentation,otherwise will insert a underscore."
@@ -37,5 +35,21 @@
        "/opt/anaconda/"
      "/opt/miniconda3/"))
   (conda-env-home-directory (expand-file-name "~/.conda")))
+
+(defun +python-eval-cell ()
+  (interactive)
+  (code-cells-do
+   (python-shell-send-region start end)))
+
+(use-package code-cells
+  :hook
+  (code-cells . outline-minor-mode)
+  :straight
+  (code-cells :type git
+              :host github
+              :repo "astoff/code-cells.el")
+  :bind
+  (:map python-mode-map
+        ("C-c C-c" . +python-eval-cell)))
 
 (provide 'init-python)
