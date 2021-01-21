@@ -40,6 +40,7 @@
     (start-process-shell-command "picom" nil "picom -b")
     (start-process-shell-command "xset" nil "xset r rate 200 40")
     (start-process-shell-command "fcitx5" nil "fcitx5")
+    (start-process-shell-command "qv2ray" nil "qv2ray")
     (start-process-shell-command "cbatticon" nil "cbatticon")
     (start-process-shell-command "volumeicon" nil "volumeicon")
     (start-process-shell-command "setxkbmap" nil "setxkbmap -option ctrl:swapcaps")
