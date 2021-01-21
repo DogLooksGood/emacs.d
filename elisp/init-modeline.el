@@ -28,6 +28,7 @@ Containing LEFT, and RIGHT aligned respectively."
                   '((:propertize mode-name face font-lock-keyword-face)
                     " "
                     (:eval (+smart-file-name-with-propertize))
-                    " ")))))
+                    " "
+                    (:eval (+exwm-current-workspace)))))))
 
 (provide 'init-modeline)

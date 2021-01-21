@@ -39,11 +39,24 @@
     (start-process-shell-command "nm-applet" nil "nm-applet")
     (start-process-shell-command "picom" nil "picom -b")
     (start-process-shell-command "xset" nil "xset r rate 200 40")
-    (start-process-shell-command "fcitx5" nil "fcitx5 &")
+    (start-process-shell-command "fcitx5" nil "fcitx5")
+    (start-process-shell-command "cbatticon" nil "cbatticon")
     (start-process-shell-command "volumeicon" nil "volumeicon")
-    (start-process-shell-command "xfce4-power-manager" nil "xfce4-power-manager")
     (start-process-shell-command "setxkbmap" nil "setxkbmap -option ctrl:swapcaps")
     (setq +system-tray-start t)))
+
+(defface exwm-workspace-face
+  '((((class color) (background dark))
+     (:inverse-video t))
+    (((class color) (background light))
+     (:inverse-video t)))
+  "Face for workspace indicator in modeline.")
+
+(defun +exwm-current-workspace ()
+  (propertize
+   (format "[%d]" (1+ (or (exwm-workspace--position (selected-frame)) 0)))
+   'face
+   'exwm-workspace-face))
 
 (use-package exwm
   :straight
@@ -52,7 +65,7 @@
         :repo "ch11ng/exwm")
   :init
   (setq exwm-input-prefix-keys '(?\s-x ?\s-c ?\s-m ?\s-g ?\s-h ?\s-\ ?\s-f ?\C-\\))
-  (setq exwm-systemtray--icon-min-size 64)
+  (setq exwm-systemtray--icon-min-size 48)
   :bind
   ("s-x" . 'meow-keypad-start)
   ("s-m" . 'meow-keypad-start)
