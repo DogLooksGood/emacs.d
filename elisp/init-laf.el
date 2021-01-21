@@ -13,9 +13,9 @@
 (require 'joker-theme)
 (require 'storybook-theme)
 
-(let ((margin 24))
-  (add-to-list 'default-frame-alist (cons 'internal-border-width margin))
-  (set-frame-parameter nil 'internal-border-width margin))
+;; (let ((margin 24))
+;;   (add-to-list 'default-frame-alist (cons 'internal-border-width margin))
+;;   (set-frame-parameter nil 'internal-border-width margin))
 
 (defvar +theme-list
   '(storybook joker printed))
