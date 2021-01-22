@@ -94,7 +94,16 @@
  '(org-level-4         ((t (:bold t :height 1.2))))
  '(org-level-5         ((t (:bold t :height 1.2))))
  '(org-level-6         ((t (:bold t :height 1.2))))
- '(org-level-7         ((t (:bold t :height 1.2)))))
+ '(org-level-7         ((t (:bold t :height 1.2))))
+ '(match               ((t (:foreground "#f8f8f8" :background "#666666"))))
+ '(minibuffer-prompt   ((t ())))
+ '(ivy-subdir          ((t (:inherit font-lock-constant-face))))
+ '(ivy-remote          ((t (:foreground "#666666"))))
+ '(ivy-current-match   ((t (:background "#d0d0d0"))))
+ `(ivy-minibuffer-match-face-1    ((t (:bold t))))
+ `(ivy-minibuffer-match-face-2    ((t (:bold t))))
+ `(ivy-minibuffer-match-face-3    ((t (:bold t))))
+ `(ivy-minibuffer-match-face-4    ((t (:bold t)))))
 
 (and load-file-name
      (boundp 'custom-theme-load-path)
