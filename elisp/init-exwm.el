@@ -13,7 +13,7 @@
   "Default configuration of EXWM."
   ;; Set the initial workspace number.
   (unless (get 'exwm-workspace-number 'saved-value)
-    (setq exwm-workspace-number 4))
+    (setq exwm-workspace-number 9))
   ;; Make class name the buffer name
   (add-hook 'exwm-update-class-hook
             (lambda ()
@@ -33,6 +33,7 @@
             ([?\s-w] . ace-window)
             ([?\s-q] . meow-quit)
             ([?\s-o] . delete-other-windows)
+            ([?\s-k] . kill-buffer)
             ([?\s-\\] . split-window-right)
             ([?\s--] . split-window-below)
             ([?\s-h] . windmove-left)

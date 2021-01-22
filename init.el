@@ -23,4 +23,3 @@
 (require 'init-misc)
 (require 'init-direnv)
 (require 'init-server)
-(require 'init-exwm)
