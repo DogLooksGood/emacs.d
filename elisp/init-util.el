@@ -64,12 +64,17 @@ This function is slow, so we have to use cache."
 (defun +smart-file-name-with-propertize ()
   (if-let ((cached (+smart-file-name-cached)))
       cached
-    (let* ((fname (+smart-file-name))
-           (slist (split-string fname "/"))
-           (p (concat (string-join (-butlast slist) "/") "/"))
-           (f (-last-item slist)))
-      (setq-local +smart-file-name-with-propertize-cache (list (buffer-file-name) p f))
-      (+smart-file-name-cached))))
+    (let ((vc-dir (vc-root-dir))
+          (bfn (buffer-file-name (current-buffer))))
+      (cond
+       ((and bfn vc-dir)
+        (let ((fname (file-relative-name bfn vc-dir))
+              (p (file-name-directory fname))
+              (f (file-name-nondirectory fname)))
+          (setq-local +smart-file-name-with-propertize-cache (list (buffer-file-name) p f))
+          (+smart-file-name-cached)))
+       (bfn bfn)
+       (t (buffer-name))))))
 
 (defun +smart-file-name-truncated ()
   (if-let ((cached (+smart-file-name-cached-no-propertize)))
