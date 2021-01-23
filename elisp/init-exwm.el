@@ -20,6 +20,7 @@
   (add-hook 'exwm-update-class-hook
             (lambda ()
               (exwm-workspace-rename-buffer exwm-class-name)))
+
   ;; Global keybindings.
   (unless (get 'exwm-input-global-keys 'saved-value)
     (setq exwm-input-global-keys
@@ -44,6 +45,8 @@
             ([?\s-n] . +exwm-windmove-up-or-down)
             ([s-right] . enlarge-window-horizontally)
             ([s-left] . shrink-window-horizontally)
+            ([XF86MonBrightnessDown] . (lambda () (interactive) (call-process-shell-command "xbacklight -dec 5" nil 0)))
+            ([XF86MonBrightnessUp] . (lambda () (interactive) (call-process-shell-command "xbacklight -inc 5" nil 0)))
             ([s-up] . enlarge-window)
             ([s-down] . shrink-window)
             ,@(mapcar (lambda (i)
