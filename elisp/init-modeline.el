@@ -9,7 +9,8 @@ Containing LEFT, and RIGHT aligned respectively."
   (let ((available-width
          (- (window-total-width)
             (+ (length (format-mode-line left))
-               (length (format-mode-line right))))))
+               (string-width (format-mode-line right)))
+            (- 1))))
     (append left
             (list (format (format "%%%ds" available-width) ""))
             right)))
