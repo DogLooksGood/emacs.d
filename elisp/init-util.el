@@ -68,9 +68,9 @@ This function is slow, so we have to use cache."
           (bfn (buffer-file-name (current-buffer))))
       (cond
        ((and bfn vc-dir)
-        (let ((fname (file-relative-name bfn vc-dir))
-              (p (file-name-directory fname))
-              (f (file-name-nondirectory fname)))
+        (let* ((fname (file-relative-name bfn vc-dir))
+               (p (file-name-directory fname))
+               (f (file-name-nondirectory fname)))
           (setq-local +smart-file-name-with-propertize-cache (list (buffer-file-name) p f))
           (+smart-file-name-cached)))
        (bfn bfn)

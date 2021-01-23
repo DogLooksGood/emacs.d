@@ -1,4 +1,6 @@
 ;; -*- lexical-binding: t; -*-
+;; Add emacs to DM
+;; cp ~/.emacs.d/emacs.desktop /usr/share/xsessions/
 
 (setq exwm-mode-map
   (let ((map (make-sparse-keymap)))
@@ -30,6 +32,7 @@
             ([?\s-r] . exwm-layout-toggle-fullscreen)
             ([s-return] . +exwm-open-terminal)
             ([?\s-d] . +exwm-launch)
+            ([?\s-b] . switch-to-buffer)
             ([?\s-w] . ace-window)
             ([?\s-q] . meow-quit)
             ([?\s-o] . delete-other-windows)
@@ -63,7 +66,12 @@
 (defvar +systemtray-start nil)
 (defvar +systemtray-apps nil)
 (mapc (lambda (a) (add-to-list '+systemtray-apps a))
-      '("nm-applet" "picom" "xset r rate 200 40" "fcitx5" "cbatticon" "volumeicon" "setxkbmap -option ctrl:swapcaps"))
+      '("nm-applet"
+        "picom"
+        "xset r rate 200 40"
+        "fcitx5"
+        "volumeicon"
+        "setxkbmap -option ctrl:swapcaps"))
 
 (defun +exwm-systemtray-reload (&rest args)
   (when +systemtray-start
@@ -85,7 +93,7 @@
 
 (defun +exwm-current-workspace ()
   (propertize
-   (format "[%d:%s]" (1+ (or (exwm-workspace--position (selected-frame)) 0))
+   (format " %d:%s " (1+ (or (exwm-workspace--position (selected-frame)) 0))
            (or exwm-title "Emacs"))
    'face
    'exwm-workspace-face))
@@ -105,7 +113,7 @@
         :repo "ch11ng/exwm")
   :init
   (setq exwm-input-prefix-keys '(escape))
-  (setq exwm-systemtray--icon-min-size 31)
+  (setq exwm-systemtray--icon-min-size 32)
   :config
   (require 'exwm-config)
   (require 'exwm-systemtray)

@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Emacs
+Exec=env EXWM=1 emacs
+Type=Application

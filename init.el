@@ -23,3 +23,4 @@
 (require 'init-misc)
 (require 'init-direnv)
 (require 'init-server)
+(when (getenv "EXWM") (require 'init-exwm))
