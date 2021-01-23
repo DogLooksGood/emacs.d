@@ -108,7 +108,8 @@
  '(org-level-4         ((t (:bold t :height 1.2))))
  '(org-level-5         ((t (:bold t :height 1.2))))
  '(org-level-6         ((t (:bold t :height 1.2))))
- '(org-level-7         ((t (:bold t :height 1.2)))))
+ '(org-level-7         ((t (:bold t :height 1.2))))
+ '(header-line         ((t (:background "#ede4d1" :foreground "#442c09" :underline "#a8a296")))))
 
 (and load-file-name
      (boundp 'custom-theme-load-path)
