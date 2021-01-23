@@ -1,9 +1,9 @@
 ;;; -*- lexical-binding: t -*-
 
 (defvar +font-family "Fira Code")
-(defvar +ufont-family "Sarasa Mono SC")
+(defvar +ufont-family "WenQuanYi Micro Hei Mono")
 (defvar +font-size 10)
-(defvar +ufont-scale 0.95)
+(defvar +ufont-scale 0.99)
 
 (defun +load-font ()
   (let* ((font-spec (format "%s-%d" +font-family +font-size)))
