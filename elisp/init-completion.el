@@ -67,13 +67,13 @@
 
 (use-package ivy
   :init
-  (ivy-mode -1)
+  (ivy-mode 1)
   :custom
   (ivy-use-selectable-prompt t))
 
 (use-package counsel
   :init
-  (counsel-mode -1))
+  (counsel-mode 1))
 
 ;; (use-package selectrum
 ;;   :init
