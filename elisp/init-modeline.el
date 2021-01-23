@@ -21,10 +21,11 @@ Containing LEFT, and RIGHT aligned respectively."
                   '((:eval (meow-indicator))
                     " %l:%C "
                     (:propertize (-3 "%p") face +modeline-dim-face)
-                    (:eval (propertize " " 'display '(height 1.2)))
-                    (:eval (rime-lighter)))
+                    (:eval (propertize " " 'display '(height 1.2))))
                   ;; right
-                  '((:propertize mode-name face font-lock-keyword-face)
+                  '((:eval (rime-lighter))
+                    " "
+                    (:propertize mode-name face font-lock-keyword-face)
                     " "
                     (:eval (+smart-file-name-with-propertize))
                     " ")))))
