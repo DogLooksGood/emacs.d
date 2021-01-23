@@ -74,9 +74,7 @@
         "setxkbmap -option ctrl:swapcaps"))
 
 (defun +exwm-systemtray-reload (&rest args)
-  (when +systemtray-start
-    (exwm-systemtray--exit)
-    (exwm-systemtray--init)))
+  (exwm-systemtray--refresh-all))
 
 (defun +exwm-systemtray-setup ()
   (unless +systemtray-start
@@ -121,6 +119,6 @@
   (+exwm-systemtray-setup)
   (exwm-enable)
   (exwm-systemtray-enable)
-  (add-hook '+after-change-theme-hook '+exwm-systemtray-reload))
+  (add-hook '+after-change-theme-hook #'+exwm-systemtray-reload))
 
 (provide 'init-exwm)
