@@ -95,7 +95,7 @@
 (defun +exwm-current-workspace ()
   (propertize
    (format " %d:%s " (1+ (or (exwm-workspace--position (selected-frame)) 0))
-           (or exwm-title "Emacs"))
+           (or exwm-class-name "Emacs"))
    'face
    'exwm-workspace-face))
 
@@ -113,8 +113,8 @@
         :host github
         :repo "ch11ng/exwm")
   :init
-  (setq exwm-input-prefix-keys '(escape))
-  (setq exwm-systemtray--icon-min-size 32)
+  (setq exwm-input-prefix-keys '(escape ?\C-g)
+        exwm-systemtray--icon-min-size 32)
   :config
   (require 'exwm-config)
   (require 'exwm-systemtray)

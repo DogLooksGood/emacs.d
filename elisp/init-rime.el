@@ -23,7 +23,7 @@
    (rime-inline-ascii-holder ?a)
    (default-input-method "rime")
    (rime-cursor "|")
-   (rime-show-candidate 'message)
+   (rime-show-candidate 'minibuffer)
    (rime-title (char-to-string 12563))))
 
 (provide 'init-rime)

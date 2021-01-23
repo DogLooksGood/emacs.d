@@ -56,7 +56,6 @@
  '(rime-cursor-face               ((t (:inherit font-lock-constant-face))))
  '(rime-candidate-num-face        ((t ())))
  '(rime-comment-face              ((t ())))
- '(rime-indicator-face            ((t (:foreground "#713da6"))))
  '(telega-entity-type-code        ((t (:inherit fixed-pitch))))
  '(telega-entity-type-pre         ((t (:inherit fixed-pitch))))
  '(cider-fringe-good-face         ((t (:foreground "#006666"))))

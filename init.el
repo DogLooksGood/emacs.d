@@ -24,3 +24,8 @@
 (require 'init-direnv)
 (require 'init-server)
 (when (getenv "EXWM") (require 'init-exwm))
+
+;;; For profiling
+;; (profiler-start 'cpu)
+;; (profiler-report)
+;; (profiler-stop)
