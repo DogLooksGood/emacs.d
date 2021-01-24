@@ -99,8 +99,4 @@
 ;; (global-set-key (kbd "<f7>") #'profiler-start)
 ;; (global-set-key (kbd "<f8>") #'profiler-report)
 
-;;; Run GC when idle for 7 seconds or when Emacs is unfocused.
-(run-with-idle-timer 7 t #'garbage-collect)
-(add-hook 'focus-out-hook #'garbage-collect)
-
 (provide 'init-defaults)

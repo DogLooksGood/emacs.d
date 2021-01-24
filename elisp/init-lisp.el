@@ -19,6 +19,7 @@ otherwise will insert a colon."
   (:map paredit-mode-map
 		(";" . '+lisp-semicolon))
   :hook
-  (emacs-lisp-mode . paredit-mode))
+  (emacs-lisp-mode . paredit-mode)
+  (lisp-mode . paredit-mode))
 
 (provide 'init-lisp)
