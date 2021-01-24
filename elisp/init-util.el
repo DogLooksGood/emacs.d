@@ -31,11 +31,20 @@ This function is slow, so we have to use cache."
      (bfn bfn)
      (t (buffer-name)))))
 
-(defmacro +measure-time (&rest body)
+(defmacro +measure-time-1 (&rest body)
   "Measure the time it takes to evaluate BODY."
   `(let ((time (current-time)))
      ,@body
-     (message "%.06fs" (float-time (time-since time)))))
+     (message "%.03fms"
+              (* 1000 (float-time (time-since time))))))
+
+(defmacro +measure-time (&rest body)
+  "Measure the time it takes to evalutae BODY, repeat 10 times."
+  `(let ((time (current-time))
+         (n 10))
+     (dotimes (_ n),@body)
+     (message "%.03fms"
+              (/ (* (float-time (time-since time)) 1000) n))))
 
 (defface +modeline-dim-face
   '((((class color) (background dark))
