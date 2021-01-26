@@ -15,6 +15,7 @@
 (require 'init-pass)
 (require 'init-rime)
 (require 'init-conf)
+(require 'init-edit)
 (require 'init-window)
 (require 'init-docker)
 (require 'init-sidebar)
