@@ -20,8 +20,7 @@ Containing LEFT, and RIGHT aligned respectively."
                   ;; left
                   '((:eval (meow-indicator))
                     " %l:%C "
-                    (:propertize (-3 "%p") face +modeline-dim-face)
-                    (:eval (propertize " " 'display '(height 1.2))))
+                    (:propertize (-3 "%p") face +modeline-dim-face))
                   ;; right
                   '((:eval (rime-lighter))
                     " "
