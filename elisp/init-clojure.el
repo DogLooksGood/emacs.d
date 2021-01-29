@@ -14,14 +14,14 @@
   :custom
   (clojure-toplevel-inside-comment-form t))
 
-(use-package clj-refactor
-  :hook (clojure-mode . clj-refactor-mode)
-  :config
-  (unbind-key "/" clj-refactor-map)
-  (cljr-add-keybindings-with-prefix "C-c C-r")
-  :custom
-  (cljr-warn-on-eval t)
-  (cljr-suppress-middleware-warnings t))
+;; (use-package clj-refactor
+;;   :hook (clojure-mode . clj-refactor-mode)
+;;   :config
+;;   (unbind-key "/" clj-refactor-map)
+;;   (cljr-add-keybindings-with-prefix "C-c C-r")
+;;   :custom
+;;   (cljr-warn-on-eval t)
+;;   (cljr-suppress-middleware-warnings t))
 
 (use-package cider
   :commands (cider-jack-in cider-jack-in-cljs cider-jack-in-clj&cljs)
