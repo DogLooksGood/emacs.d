@@ -3,10 +3,6 @@
 (defvar +after-change-theme-hook nil
   "Hooks called after theme is changed.")
 
-;; (use-package joker-theme :straight (joker-theme :type git :host github :repo "DogLooksGood/joker-theme"))
-;; (use-package storybook-theme :straight (storybook-theme :type git :host github :repo "DogLooksGood/storybook-theme"))
-;; (use-package printed-theme :straight (printed-theme :type git :host github :repo "DogLooksGood/printed-theme"))
-
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
 (require 'printed-theme)
