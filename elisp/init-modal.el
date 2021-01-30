@@ -79,11 +79,12 @@
    '("B" . meow-back-symbol)
    '("c" . meow-change)
    '("C" . meow-change-save)
-   '("d" . meow-delete)
+   '("d" . meow-grab)
+   '("D" . meow-pop-grab)
    '("e" . meow-line)
    '("f" . meow-find)
    '("F" . meow-find-expand)
-   '("g" . meow-cancel-selection)
+   '("g" . meow-cancel)
    '("G" . meow-goto-line)
    '("h" . meow-left)
    '("H" . meow-left-expand)
@@ -92,6 +93,7 @@
    '("j" . meow-join)
    '("J" . delete-indentation)
    '("k" . meow-kill)
+   '("K" . meow-kill-append)
    '("l" . meow-till)
    '("L" . meow-till-expand)
    '("m" . meow-mark-word)
@@ -114,8 +116,9 @@
    '("w" . meow-next-word)
    '("W" . meow-next-symbol)
    '("x" . meow-save)
+   '("X" . meow-save-append)
    '("y" . meow-yank)
-   '("z" . meow-pop-selection)
+   '("z" . meow-pop)
    '("Z" . meow-pop-all-selection)
    '("&" . meow-query-replace)
    '("%" . meow-query-replace-regexp)
@@ -135,8 +138,9 @@
 (use-package meow
   :straight
   (meow :type git
-	:host github
-	:repo "DogLooksGood/meow")
+    :host github
+    :repo "DogLooksGood/meow")
+  ;; (meow :local-repo "~/workspace/meow/")
   :init
   (meow-global-mode 1)
   :custom
@@ -160,6 +164,7 @@
   (meow-setup-line-number)
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
   (add-to-list 'meow-normal-state-mode-list 'py-shell-mode)
+  (add-to-list 'meow-grab-fill-commands 'eval-expression)
   (meow-setup))
 
 (provide 'init-modal)

@@ -1,10 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-(defun +yas-expand-or-company-complete ()
-  (interactive)
-  (or (yas/expand)
-      (call-interactively #'company-indent-or-complete-common)))
-
 (use-package yasnippet
   :bind
   (:map
@@ -27,8 +22,9 @@
   :hook (company-mode . company-tng-mode)
   :bind
   (:map company-mode-map
-        ("<tab>" . '+yas-expand-or-company-complete)
-        ("TAB" . '+yas-expand-or-company-complete))
+        ("M-RET" . 'yas-expand)
+        ("<tab>" . 'company-indent-or-complete-common)
+        ("TAB" . 'company-indent-or-complete-common))
   (:map company-active-map
         ("<tab>" . 'company-complete-common-or-cycle)
         ("TAB" . 'company-complete-common-or-cycle)

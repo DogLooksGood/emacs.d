@@ -2,7 +2,6 @@
 (require 'init-util)
 (require 'init-modal)
 (require 'init-lsp)
-(require 'init-edit)
 (require 'init-web)
 (require 'init-lisp)
 (require 'init-clojure)

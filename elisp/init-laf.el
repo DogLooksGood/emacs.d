@@ -30,14 +30,13 @@
 
 (defun +change-theme (&optional no-msg)
   (interactive)
-  (let ((theme (car +theme-list)))
-	(disable-theme theme)
-	(setq +theme-list (append (cdr +theme-list) (list theme)))
-    (let ((this-theme (car +theme-list)))
-      (load-theme this-theme t)
-      (unless no-msg
-        (message "Load theme: %s" this-theme))
-      (run-hook-with-args '+after-change-theme-hook this-theme))))
+  (mapc #'disable-theme custom-enabled-themes)
+  (setq +theme-list (append (cdr +theme-list) (list (car +theme-list))))
+  (let ((this-theme (car +theme-list)))
+    (load-theme this-theme t)
+    (unless no-msg
+      (message "Load theme: %s" this-theme))
+    (run-hook-with-args '+after-change-theme-hook this-theme)))
 
 (defun +highlight-prog-mode-function-name ()
   (face-remap-add-relative 'font-lock-function-name-face :underline t :extend t))
@@ -47,6 +46,7 @@
 (defun +reload-font-and-theme ()
   (interactive)
   (+load-font)
+  (mapc #'disable-theme custom-enabled-themes)
   (load-theme (car +theme-list) t))
 
 (+change-theme t)
