@@ -27,11 +27,11 @@
 
 ;;; Commentary:
 
-;;; TODO
+;;; This is a minimal dark theme.
 
 ;;; Code:
 
-(deftheme joker "A simple medium contrast dark theme.")
+(deftheme joker "A minimal dark theme.")
 
 (defvar joker-use-italic t
   "Non-nil means use italic for comment and docstring.")
