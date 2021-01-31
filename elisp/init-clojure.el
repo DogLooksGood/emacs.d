@@ -6,7 +6,6 @@
   :bind
   (:map
    clojure-mode-map
-   ("/" . 'cljr-slash)
    ("C-c C-i" . 'cider-inspect-last-result))
   :config
   (modify-syntax-entry ?: "w" clojure-mode-syntax-table)
@@ -38,7 +37,7 @@
   (unbind-key "M-." cider-mode-map)
   (unbind-key "C-c C-p" cider-mode-map)
   :init
-  (setq-default cider-default-cljs-repl 'shadow)
+  ;; (setq-default cider-default-cljs-repl 'shadow)
   :custom
   (cider-font-lock-dynamically nil)
   (cider-font-lock-reader-conditionals nil)

@@ -6,7 +6,11 @@
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
 (require 'printed-theme)
-(require 'joker-theme)
+(use-package joker-theme
+  :straight
+  (joker-theme :type git
+               :host github
+               :repo "DogLooksGood/joker-theme"))
 (require 'storybook-theme)
 
 (let ((margin 0))
