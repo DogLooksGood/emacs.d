@@ -128,19 +128,17 @@
    '("'" . meow-beginning-of-thing)
    '("\"" . meow-end-of-thing)
    '("\\" . quoted-insert)
-   '("<" . windmove-left)
-   '(">" . windmove-right)
-   '("E" . windmove-up)
-   '("U" . windmove-down)
+   '("<" . meow-forward-barf)
+   '(">" . meow-forward-slurp)
    '("<f3>" . meow-start-kmacro)
    '("<f4>" . meow-end-or-call-kmacro)))
 
 (use-package meow
   :straight
-  (meow :type git
-    :host github
-    :repo "DogLooksGood/meow")
-  ;; (meow :local-repo "~/workspace/meow/")
+  (meow
+   :type git
+   :host github
+   :repo "DogLooksGood/meow")
   :init
   (meow-global-mode 1)
   :custom
@@ -155,11 +153,6 @@
      (meow-cancel-selection . meow-keyboard-quit)
      (meow-reverse . meow-page-down)
      (meow-delete . meow-C-d)))
-  ;; (meow-replace-state-name-list
-  ;;  '((normal . "Ꮚ•ꈊ•Ꮚ")
-  ;;    (insert . "Ꮚ`ꈊ´Ꮚ")
-  ;;    (keypad . "Ꮚ'ꈊ'Ꮚ")
-  ;;    (motion . "Ꮚ-ꈊ-Ꮚ")))
   :config
   (meow-setup-line-number)
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
