@@ -69,7 +69,9 @@
  ;; Window divider on right
  window-divider-default-places t
  ;; Don't display comp warnings
- warning-suppress-log-types '((comp)))
+ warning-suppress-log-types '((comp))
+ ;; Firefox as default browser
+ browse-url-browser-function 'browse-url-firefox)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 

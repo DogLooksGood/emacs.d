@@ -2,8 +2,9 @@
 
 (defvar +font-family "Fira Code")
 (defvar +ufont-family "WenQuanYi Micro Hei Mono")
-(defvar +font-size 10)
-(defvar +ufont-scale 0.99)
+(defvar +mono-ufont-family "Sarasa Mono SC")
+(defvar +font-size 11)
+(defvar +ufont-scale 1)
 
 (defun +load-font ()
   (let* ((font-spec (format "%s-%d" +font-family +font-size)))
@@ -21,6 +22,15 @@
                         (font-spec :family +ufont-family)))))
 
 (+load-font)
+
+(defun setup-org-font ()
+  (set-face-attribute 'org-table nil :family +mono-ufont-family))
+
+(defun setup-markdown-font ()
+  (set-face-attribute 'markdown-table-face nil :family +mono-ufont-family))
+
+(add-hook 'org-mode-hook 'setup-org-font)
+(add-hook 'markdown-mode-hook 'setup-markdown-font)
 
 (use-package ligature
   :straight

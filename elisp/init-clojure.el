@@ -29,6 +29,7 @@
    cider-mode-map
    ("C-!" . 'cider-read-and-eval)
    ("M-." . 'cider-find-var)
+   ("C-c p" . 'cider-browse-spec)
    :map
    cider-repl-mode-map
    ("M-," . 'cider-repl-handle-shortcut)
