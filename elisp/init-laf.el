@@ -51,4 +51,10 @@
 
 (+change-theme t)
 
+
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (set-window-fringes
+             (minibuffer-window frame) 0 0 nil t)))
+
 (provide 'init-laf)
