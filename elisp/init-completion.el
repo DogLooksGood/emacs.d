@@ -18,13 +18,18 @@
   :init
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
+(defun +complete ()
+  (interactive)
+  (or (yas/expand)
+      (company-indent-or-complete-common nil)))
+
 (use-package company
   :hook (company-mode . company-tng-mode)
   :bind
   (:map company-mode-map
         ("M-RET" . 'yas-expand)
-        ("<tab>" . 'company-indent-or-complete-common)
-        ("TAB" . 'company-indent-or-complete-common))
+        ("<tab>" . '+complete)
+        ("TAB" . '+complete))
   (:map company-active-map
         ("<tab>" . 'company-complete-common-or-cycle)
         ("TAB" . 'company-complete-common-or-cycle)
