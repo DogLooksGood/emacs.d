@@ -1,4 +1,5 @@
-(require 'init-font)
+(when window-system
+  (require 'init-font))
 (require 'init-util)
 (require 'init-modal)
 (require 'init-lsp)
