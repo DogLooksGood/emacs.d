@@ -10,7 +10,9 @@
 
 (defun +org-post-command-hook ()
   (ignore-errors
-    (let ((in-latex (rime-predicate-org-latex-mode-p)))
+    (let ((in-latex (and (derived-mode-p  'org-mode)
+                         (or (org-inside-LaTeX-fragment-p)
+                             (org-inside-latex-macro-p)))))
       (if (and +org-last-in-latex (not in-latex))
           (progn (org-latex-preview)
                  (setq +org-last-in-latex nil)))

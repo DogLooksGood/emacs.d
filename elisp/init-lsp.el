@@ -1,20 +1,25 @@
 ;; -*- lexical-binding: t -*-
 
-(use-package flymake
-  :commands (flymake-mode)
-  :bind
-  (:map flymake-mode-map
-        ("M-n" . 'flymake-goto-next-error)
-        ("M-p" . 'flymake-goto-prev-error)))
+(straight-use-package 'flymake)
+(straight-use-package 'eglot)
 
-(use-package eglot
-  :commands (eglot-ensure eglot)
-  :hook
-  ((rust-mode c-mode elixir-mode python-mode) . eglot-ensure)
-  :custom
-  (eglot-stay-out-of '())
-  (eglot-ignored-server-capabilites '(:documentHighlightProvider))
-  :config
+;;; flymake
+
+(autoload #'flymake-mode "flymake")
+
+(with-eval-after-load "flymake"
+  (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+  (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
+
+;;; eglot
+
+(setq eglot-stay-out-of '()
+      eglot-ignored-server-capabilites '(:documentHighlightProvider))
+
+(autoload #'eglot-ensure "eglot")
+(autoload #'eglot "eglot")
+
+(with-eval-after-load "eglot"
   (add-to-list 'eglot-server-programs
 			   '(elixir-mode "/home/tianshu/source/elixir-ls/release/language_server.sh"))
   (add-to-list 'eglot-server-programs
