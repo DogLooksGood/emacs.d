@@ -133,27 +133,25 @@
    '("<f3>" . meow-start-kmacro)
    '("<f4>" . meow-end-or-call-kmacro)))
 
-(use-package meow
-  :straight
-  (meow
-   :type git
-   :host github
-   :repo "DogLooksGood/meow")
-  :init
-  (meow-global-mode 1)
-  :custom
-  (meow-esc-delay 0.001)
-  (meow-keypad-describe-delay 0.5)
-  (meow-select-on-exit t)
-  (meow-selection-command-fallback
-   '((meow-replace . meow-page-up)
-     (meow-change . meow-change-char)
-     (meow-save . meow-save-char)
-     (meow-kill . meow-C-k)
-     (meow-cancel-selection . meow-keyboard-quit)
-     (meow-reverse . meow-page-down)
-     (meow-delete . meow-C-d)))
-  :config
+(straight-use-package
+ '(meow :type git :host github :repo "DogLooksGood/meow"))
+
+(setq meow-esc-delay 0.001
+      meow-keypad-describe-delay 0.5
+      meow-select-on-exit t
+      meow-selection-command-fallback '((meow-replace . meow-page-up)
+                                        (meow-change . meow-change-char)
+                                        (meow-save . meow-save-char)
+                                        (meow-kill . meow-C-k)
+                                        (meow-cancel-selection . meow-keyboard-quit)
+                                        (meow-reverse . meow-page-down)
+                                        (meow-delete . meow-C-d)))
+
+(require 'meow)
+
+(meow-global-mode 1)
+
+(with-eval-after-load "meow"
   (meow-setup-line-number)
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
   (add-to-list 'meow-grab-fill-commands 'eval-expression)

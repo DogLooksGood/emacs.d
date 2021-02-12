@@ -1,8 +1,8 @@
-(use-package docker
-  :commands (docker))
+(straight-use-package 'docker)
 
-(use-package docker-compose-mode)
+(autoload #'docker "docker")
 
-(use-package dockerfile-mode)
+(straight-use-package 'docker-compose-mode)
+(straight-use-package 'dockerfile-mode)
 
 (provide 'init-docker)

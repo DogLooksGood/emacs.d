@@ -29,15 +29,22 @@
 (defun setup-markdown-font ()
   (set-face-attribute 'markdown-table-face nil :family +mono-ufont-family))
 
-(add-hook 'org-mode-hook 'setup-org-font)
-(add-hook 'markdown-mode-hook 'setup-markdown-font)
+(with-eval-after-load "org"
+  (add-hook 'org-mode-hook 'setup-org-font))
 
-(use-package ligature
-  :straight
-  (ligature :type git
+(with-eval-after-load "markdown"
+  (add-hook 'markdown-mode-hook 'setup-markdown-font))
+
+(straight-use-package
+ '(ligature :type git
 	        :host github
-	        :repo "mickeynp/ligature.el")
-  :config
+	        :repo "mickeynp/ligature.el"))
+
+(require 'ligature)
+
+(global-ligature-mode t)
+
+(with-eval-after-load "ligature"
   (ligature-set-ligatures 'emacs-lisp-mode
                           '("->" "->>" "<=" ">="))
   (ligature-set-ligatures 'elixir-mode
@@ -45,7 +52,6 @@
   (ligature-set-ligatures 'clojure-mode
                           '("->" "->>" ">=" "<="  ".-"))
   (ligature-set-ligatures 'web-mode
-                          '("</" "<!--" "-->" "/>"))
-  (global-ligature-mode t))
+                          '("</" "<!--" "-->" "/>")))
 
 (provide 'init-font)

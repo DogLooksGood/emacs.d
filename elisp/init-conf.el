@@ -1,8 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package yaml-mode)
-
-(use-package nginx-mode)
-
+(straight-use-package 'yaml-mode)
+(straight-use-package 'nginx-mode)
 
 (provide 'init-conf)

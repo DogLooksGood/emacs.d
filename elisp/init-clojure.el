@@ -1,52 +1,49 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package clojure-mode
-  :hook
-  (clojure-mode . paredit-mode)
-  :bind
-  (:map
-   clojure-mode-map
-   ("C-c C-i" . 'cider-inspect-last-result))
-  :config
+(straight-use-package 'clojure-mode)
+(straight-use-package 'clj-refactor)
+(straight-use-package 'cider)
+
+;;; clojure-mode
+
+(setq clojure-toplevel-inside-comment-form t)
+
+(autoload #'clojure-mode "clojure-mode")
+
+(with-eval-after-load "clojure-mode"
   (modify-syntax-entry ?: "w" clojure-mode-syntax-table)
   (require 'init-clojure-highlight-fix)
-  :custom
-  (clojure-toplevel-inside-comment-form t))
 
-(use-package clj-refactor
-  :hook (clojure-mode . clj-refactor-mode)
-  :config
-  (unbind-key "/" clj-refactor-map)
-  (cljr-add-keybindings-with-prefix "C-c C-r")
-  :custom
-  (cljr-warn-on-eval t)
-  (cljr-suppress-middleware-warnings t))
+  (add-hook 'clojure-mode-hook 'paredit-mode)
+  (add-hook 'clojure-mode-hook 'clj-refactor-mode)
 
-(use-package cider
-  :commands (cider-jack-in cider-jack-in-cljs cider-jack-in-clj&cljs)
-  :bind
-  (:map
-   cider-mode-map
-   ("C-!" . 'cider-read-and-eval)
-   ("M-." . 'cider-find-var)
-   ("C-c p" . 'cider-browse-spec)
-   :map
-   cider-repl-mode-map
-   ("M-," . 'cider-repl-handle-shortcut)
-   ("C-," . 'cider-repl-handle-shortcut))
-  :config
-  (unbind-key "M-." cider-mode-map)
-  (unbind-key "C-c C-p" cider-mode-map)
-  :init
-  ;; (setq-default cider-default-cljs-repl 'shadow)
-  :custom
-  (cider-font-lock-dynamically nil)
-  (cider-font-lock-reader-conditionals nil)
-  (cider-use-fringe-indicators t)
-  (cider-prompt-for-symbol nil)
-  (cider-save-file-on-load t)
-  (cider-enhanced-cljs-completion-p nil)
-  (cider-offer-to-open-cljs-app-in-browser nil))
+  (define-key clojure-mode-map (kbd "C-c C-i") 'cider-inspect-last-result))
 
+;;; clj-refactor
+
+(setq cljr-warn-on-eval t
+      cljr-suppress-middleware-warnings t)
+
+(autoload #'clj-refactor-mode "clj-refactor")
+
+(with-eval-after-load "clj-refactor"
+  (define-key clj-refactor-map (kbd "/") nil)
+  (cljr-add-keybindings-with-prefix "C-c C-r"))
+
+;;; cider
+
+(setq
+ cider-font-lock-dynamically nil
+ cider-font-lock-reader-conditionals nil
+ cider-use-fringe-indicators t
+ cider-prompt-for-symbol nil
+ cider-save-file-on-load t
+ cider-enhanced-cljs-completion-p nil
+ cider-offer-to-open-cljs-app-in-browser nil)
+
+(autoload #'cider-jack-in "cider")
+(autoload #'cider-jack-in-cljs "cider")
+(autoload #'cider-jack-in-clj&cljs "cider")
+(autoload #'cider "cider")
 
 (provide 'init-clojure)
