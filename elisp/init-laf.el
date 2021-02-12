@@ -17,7 +17,7 @@
   (add-to-list 'default-frame-alist (cons 'internal-border-width margin))
   (set-frame-parameter nil 'internal-border-width margin))
 
-(let ((alpha 90))
+(let ((alpha 100))
   (add-to-list 'default-frame-alist (cons 'alpha alpha))
   (set-frame-parameter nil 'alpha alpha))
 
