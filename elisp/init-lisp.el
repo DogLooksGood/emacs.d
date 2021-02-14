@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package
+ '(paredit :type git
+           :host github
+           :repo "emacsmirror/paredit"))
+
 (defun +lisp-semicolon ()
   "Will insert a semicolon if we are at the beginning of the line,
 otherwise will insert a colon."
@@ -10,16 +15,14 @@ otherwise will insert a colon."
       (call-interactively #'self-insert-command)
     (insert ":")))
 
-(use-package paredit
-  :straight
-  (paredit :type git
-           :host github
-           :repo "emacsmirror/paredit")
-  :bind
-  (:map paredit-mode-map
-		(";" . '+lisp-semicolon))
-  :hook
-  (emacs-lisp-mode . paredit-mode)
-  (lisp-mode . paredit-mode))
+;;; paredit
+
+(autoload #'paredit-mode "paredit")
+
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'lisp-mode-hook 'paredit-mode)
+
+(with-eval-after-load "paredit"
+  (define-key paredit-mode-map (kbd ";") '+lisp-semicolon))
 
 (provide 'init-lisp)

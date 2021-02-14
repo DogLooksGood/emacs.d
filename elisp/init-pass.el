@@ -1,7 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package pass
-  :commands (pass))
+(straight-use-package 'pass)
+
+(require 'pass)
+
+(autoload #'pass "pass")
 
 (provide 'init-pass)
 ;; init-pass.el ends here

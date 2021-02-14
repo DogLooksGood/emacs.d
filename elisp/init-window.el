@@ -1,11 +1,15 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package ace-window
-  :commands
-  (ace-swap-window ace-window)
-  :custom
-  (aw-keys '(?a ?o ?e ?u ?i))
-  (aw-scope 'frame))
+(straight-use-package 'ace-window)
+
+;;; ace-window
+
+(setq
+ aw-keys '(?a ?o ?e ?u ?i)
+ aw-scope 'frame)
+
+(autoload #'ace-window "ace-window")
+(autoload #'ace-swap-window "ace-window")
 
 (windmove-default-keybindings 'meta)
 

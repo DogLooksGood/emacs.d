@@ -40,6 +40,8 @@
 	        :host github
 	        :repo "mickeynp/ligature.el"))
 
+;;; ligature
+
 (require 'ligature)
 
 (global-ligature-mode t)

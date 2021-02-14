@@ -1,4 +1,15 @@
-(require 'init-util)
+;;; -*- lexical-binding: t; -*-
+
+(straight-use-package 'elixir-mode)
+
+(straight-use-package 'mix)
+
+(straight-use-package
+ '(inf-iex :type git
+	       :host github
+	       :repo "DogLooksgood/inf-iex"))
+
+;;; Custom functions
 
 (defface +elixir-dim-face
   '((((class color) (background dark))
@@ -38,24 +49,18 @@
       (backward-delete-char 1)
       (insert ":")))))
 
-(use-package inf-iex
-  :hook
-  (elixir-mode . inf-iex-minor-mode)
-  :straight
-  (inf-iex :type git
-	   :host github
-	   :repo "DogLooksgood/inf-iex")
-  :custom
-  (inf-iex-default-iex-command "iex -S mix phx.server"))
+;;; inf-iex
 
-(use-package elixir-mode
-  :hook (elixir-mode . electric-pair-local-mode)
-  :mode (("\\.eex\\'" . web-mode)
-         ("\\.leex\\'" . web-mode))
-  :bind
-  (:map elixir-mode-map
-        ("C-c C-f" . 'elixir-format))
-  :config
+(setq
+ inf-iex-default-iex-command "iex -S mix phx.server")
+
+(autoload #'inf-iex-minor-mode "inf-iex")
+
+;;; elixir-mode
+
+(autoload #'elixir-mode "elixir-mode")
+
+(with-eval-after-load "elixir-mode"
   (font-lock-add-keywords 'elixir-mode
                           '(("\\([_a-zA-Z0-9!?]+\\):" 1 'default)
                             (":[_a-zA-Z0-9\"!?]+" . font-lock-constant-face)
@@ -64,15 +69,19 @@
                             ("\\_<nil\\_>" . font-lock-constant-face)
                             ("\\_<_[a-zA-Z0-9]*\\_>" . '+elixir-dim-face)))
   (modify-syntax-entry ?& "'" elixir-mode-syntax-table)
-  (add-hook 'elixir-mode-hook '+elixir-post-self-insert-hook-setup))
 
-(use-package mix
-  :commands
-  (mix-test mix-test-current-buffer mix-test-current-test)
-  :bind
-  (:map elixir-mode-map
-        (("C-c C-t t" . 'mix-test)
-         ("C-c C-t b" . 'mix-test-current-buffer)
-         ("C-c C-t c" . 'mix-test-current-test))))
+  (add-hook 'elixir-mode-hook '+elixir-post-self-insert-hook-setup)
+  (add-hook 'elixir-mode-hook 'electric-pair-local-mode)
+
+  (define-key elixir-mode-map (kbd "C-c C-f") 'elixir-format)
+  (define-key elixir-mode-map (kbd "C-c C-t t") 'mix-test)
+  (define-key elixir-mode-map (kbd "C-c C-t b") 'mix-test-current-buffer)
+  (define-key elixir-mode-map (kbd "C-c C-t c") 'mix-test-current-test))
+
+;;; mix
+
+(autoload #'mix-test "mix")
+(autoload #'mix-test-current-buffer "mix")
+(autoload #'mix-test-current-test "mix")
 
 (provide 'init-elixir)

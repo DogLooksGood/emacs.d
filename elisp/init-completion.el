@@ -1,94 +1,101 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package yasnippet
-  :bind
-  (:map
-   yas-keymap
-   ("<escape>")
-   ("RET" . 'yas-next-field-or-maybe-expand)
-   ("<return>" . 'yas-next-field-or-maybe-expand)
-   ("M-RET" . 'yas-expand-snippet)
-   ("M-<return>" . 'yas-expand-snippet)
-   ("S-<return>" . 'yas-prev-field)
-   ("TAB")
-   ("S-TAB")
-   ("<tab>"))
-  :config
-  (let ((inhibit-message t)) (yas-reload-all))
-  :init
-  (add-hook 'prog-mode-hook #'yas-minor-mode))
+(straight-use-package 'yasnippet)
+(straight-use-package 'company)
+(straight-use-package 'ivy)
+(straight-use-package 'counsel)
+(straight-use-package 'deadgrep)
 
 (defun +complete ()
   (interactive)
   (or (yas/expand)
       (company-indent-or-complete-common nil)))
 
-(use-package company
-  :hook (company-mode . company-tng-mode)
-  :bind
-  (:map company-mode-map
-        ("M-RET" . 'yas-expand)
-        ("<tab>" . '+complete)
-        ("TAB" . '+complete))
-  (:map company-active-map
-        ("<tab>" . 'company-complete-common-or-cycle)
-        ("TAB" . 'company-complete-common-or-cycle)
-        ("<escape>")
-        ("RET")
-        ("<return>")
-        ("SPC"))
-  (:map company-template-nav-map
-        ("RET" . 'company-template-forward-field)
-        ("<return>" . 'company-template-forward-field)
-        ("TAB")
-        ("<tab>"))
-  :init
+;;; yasnippet
+
+(autoload #'yas-minor-mode "yasnippet")
+
+(add-hook 'prog-mode-hook 'yas-minor-mode)
+
+(with-eval-after-load "yasnippet"
+  (let ((inhibit-message t))
+    (yas-reload-all))
+
+  (define-key yas-keymap [escape] nil)
+  (define-key yas-keymap [tab] nil)
+  (define-key yas-keymap (kbd "S-<tab>") nil)
+  (define-key yas-keymap (kbd "TAB") nil)
+  (define-key yas-keymap [return] 'yas-next-field-or-maybe-expand)
+  (define-key yas-keymap (kbd "RET") 'yas-next-field-or-maybe-expand)
+  (define-key yas-keymap (kbd "S-<return>") 'yas-prev-field))
+
+;;; company
+
+(setq
+ company-tng-auto-configure nil
+ company-frontends '(company-tng-frontend
+                     company-pseudo-tooltip-frontend
+                     company-echo-metadata-frontend)
+ company-begin-commands '(self-insert-command)
+ company-idle-delay 0.2
+ company-tooltip-limit 10
+ company-tooltip-align-annotations t
+ company-tooltip-width-grow-only t
+ company-tooltip-idle-delay 0.1
+ company-minimum-prefix-length 3
+ company-dabbrev-downcase nil
+ company-abort-manual-when-too-short t
+ company-require-match nil
+ company-global-modes '(not dired-mode dired-sidebar-mode)
+ company-tooltip-margin 0)
+
+(autoload #'company-mode "company")
+
+(add-hook 'prog-mode-hook 'company-mode)
+(add-hook 'confmode-hook 'company-mode)
+(add-hook 'eshell-mode-hook 'company-mode)
+
+(with-eval-after-load "company"
+  (require 'company-tng)
   (require 'company-template)
-  :hook
-  ((prog-mode . company-mode)
-   (conf-mode . company-mode)
-   (eshell-mode . company-mode))
-  :custom
-  (company-tng-auto-configure nil)
-  (company-frontends '(company-tng-frontend
-                       company-pseudo-tooltip-frontend
-                       company-echo-metadata-frontend))
-  (company-begin-commands '(self-insert-command))
-  (company-idle-delay 0.2)
-  (company-tooltip-limit 10)
-  (company-tooltip-align-annotations t)
-  (company-tooltip-width-grow-only t)
-  (company-tooltip-idle-delay 0.1)
-  (company-minimum-prefix-length 3)
-  (company-dabbrev-downcase nil)
-  (company-abort-manual-when-too-short t)
-  (company-require-match nil)
-  (company-global-modes '(not dired-mode dired-sidebar-mode))
-  (company-tooltip-margin 0))
+  (add-hook 'company-mode-hook 'company-tng-mode)
 
-(use-package ivy
-  :init
-  (ivy-mode 1)
-  :custom
-  (ivy-use-selectable-prompt t))
+  (define-key company-mode-map [tab] '+complete)
+  (define-key company-mode-map (kbd "TAB") '+complete)
+  (define-key company-active-map [tab] 'company-complete-common-or-cycle)
+  (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+  (define-key company-active-map [escape] nil)
+  (define-key company-active-map [return] nil)
+  (define-key company-active-map (kbd "RET") nil)
+  (define-key company-active-map (kbd "SPC") nil)
+  (define-key company-active-map (kbd "SPC") nil)
 
-(use-package counsel
-  :init
-  (counsel-mode 1))
+  (define-key company-template-nav-map (kbd "RET") 'company-template-forward-field)
+  (define-key company-template-nav-map [return] 'company-template-forward-field)
+  (define-key company-template-nav-map (kbd "TAB") nil)
+  (define-key company-template-nav-map [tab] nil))
 
-;; (use-package selectrum
-;;   :init
-;;   (selectrum-mode 1))
-;; (use-package prescient)
-;; (use-package selectrum-prescient
-;;   :init
-;;   (selectrum-prescient-mode 1))
+;;; ivy
 
-(use-package deadgrep
-  :bind
-  (:map deadgrep-mode-map
-		("w" . 'deadgrep-edit-mode))
-  (:map deadgrep-edit-mode-map
-		("C-x C-s" . 'deadgrep-mode)))
+(setq
+ ivy-use-selectable-prompt t)
+
+(require 'ivy)
+
+(ivy-mode t)
+
+;;; counsel
+
+(require 'counsel)
+
+(counsel-mode t)
+
+;;; deadgrep
+
+(autoload #'deadgrep "deadgrep")
+
+(with-eval-after-load "deadgrep"
+  (define-key deadgrep-mode-map (kbd "w") 'deadgrep-edit-mode)
+  (define-key deadgrep-edit-mode-map (kbd "C-x C-s") 'deadgrep-mode))
 
 (provide 'init-completion)

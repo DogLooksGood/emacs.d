@@ -1,3 +1,7 @@
+;; -*- lexical-binding: t; -*-
+
+(straight-use-package 'conda)
+
 (defun +python-semicolon ()
   (interactive)
   (if (or (+in-comment-p) (+in-string-p))
@@ -22,34 +26,22 @@
   (bind-key ";" '+python-semicolon python-mode-map)
   (bind-key "-" '+python-minus python-mode-map))
 
+;;; python-mode(built-in)
+
 (add-hook 'python-mode-hook #'+init-python-keybinding)
 
-(use-package conda
-  :commands (conda-env-activate conda-env-list)
-  :config
+;;; conda
+
+(custom-set-variables
+ '(conda-anaconda-home
+   (if (file-directory-p "/opt/anaconda/") "/opt/anaconda/" "/opt/miniconda3/"))
+ '(conda-env-home-directory (expand-file-name "~/.conda")))
+
+(autoload #'conda-env-activate "conda")
+(autoload #'conda-env-list "conda")
+
+(with-eval-after-load "conda"
   (conda-env-initialize-interactive-shells)
-  (conda-env-initialize-eshell)
-  :custom
-  (conda-anaconda-home
-   (if (file-directory-p "/opt/anaconda/")
-       "/opt/anaconda/"
-     "/opt/miniconda3/"))
-  (conda-env-home-directory (expand-file-name "~/.conda")))
-
-(defun +python-eval-cell ()
-  (interactive)
-  (code-cells-do
-   (python-shell-send-region start end)))
-
-(use-package code-cells
-  :hook
-  (code-cells . outline-minor-mode)
-  :straight
-  (code-cells :type git
-              :host github
-              :repo "astoff/code-cells.el")
-  :bind
-  (:map python-mode-map
-        ("C-c C-c" . +python-eval-cell)))
+  (conda-env-initialize-eshell))
 
 (provide 'init-python)

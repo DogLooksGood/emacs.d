@@ -152,7 +152,7 @@
 (meow-global-mode 1)
 
 (with-eval-after-load "meow"
-  (meow-setup-line-number)
+  ;; (meow-setup-line-number)
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
   (add-to-list 'meow-grab-fill-commands 'eval-expression)
   (meow-setup))

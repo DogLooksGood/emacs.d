@@ -1,3 +1,8 @@
+;; -*- lexical-binding: t; -*-
+
+(straight-use-package 'rust-mode)
+(straight-use-package 'cargo)
+
 (defun +rust-whitespace ()
   (interactive)
   (if (or (+in-string-p)
@@ -52,23 +57,29 @@
       (call-interactively #'self-insert-command)
     (self-insert-command 1 ?_)))
 
-(use-package rust-mode
-  :bind
-  (:map
-   rust-mode-map
-   ("-" . '+rust-minus)
-   ("<" . '+rust-lessthan)
-   ("SPC" . '+rust-whitespace)
-   (";" . '+rust-semicolon)))
+;;; rust-mode
 
-(use-package cargo
-  :bind
-  (:map
-   rust-mode-map
-   ("C-c C-c" . 'cargo-process-run)
-   ("C-c C-t t" . 'cargo-process-current-test)
-   ("C-c C-t f" . 'cargo-process-current-file-tests)
-   ("C-c C-t p" . 'cargo-process-test)
-   ("C-c C-k" . 'cargo-process-check)))
+(autoload #'rust-mode "rust-mode")
+
+(with-eval-after-load "rust-mode"
+  (define-key rust-mode-map (kbd "-") #'+rust-minus)
+  (define-key rust-mode-map (kbd "<") #'+rust-lessthan)
+  (define-key rust-mode-map (kbd "SPC") #'+rust-whitespace)
+  (define-key rust-mode-map (kbd ";") #'+rust-semicolon))
+
+;;; cargo
+
+(autoload #'cargo-process-run "cargo")
+(autoload #'cargo-process-current-test "cargo")
+(autoload #'cargo-process-current-file-tests "cargo")
+(autoload #'cargo-process-test "cargo")
+(autoload #'cargo-process-check "cargo")
+
+(with-eval-after-load "cargo"
+  (define-key rust-mode-map (kbd "C-c C-c") #'cargo-process-run)
+  (define-key rust-mode-map (kbd "C-c C-t t") #'cargo-process-current-test)
+  (define-key rust-mode-map (kbd "C-c C-t f") #'cargo-process-current-file-tests)
+  (define-key rust-mode-map (kbd "C-c C-t p") #'cargo-process-test)
+  (define-key rust-mode-map (kbd "C-c C-k") #'cargo-process-check))
 
 (provide 'init-rust)

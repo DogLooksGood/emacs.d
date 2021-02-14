@@ -1,5 +1,16 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package 'org-roam)
+(straight-use-package 'org-roam-server)
+(straight-use-package 'htmlize)
+(straight-use-package 'org-superstar)
+(straight-use-package
+ '(org-html-themify
+   :type git
+   :host github
+   :repo "DogLooksGood/org-html-themify"
+   :files ("*.el" "*.js" "*.css")))
+
 ;;; Latex support
 ;;; install latex with
 ;;; pacman -S texlive-bin texlive-most
@@ -59,83 +70,59 @@
   (setq org-confirm-babel-evaluate nil)
   (add-hook 'org-babel-after-execute-hook '+org-redisplay-inline-images))
 
-(use-package org
-  :straight (:type built-in)
-  :bind
-  (:map org-mode-map
-        ("<f8>" . org-latex-auto-toggle))
-  :config
+;;; org-mode
+
+(setq org-html-checkbox-type 'unicode)
+
+(with-eval-after-load "org"
+  (define-key org-mode-map (kbd "<f8>") 'org-latex-auto-toggle)
   (require 'org-tempo)
   (+org-babel-setup)
-  :custom
-  (org-html-checkbox-type 'unicode))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 4.0)))
 
-;;; Org Roam
+;;; org-roam
 
-(use-package org-roam
-  :hook
-  (after-init . org-roam-mode)
-  :config
-  (setq org-format-latex-options
-        (plist-put org-format-latex-options :scale 4.0))
-  :custom
-  (org-roam-directory
-   (let ((p (expand-file-name "~/Org")))
-     (unless (file-directory-p p) (make-directory p))
-     p))
-  (org-roam-capture-templates
-   '(("d" "default" plain (function org-roam--capture-get-point)
-      "%?"
-      :file-name "%<%Y%m%d%H%M%S>-${slug}"
-      :head "#+title: ${title}\n"
-      :unnarrowed t)))
-  :bind
-  (:map org-roam-mode-map
-        ("C-x C-r l" . org-roam)
-        ("C-x C-r f" . org-roam-find-file)
-        ("C-x C-r g" . org-roam-graph)
-        ("C-x C-r c" . org-roam-db-build-cache))
-  (:map org-mode-map
-        ("<f7>" . org-roam-insert)
-        ("C-x C-r i" . org-roam-insert)
-        ("C-x C-r I" . org-roam-insert-immediate))
-  :config
+(setq
+ org-roam-directory
+ (let ((p (expand-file-name "~/Org")))
+   (unless (file-directory-p p) (make-directory p))
+   p)
+ org-roam-capture-templates
+ '(("d" "default" plain (function org-roam--capture-get-point)
+    "%?"
+    :file-name "%<%Y%m%d%H%M%S>-${slug}"
+    :head "#+title: ${title}\n"
+    :unnarrowed t)))
+
+(global-set-key (kbd "<f12>") 'org-roam-mode)
+
+(with-eval-after-load "org-roam"
+  (define-key org-roam-mode-map (kbd "C-x C-r l") 'org-roam)
+  (define-key org-roam-mode-map (kbd "C-x C-r f") 'org-roam-find-file)
+  (define-key org-roam-mode-map (kbd "C-x C-r g") 'org-roam-graph)
+  (define-key org-roam-mode-map (kbd "C-x C-r c") 'org-roam-db-build-cache)
+
+  (define-key org-mode-map (kbd "<f7>") 'org-roam-insert)
+  (define-key org-mode-map (kbd "C-x C-r i") 'org-roam-insert)
+  (define-key org-mode-map (kbd "C-x C-r I") 'org-roam-insert-immediate)
+
   ;; https://www.orgroam.com/manual.html#Roam-Protocol
   (require 'org-roam-protocol))
 
-(use-package org-roam-server
-  :ensure t
-  :config
-  (setq org-roam-server-host "0.0.0.0"
-        org-roam-server-port 8080
-        org-roam-server-authenticate nil
-        org-roam-server-export-inline-images t
-        org-roam-server-serve-files t
-        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20))
+;;; org-superstar
 
-(use-package org-superstar
-  :hook (org-mode . org-superstar-mode))
+(autoload #'org-superstar-mode "org-superstar")
 
-(use-package htmlize
-  :custom
-  (htmlize-face-overrides '(clojure-keyword-face (:foreground "var(--clr-constant)" :background "var(--bg-constant)"))))
+(add-hook 'org-mode-hook 'org-superstar-mode)
 
-(use-package org-html-themify
-  :straight
-  (org-html-themify
-   :type git
-   :host github
-   :repo "DogLooksGood/org-html-themify"
-   :files ("*.el" "*.js" "*.css"))
-  :hook (org-mode . org-html-themify-mode)
-  :custom
-  (org-html-themify-themes
-   '((dark . joker)
-     (light . storybook))))
+;;; org-html-themify
+
+(setq
+ org-html-themify-themes '((dark . joker)
+                           (light . storybook)))
+
+(autoload #'org-html-themify-mode "org-html-themify")
+
+(add-hook 'org-mode-hook 'org-html-themify-mode)
 
 (provide 'init-org)

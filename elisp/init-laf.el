@@ -1,17 +1,18 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package
+ '(joker-theme :type git
+               :host github
+               :repo "DogLooksGood/joker-theme"))
+
 (defvar +after-change-theme-hook nil
   "Hooks called after theme is changed.")
 
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
 (require 'printed-theme)
-(use-package joker-theme
-  :straight
-  (joker-theme :type git
-               :host github
-               :repo "DogLooksGood/joker-theme"))
 (require 'storybook-theme)
+(require 'joker-theme)
 
 (let ((margin 0))
   (add-to-list 'default-frame-alist (cons 'internal-border-width margin))

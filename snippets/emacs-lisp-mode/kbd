@@ -2,4 +2,4 @@
 # name: kbd
 # key: kk
 # --
-(kbd "$0")
+(kbd "$1")$0
