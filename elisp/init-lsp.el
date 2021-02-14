@@ -13,8 +13,9 @@
 
 ;;; eglot
 
-(setq eglot-stay-out-of '()
-      eglot-ignored-server-capabilites '(:documentHighlightProvider))
+(custom-set-variables
+ '(eglot-stay-out-of nil)
+ '(eglot-ignored-server-capabilites '(:documentHighlightProvider)))
 
 (autoload #'eglot-ensure "eglot")
 (autoload #'eglot "eglot")

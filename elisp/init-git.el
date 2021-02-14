@@ -19,8 +19,8 @@
 
 ;;; dired-git-info
 
-(setq
- dgi-auto-hide-details-p nil)
+(custom-set-variables
+ '(dgi-auto-hide-details-p nil))
 
 (autoload #'dired-git-info "dired-git-info")
 
