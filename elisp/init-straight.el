@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (setq straight-vc-git-default-clone-depth 1)
+(setq straight-check-for-modifications '(find-when-checking))
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -12,5 +13,9 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+(global-set-key (kbd "C-x M-s p") 'straight-pull-package)
+(global-set-key (kbd "C-x M-s c") 'straight-check-all)
+(global-set-key (kbd "C-x M-s P") 'straight-pull-all)
 
 (provide 'init-straight)

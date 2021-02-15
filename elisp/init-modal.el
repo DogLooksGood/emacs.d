@@ -38,7 +38,6 @@
    '("q" . delete-window)
    '("v" . magit)
    '("$" . +change-theme)
-   '("~" . +reload-font-and-theme)
    '("-" . split-window-below)
    '("\\" . split-window-right)
    '("p" . project-find-file)

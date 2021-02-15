@@ -2,8 +2,9 @@
 
 (straight-use-package 'yasnippet)
 (straight-use-package 'company)
+;; (straight-use-package 'selectrum)
 (straight-use-package 'ivy)
-(straight-use-package 'counsel)
+;; (straight-use-package 'counsel)
 (straight-use-package 'deadgrep)
 
 (defun +complete ()
@@ -86,9 +87,9 @@
 
 ;;; counsel
 
-(require 'counsel)
-
-(counsel-mode t)
+;; (require 'counsel)
+;;
+;; (counsel-mode t)
 
 ;;; deadgrep
 

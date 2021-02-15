@@ -2,8 +2,6 @@
 
 (straight-use-package 'pass)
 
-(require 'pass)
-
 (autoload #'pass "pass")
 
 (provide 'init-pass)

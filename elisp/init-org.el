@@ -54,7 +54,6 @@
     (setq org-format-latex-options
           (plist-put org-format-latex-options :theme theme))))
 
-(+org-update-latex-option-by-theme (car +theme-list))
 (add-hook '+after-change-theme-hook '+org-update-latex-option-by-theme)
 
 ;;; Org babel
