@@ -52,7 +52,7 @@
 (autoload #'company-mode "company")
 
 (add-hook 'prog-mode-hook 'company-mode)
-(add-hook 'confmode-hook 'company-mode)
+(add-hook 'conf-mode-hook 'company-mode)
 (add-hook 'eshell-mode-hook 'company-mode)
 
 (with-eval-after-load "company"

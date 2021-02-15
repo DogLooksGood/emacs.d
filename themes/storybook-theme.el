@@ -41,6 +41,8 @@
    `(font-lock-variable-name-face   ((t ())))
    `(font-lock-type-face            ((t ())))
    `(font-lock-preprocessor-face    ((t (:inherit font-lock-constant-face))))
+   `(compilation-warning            ((t (:inherit font-lock-warning-face))))
+   `(warning                        ((t (:inherit font-lock-warning-face))))
    `(meow-keypad-indicator          ((t (:foreground "#801717" :background "#FF6666"))))
    `(meow-insert-indicator          ((t (:foreground "#309030" :background "#AAE9A0"))))
    `(meow-normal-indicator          ((t (:foreground "#6F5033" :background "#FFEE99"))))
