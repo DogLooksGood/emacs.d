@@ -6,8 +6,8 @@
 
 ;;; clojure-mode
 
-(custom-set-variables
- '(clojure-toplevel-inside-comment-form t))
+(setq
+ clojure-toplevel-inside-comment-form t)
 
 (autoload #'clojure-mode "clojure-mode")
 
@@ -22,9 +22,9 @@
 
 ;;; clj-refactor
 
-(custom-set-variables
- '(cljr-warn-on-eval t)
- '(cljr-suppress-middleware-warnings t))
+(setq
+ cljr-warn-on-eval t
+ cljr-suppress-middleware-warnings t)
 
 (autoload #'clj-refactor-mode "clj-refactor")
 
@@ -34,14 +34,14 @@
 
 ;;; cider
 
-(custom-set-variables
- '(cider-font-lock-dynamically nil)
- '(cider-font-lock-reader-conditionals nil)
- '(cider-use-fringe-indicators t)
- '(cider-prompt-for-symbol nil)
- '(cider-save-file-on-load t)
- '(cider-enhanced-cljs-completion-p nil)
- '(cider-offer-to-open-cljs-app-in-browser nil))
+(setq
+ cider-font-lock-dynamically nil
+ cider-font-lock-reader-conditionals nil
+ cider-use-fringe-indicators t
+ cider-prompt-for-symbol nil
+ cider-save-file-on-load t
+ cider-enhanced-cljs-completion-p nil
+ cider-offer-to-open-cljs-app-in-browser nil)
 
 (autoload #'cider-jack-in "cider")
 (autoload #'cider-jack-in-cljs "cider")

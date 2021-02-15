@@ -4,9 +4,9 @@
 
 ;;; ace-window
 
-(custom-set-variables
- '(aw-keys '(?a ?o ?e ?u ?i))
- '(aw-scope 'frame))
+(setq
+ aw-keys '(?a ?o ?e ?u ?i)
+ aw-scope 'frame)
 
 (autoload #'ace-window "ace-window")
 (autoload #'ace-swap-window "ace-window")

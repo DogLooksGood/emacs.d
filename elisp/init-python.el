@@ -32,10 +32,10 @@
 
 ;;; conda
 
-(custom-set-variables
- '(conda-anaconda-home
-   (if (file-directory-p "/opt/anaconda/") "/opt/anaconda/" "/opt/miniconda3/"))
- '(conda-env-home-directory (expand-file-name "~/.conda")))
+(setq
+ conda-anaconda-home
+ (if (file-directory-p "/opt/anaconda/") "/opt/anaconda/" "/opt/miniconda3/")
+ conda-env-home-directory (expand-file-name "~/.conda"))
 
 (autoload #'conda-env-activate "conda")
 (autoload #'conda-env-list "conda")

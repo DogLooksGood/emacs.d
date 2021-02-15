@@ -5,9 +5,9 @@
 (defun +treemacs-scale-font-size ()
   (face-remap-add-relative 'default :height 0.8))
 
-(custom-set-variables
- '(treemacs-no-png-images t)
- '(treemacs-width 40))
+(setq
+ treemacs-no-png-images t
+ treemacs-width 40)
 
 (autoload #'treemacs "treemacs")
 (autoload #'treemacs-select-window "treemacs")

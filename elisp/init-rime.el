@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package
+ '(rime :type git
+        :host github
+        :repo "DogLooksGood/emacs-rime"))
+
 (setq
  rime-disable-predicates '(meow-normal-mode-p
                            meow-motion-mode-p
@@ -12,11 +17,6 @@
  rime-cursor "|"
  rime-show-candidate 'minibuffer
  rime-title "rime")
-
-(straight-use-package
- '(rime :type git
-        :host github
-        :repo "DogLooksGood/emacs-rime"))
 
 (autoload #'toggle-input-method "rime" nil t)
 

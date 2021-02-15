@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
-(custom-set-variables
- '(markdown-fontify-code-blocks-natively t))
+(setq
+ markdown-fontify-code-blocks-natively t)
 
 (straight-use-package 'markdown-mode)
 

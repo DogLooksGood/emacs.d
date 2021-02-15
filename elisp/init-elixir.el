@@ -51,8 +51,8 @@
 
 ;;; inf-iex
 
-(custom-set-variables
- '(inf-iex-default-iex-command "iex -S mix phx.server"))
+(setq
+ inf-iex-default-iex-command "iex -S mix phx.server")
 
 (autoload #'inf-iex-minor-mode "inf-iex")
 

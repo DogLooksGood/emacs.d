@@ -23,7 +23,9 @@
   (set-frame-parameter nil 'alpha alpha))
 
 (defvar +theme-list
-  '(storybook joker printed))
+  (if window-system
+      '(joker storybook printed)
+    '(joker)))
 
 (set-display-table-slot standard-display-table
                         'vertical-border
@@ -32,12 +34,11 @@
 (defun +change-theme (&optional no-msg)
   (interactive)
   (mapc #'disable-theme custom-enabled-themes)
-  (setq +theme-list (append (cdr +theme-list) (list (car +theme-list))))
-  (let ((this-theme (car +theme-list)))
-    (load-theme this-theme t)
-    (unless no-msg
-      (message "Load theme: %s" this-theme))
-    (run-hook-with-args '+after-change-theme-hook this-theme)))
+  (let ((theme (car +theme-list))
+        (new-theme-list (append (cdr +theme-list) (list (car +theme-list)))))
+    (load-theme theme t)
+    (unless no-msg (message "Load theme: %s" theme))
+    (run-hook-with-args '+after-change-theme-hook theme)))
 
 (defun +highlight-prog-mode-function-name ()
   (face-remap-add-relative 'font-lock-function-name-face :underline t :extend t))
@@ -51,7 +52,6 @@
   (load-theme (car +theme-list) t))
 
 (+change-theme t)
-
 
 (add-hook 'after-make-frame-functions
           (lambda (frame)
