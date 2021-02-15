@@ -1,5 +1,4 @@
-;;; -*- lexical-binding: t -*-
-
+;;; -*- lexical-binding: t; -*-
 
 (defun setup-org-font ()
   (set-face-attribute 'org-table nil :family +mono-ufont-family))

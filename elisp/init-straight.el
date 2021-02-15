@@ -15,7 +15,10 @@
   (load bootstrap-file nil 'nomessage))
 
 (global-set-key (kbd "C-x M-s p") 'straight-pull-package)
-(global-set-key (kbd "C-x M-s c") 'straight-check-all)
 (global-set-key (kbd "C-x M-s P") 'straight-pull-all)
+(global-set-key (kbd "C-x M-s c") 'straight-check-package)
+(global-set-key (kbd "C-x M-s C") 'straight-check-package)
+(global-set-key (kbd "C-x M-s b") 'straight-rebuild-package)
+(global-set-key (kbd "C-x M-s B") 'straight-rebuild-all)
 
 (provide 'init-straight)
