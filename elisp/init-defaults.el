@@ -73,7 +73,9 @@
  ;; Firefox as default browser
  browse-url-browser-function 'browse-url-firefox
  ;; Custom file path
- custom-file (expand-file-name "custom.el" user-emacs-directory))
+ custom-file (expand-file-name "custom.el" user-emacs-directory)
+ ;; Goto top or bottom when scroll failed
+ scroll-error-top-bottom t)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
