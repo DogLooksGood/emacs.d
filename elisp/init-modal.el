@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (defun meow-setup ()
+  (setq meow-cheatsheet-physical-layout meow-cheatsheet-physical-layout-ansi)
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-dvp)
   (meow-motion-overwrite-define-key
    '("q" . meow-quit))

@@ -94,6 +94,7 @@
   (interactive)
   (find-alternate-file (format "/sudo::%s" (buffer-file-name))))
 
+
 (global-set-key (kbd "C-x C-z") #'+reopen-file-with-sudo)
 ;; (global-set-key (kbd "<f7>") #'profiler-start)
 ;; (global-set-key (kbd "<f8>") #'profiler-report)

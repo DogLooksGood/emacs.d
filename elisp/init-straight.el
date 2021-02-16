@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (setq straight-vc-git-default-clone-depth 1)
-(setq straight-check-for-modifications '(find-when-checking))
+;; (setq straight-check-for-modifications '(find-when-checking))
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -17,7 +17,7 @@
 (global-set-key (kbd "C-x M-s p") 'straight-pull-package)
 (global-set-key (kbd "C-x M-s P") 'straight-pull-all)
 (global-set-key (kbd "C-x M-s c") 'straight-check-package)
-(global-set-key (kbd "C-x M-s C") 'straight-check-package)
+(global-set-key (kbd "C-x M-s C") 'straight-check-all)
 (global-set-key (kbd "C-x M-s b") 'straight-rebuild-package)
 (global-set-key (kbd "C-x M-s B") 'straight-rebuild-all)
 
