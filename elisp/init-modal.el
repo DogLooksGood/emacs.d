@@ -122,7 +122,7 @@
    '("Z" . meow-pop-all-selection)
    '("&" . meow-query-replace)
    '("%" . meow-query-replace-regexp)
-   '("@" . recenter)
+   '("@" . recenter-top-bottom)
    '("^" . meow-pop-to-mark)
    '("<escape>" . meow-last-buffer)
    '("'" . meow-beginning-of-thing)
