@@ -43,9 +43,9 @@
  cider-enhanced-cljs-completion-p nil
  cider-offer-to-open-cljs-app-in-browser nil)
 
-(autoload #'cider-jack-in "cider")
-(autoload #'cider-jack-in-cljs "cider")
-(autoload #'cider-jack-in-clj&cljs "cider")
-(autoload #'cider "cider")
+(autoload #'cider-jack-in "cider" nil t)
+(autoload #'cider-jack-in-cljs "cider" nil t)
+(autoload #'cider-jack-in-clj&cljs "cider" nil t)
+(autoload #'cider "cider" nil t)
 
 (provide 'init-clojure)

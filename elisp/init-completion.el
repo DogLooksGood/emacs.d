@@ -2,9 +2,10 @@
 
 (straight-use-package 'yasnippet)
 (straight-use-package 'company)
-;; (straight-use-package 'selectrum)
-(straight-use-package 'ivy)
-;; (straight-use-package 'counsel)
+;; (straight-use-package 'ivy)
+(straight-use-package 'selectrum)
+(straight-use-package 'prescient)
+(straight-use-package 'selectrum-prescient)
 (straight-use-package 'deadgrep)
 
 (defun +complete ()
@@ -76,20 +77,25 @@
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
 
-;;; ivy
+;; ;;; ivy
 
-(setq
- ivy-use-selectable-prompt t)
-
-(require 'ivy)
-
-(ivy-mode t)
+;; (setq
+;;  ivy-use-selectable-prompt t)
+;;
+;; (require 'ivy)
+;;
+;; (ivy-mode t)
 
 ;;; counsel
 
 ;; (require 'counsel)
 ;;
 ;; (counsel-mode t)
+
+(require 'selectrum)
+(require 'selectrum-prescient)
+(selectrum-mode t)
+(selectrum-prescient-mode t)
 
 ;;; deadgrep
 

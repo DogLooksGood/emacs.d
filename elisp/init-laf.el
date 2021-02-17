@@ -5,6 +5,9 @@
                :host github
                :repo "DogLooksGood/joker-theme"))
 
+(setq joker-theme-main-color "#B762DE")
+(require 'joker-theme)
+
 ;;; No scroll bar
 (scroll-bar-mode -1)
 
@@ -40,6 +43,10 @@
 (let ((alpha 100))
   (add-to-list 'default-frame-alist (cons 'alpha alpha)))
 
+;;; No window decoration
+
+(add-to-list 'default-frame-alist (cons 'undecorated t))
+
 ;;; Fonts
 
 (defvar +font-family "Fira Code")
@@ -69,16 +76,12 @@
 
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
-(defvar +theme-list
-  (if window-system
-      '(joker storybook printed)
-    '(joker)))
+(defvar +theme-list '(joker modus-operandi))
 
 (defun +change-theme (&optional init)
   (interactive)
   (mapc #'disable-theme custom-enabled-themes)
   (let ((theme (car +theme-list)))
-    (require (intern (concat (symbol-name theme) "-theme")))
     (load-theme theme t)
     (setq +theme-list (append (cdr +theme-list) (list (car +theme-list))))
     (unless init

@@ -1,8 +1,8 @@
 (straight-use-package 'yascroll)
-(straight-use-package 'esup)
 
 (require 'yascroll)
 
-(global-yascroll-bar-mode t)
+(add-hook 'prog-mode-hook 'yascroll-bar-mode)
+(add-hook 'conf-mode-hook 'yascroll-bar-mode)
 
 (provide 'init-misc)

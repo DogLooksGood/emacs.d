@@ -1,6 +1,7 @@
 (when window-system
   (require 'init-font))
 (require 'init-util)
+
 (require 'init-modal)
 (require 'init-dired)
 (require 'init-lsp)
@@ -9,6 +10,7 @@
 (require 'init-clojure)
 (require 'init-elixir)
 (require 'init-python)
+(require 'init-haskell)
 (require 'init-rust)
 (require 'init-markdown)
 (require 'init-git)

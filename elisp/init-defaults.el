@@ -75,7 +75,9 @@
  ;; Custom file path
  custom-file (expand-file-name "custom.el" user-emacs-directory)
  ;; Goto top or bottom when scroll failed
- scroll-error-top-bottom t)
+ scroll-error-top-bottom t
+ ;; Don't use Fcitx5 in Emacs in PGTK build
+ pgtk-use-im-context-on-new-connection nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 

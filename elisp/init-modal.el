@@ -139,14 +139,15 @@
 (setq
  meow-esc-delay 0.001
  meow-keypad-describe-delay 0.5
- meow-select-on-exit t
+ meow-select-on-change t
  meow-selection-command-fallback '((meow-replace . meow-page-up)
                                    (meow-change . meow-change-char)
                                    (meow-save . meow-save-char)
                                    (meow-kill . meow-C-k)
                                    (meow-cancel-selection . meow-keyboard-quit)
                                    (meow-reverse . meow-page-down)
-                                   (meow-delete . meow-C-d)))
+                                   (meow-delete . meow-C-d))
+ meow-cursor-type-insert '(bar . 1))
 
 (require 'meow)
 
