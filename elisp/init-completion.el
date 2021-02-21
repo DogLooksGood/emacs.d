@@ -2,7 +2,6 @@
 
 (straight-use-package 'yasnippet)
 (straight-use-package 'company)
-;; (straight-use-package 'ivy)
 (straight-use-package 'selectrum)
 (straight-use-package 'prescient)
 (straight-use-package 'selectrum-prescient)
@@ -78,21 +77,6 @@
   (define-key company-template-nav-map [return] 'company-template-forward-field)
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
-
-;; ;;; ivy
-
-;; (setq
-;;  ivy-use-selectable-prompt t)
-;;
-;; (require 'ivy)
-;;
-;; (ivy-mode t)
-
-;;; counsel
-
-;; (require 'counsel)
-;;
-;; (counsel-mode t)
 
 (require 'selectrum)
 (require 'selectrum-prescient)
