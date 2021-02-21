@@ -48,4 +48,7 @@
 (autoload #'cider-jack-in-clj&cljs "cider" nil t)
 (autoload #'cider "cider" nil t)
 
+(with-eval-after-load "cider"
+  (define-key cider-mode-map (kbd "C-c M-s") #'cider-browse-spec))
+
 (provide 'init-clojure)
