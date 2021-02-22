@@ -26,4 +26,5 @@
 (require 'init-telega)
 (require 'init-misc)
 (require 'init-direnv)
+(require 'init-restclient)
 (require 'init-server)
