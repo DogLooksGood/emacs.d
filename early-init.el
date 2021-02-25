@@ -10,6 +10,7 @@
 (add-hook 'minibuffer-exit-hook #'+enable-gc)
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
 ;;; Personal configuration may override some variables
 (let ((private-conf (expand-file-name "private.el" user-emacs-directory)))

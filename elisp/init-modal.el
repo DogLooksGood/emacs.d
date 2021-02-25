@@ -130,6 +130,7 @@
    '("\\" . quoted-insert)
    '("<" . meow-forward-barf)
    '(">" . meow-forward-slurp)
+   '("<f2>" . meow-quick-kmacro)
    '("<f3>" . meow-start-kmacro)
    '("<f4>" . meow-end-or-call-kmacro)))
 
@@ -142,8 +143,9 @@
  meow-select-on-change t
  meow-selection-command-fallback '((meow-replace . meow-page-up)
                                    (meow-change . meow-change-char)
-                                   (meow-save . meow-save-char)
+                                   (meow-save . meow-save-empty)
                                    (meow-kill . meow-C-k)
+                                   (meow-cancel . meow-keyboard-quit)
                                    (meow-cancel-selection . meow-keyboard-quit)
                                    (meow-reverse . meow-page-down)
                                    (meow-delete . meow-C-d))

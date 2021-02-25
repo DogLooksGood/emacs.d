@@ -90,6 +90,8 @@
 
 ;;; project.el use C-x p
 (global-unset-key (kbd "C-x C-p"))
+(global-unset-key (kbd "C-x C-n"))
+(global-unset-key (kbd "C-x C-b"))
 (global-set-key (kbd "C-x C-d") #'dired)
 
 (defun +reopen-file-with-sudo ()

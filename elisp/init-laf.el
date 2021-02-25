@@ -7,6 +7,8 @@
 
 (setq joker-theme-main-color "#B762DE")
 (require 'joker-theme)
+(require 'storybook-theme)
+(require 'printed-theme)
 
 ;;; No scroll bar
 (scroll-bar-mode -1)
@@ -74,9 +76,7 @@
 (defvar +after-change-theme-hook nil
   "Hooks called after theme is changed.")
 
-(add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
-
-(defvar +theme-list '(joker modus-operandi))
+(defvar +theme-list '(joker printed storybook))
 
 (defun +change-theme (&optional init)
   (interactive)
