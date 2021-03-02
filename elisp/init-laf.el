@@ -19,6 +19,8 @@
 ;;; No menu bar
 (menu-bar-mode -1)
 
+(window-divider-mode 1)
+
 ;;; No cursor blink
 (add-hook 'after-init-hook (lambda () (blink-cursor-mode -1)))
 
@@ -88,11 +90,6 @@
       (+load-font)
       (message "Load theme: %s" theme)
       (run-hook-with-args '+after-change-theme-hook theme))))
-
-(defun +highlight-prog-mode-function-name ()
-  (face-remap-add-relative 'font-lock-function-name-face :underline t :extend t))
-
-(add-hook 'prog-mode-hook '+highlight-prog-mode-function-name)
 
 (+change-theme t)
 

@@ -41,7 +41,6 @@
  ;; Window divider setup
  window-divider-default-right-width 1
  window-divider-default-bottom-width 1
- window-divider-default-places t
  ;; Don't wait for keystrokes display
  echo-keystrokes 0.01
  show-paren-style 'parenthese
@@ -66,8 +65,6 @@
  truncate-partial-width-windows 65
  ;; Default line number width.
  display-line-numbers-width 4
- ;; Window divider on right
- window-divider-default-places t
  ;; Don't display comp warnings
  warning-suppress-log-types '((comp))
  ;; Firefox as default browser

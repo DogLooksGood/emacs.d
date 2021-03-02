@@ -125,8 +125,6 @@
    '("^" . meow-pop-to-mark)
    '("<escape>" . meow-last-buffer)
    '("\\" . quoted-insert)
-   '("<up>" . scroll-down-line)
-   '("<down>" . scroll-up-line)
    '("<f2>" . meow-quick-kmacro)
    '("<f3>" . meow-start-kmacro)
    '("<f4>" . meow-end-or-call-kmacro)))
