@@ -17,8 +17,8 @@
  eglot-stay-out-of nil
  eglot-ignored-server-capabilites '(:documentHighlightProvider))
 
-(autoload #'eglot-ensure "eglot")
-(autoload #'eglot "eglot")
+(autoload #'eglot-ensure "eglot" nil t)
+(autoload #'eglot "eglot" nil t)
 
 (with-eval-after-load "eglot"
   (add-to-list 'eglot-server-programs

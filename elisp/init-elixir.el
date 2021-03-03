@@ -70,8 +70,9 @@
                             ("\\_<_[a-zA-Z0-9]*\\_>" . '+elixir-dim-face)))
   (modify-syntax-entry ?& "'" elixir-mode-syntax-table)
 
-  (add-hook 'elixir-mode-hook '+elixir-post-self-insert-hook-setup)
-  (add-hook 'elixir-mode-hook 'electric-pair-local-mode)
+  (add-hook 'elixir-mode-hook #'+elixir-post-self-insert-hook-setup)
+  (add-hook 'elixir-mode-hook #'electric-pair-local-mode)
+  (add-hook 'elixir-mode-hook #'eglot-ensure)
 
   (define-key elixir-mode-map (kbd "C-c C-f") 'elixir-format)
   (define-key elixir-mode-map (kbd "C-c C-t t") 'mix-test)
