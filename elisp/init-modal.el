@@ -123,6 +123,7 @@
    '("%" . meow-query-replace-regexp)
    '("@" . recenter-top-bottom)
    '("^" . meow-pop-to-mark)
+   '("'" . repeat)
    '("<escape>" . meow-last-buffer)
    '("\\" . quoted-insert)
    '("<f2>" . meow-quick-kmacro)
