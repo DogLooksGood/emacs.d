@@ -55,16 +55,23 @@
 
 (defvar +font-family "Fira Code")
 (defvar +ufont-family "WenQuanYi Micro Hei Mono")
+(defvar +fixed-pitch-family "Fira Code")
+(defvar +variable-pitch-family "Fira Sans")
 (defvar +mono-ufont-family "Sarasa Mono SC")
-(defvar +font-size 11)
+(defvar +font-size 10)
 (defvar +ufont-scale 1)
+
+;;; (+load-font)
 
 (let* ((font-spec (format "%s-%d" +font-family +font-size)))
   (add-to-list 'default-frame-alist `(font . ,font-spec)))
 
 (defun +load-font ()
-  (let* ((font-spec (format "%s-%d" +font-family +font-size)))
-    (set-frame-font font-spec))
+  (let* ((font-spec (format "%s-%d" +font-family +font-size))
+         (vp-font-spec (format "%s-%d" +variable-pitch-family +font-size)))
+    (set-frame-font font-spec)
+    (set-face-attribute 'variable-pitch nil :font vp-font-spec)
+    (set-face-attribute 'fixed-pitch nil :font vp-font-spec))
   (setq-default face-font-rescale-alist `((,+ufont-family . ,+ufont-scale)))
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)

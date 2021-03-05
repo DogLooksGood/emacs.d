@@ -73,11 +73,15 @@
 
 (setq org-html-checkbox-type 'unicode)
 
-(with-eval-after-load "org"
+(with-eval-after-load  "org"
   (define-key org-mode-map (kbd "<f8>") 'org-latex-auto-toggle)
   (require 'org-tempo)
   (+org-babel-setup)
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 4.0)))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 4.0))
+  (set-face-attribute 'org-table nil :family +mono-ufont-family)
+  (set-face-attribute 'org-code nil :family +fixed-pitch-family)
+  (set-face-attribute 'org-block nil :family +fixed-pitch-family)
+  (add-hook 'org-mode-hook 'variable-pitch-mode))
 
 ;;; org-roam
 
