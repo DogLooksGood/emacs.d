@@ -5,7 +5,8 @@
                :host github
                :repo "DogLooksGood/joker-theme"))
 
-(setq joker-theme-main-color "#B762DE")
+(straight-use-package 'darktooth-theme)
+(straight-use-package 'zenburn-theme)
 (require 'joker-theme)
 (require 'storybook-theme)
 (require 'printed-theme)

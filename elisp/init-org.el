@@ -10,6 +10,7 @@
    :host github
    :repo "DogLooksGood/org-html-themify"
    :files ("*.el" "*.js" "*.css")))
+(straight-use-package 'ob-restclient)
 
 ;;; Latex support
 ;;; install latex with
@@ -81,7 +82,19 @@
   (set-face-attribute 'org-table nil :family +mono-ufont-family)
   (set-face-attribute 'org-code nil :family +fixed-pitch-family)
   (set-face-attribute 'org-block nil :family +fixed-pitch-family)
-  (add-hook 'org-mode-hook 'variable-pitch-mode))
+  (add-hook 'org-mode-hook 'variable-pitch-mode)
+  (require 'ob)
+  (require 'ob-dot)
+  (require 'ob-restclient)
+  (require 'ob-clojure))
+
+(with-eval-after-load "ob"
+  (org-babel-do-load-languages
+    'org-babel-load-languages
+    '((dot . t)
+     (restclient . t)
+     (python . t)
+     (clojure . t))))
 
 ;;; org-roam
 
