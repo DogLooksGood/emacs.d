@@ -54,11 +54,12 @@
 ;;; Fonts
 
 (defvar +font-family "Fira Code")
-(defvar +ufont-family "WenQuanYi Micro Hei Mono")
+(defvar +ufont-family "WenQuanYi Micro Hei")
 (defvar +fixed-pitch-family "Sarasa Mono SC")
-(defvar +variable-pitch-family "Sarasa UI SC")
-(defvar +font-size 10)
+(defvar +variable-pitch-family "Sarasa Gothic SC")
+(defvar +font-size 11)
 
+;;; 你好
 ;;; (+load-font)
 
 (defun +load-font ()
@@ -66,7 +67,6 @@
          (variable-pitch-font-spec (format "%s-%d" +variable-pitch-family +font-size))
          (fixed-pitch-font-spec (format "%s-%d" +fixed-pitch-family +font-size)))
     (add-to-list 'default-frame-alist `(font . ,font-spec))
-    (set-frame-font font-spec)
     (set-face-attribute 'variable-pitch nil :font variable-pitch-font-spec)
     (set-face-attribute 'fixed-pitch nil :font fixed-pitch-font-spec))
   (dolist (charset '(kana han cjk-misc bopomofo))

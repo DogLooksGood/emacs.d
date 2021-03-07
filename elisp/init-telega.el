@@ -12,7 +12,8 @@
 (global-set-key (kbd "<f6>") 'telega)
 
 (with-eval-after-load "telega"
-  ;; (add-hook 'telega-chat-mode-hook 'company-mode)
-  (setcdr (assq t org-file-apps-gnu) 'browse-url-xdg-open))
+  (setcdr (assq t org-file-apps-gnu) 'browse-url-xdg-open)
+  (custom-set-faces
+   '(telega-entity-type-pre ((t :inherit 'fixed-pitch :family nil)))))
 
 (provide 'init-telega)
