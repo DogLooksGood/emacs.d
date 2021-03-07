@@ -59,7 +59,6 @@
 (defvar +variable-pitch-family "Sarasa Gothic SC")
 (defvar +font-size 11)
 
-;;; 你好
 ;;; (+load-font)
 
 (defun +load-font ()
