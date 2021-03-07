@@ -67,13 +67,13 @@
 
 (defun +load-font ()
   (let* ((font-spec (format "%s-%d" +font-family +font-size))
-         (vp-font-spec (format "%s-%d" +variable-pitch-family +font-size)))
+         (vp-font-spec (format "%s-%d" +variable-pitch-family +font-size))
+         (fp-font-spec (format "%s-%d" +fixed-pitch-family +font-size)))
     (add-to-list 'default-frame-alist `(font . ,font-spec))
     (set-frame-font font-spec)
     (set-face-attribute 'variable-pitch nil :font vp-font-spec)
-    (set-face-attribute 'fixed-pitch nil :font vp-font-spec))
-  (setq-default face-font-rescale-alist `((,+ufont-family . ,+ufont-scale)))
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (set-face-attribute 'fixed-pitch nil :font fp-font-spec))
+  (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
                       charset
                       (font-spec :family +ufont-family))))
