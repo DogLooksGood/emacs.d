@@ -20,6 +20,7 @@
 ;;; No menu bar
 (menu-bar-mode -1)
 
+;;; Use window divider
 (window-divider-mode 1)
 
 ;;; No cursor blink
@@ -64,12 +65,10 @@
 
 ;;; (+load-font)
 
-(let* ((font-spec (format "%s-%d" +font-family +font-size)))
-  (add-to-list 'default-frame-alist `(font . ,font-spec)))
-
 (defun +load-font ()
   (let* ((font-spec (format "%s-%d" +font-family +font-size))
          (vp-font-spec (format "%s-%d" +variable-pitch-family +font-size)))
+    (add-to-list 'default-frame-alist `(font . ,font-spec))
     (set-frame-font font-spec)
     (set-face-attribute 'variable-pitch nil :font vp-font-spec)
     (set-face-attribute 'fixed-pitch nil :font vp-font-spec))

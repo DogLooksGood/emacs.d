@@ -12,7 +12,7 @@
 (global-set-key (kbd "<f6>") 'telega)
 
 (with-eval-after-load "telega"
-  (add-hook 'telega-chat-mode-hook 'company-mode)
+  ;; (add-hook 'telega-chat-mode-hook 'company-mode)
   (setcdr (assq t org-file-apps-gnu) 'browse-url-xdg-open))
 
 (provide 'init-telega)

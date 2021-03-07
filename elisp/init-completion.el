@@ -38,7 +38,7 @@
                      company-pseudo-tooltip-frontend
                      company-echo-metadata-frontend)
  company-begin-commands '(self-insert-command)
- company-idle-delay 0.5
+ company-idle-delay 0.1
  company-tooltip-limit 10
  company-tooltip-align-annotations t
  company-tooltip-width-grow-only t
@@ -77,6 +77,8 @@
   (define-key company-template-nav-map [return] 'company-template-forward-field)
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
+
+;; (setq tab-always-indent 'complete)
 
 (require 'selectrum)
 (require 'selectrum-prescient)
