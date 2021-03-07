@@ -5,8 +5,6 @@
                :host github
                :repo "DogLooksGood/joker-theme"))
 
-(straight-use-package 'darktooth-theme)
-(straight-use-package 'zenburn-theme)
 (require 'joker-theme)
 (require 'storybook-theme)
 (require 'printed-theme)
@@ -57,22 +55,20 @@
 
 (defvar +font-family "Fira Code")
 (defvar +ufont-family "WenQuanYi Micro Hei Mono")
-(defvar +fixed-pitch-family "Fira Code")
-(defvar +variable-pitch-family "Fira Sans")
-(defvar +mono-ufont-family "Sarasa Mono SC")
+(defvar +fixed-pitch-family "Sarasa Mono SC")
+(defvar +variable-pitch-family "Sarasa UI SC")
 (defvar +font-size 10)
-(defvar +ufont-scale 1)
 
 ;;; (+load-font)
 
 (defun +load-font ()
   (let* ((font-spec (format "%s-%d" +font-family +font-size))
-         (vp-font-spec (format "%s-%d" +variable-pitch-family +font-size))
-         (fp-font-spec (format "%s-%d" +fixed-pitch-family +font-size)))
+         (variable-pitch-font-spec (format "%s-%d" +variable-pitch-family +font-size))
+         (fixed-pitch-font-spec (format "%s-%d" +fixed-pitch-family +font-size)))
     (add-to-list 'default-frame-alist `(font . ,font-spec))
     (set-frame-font font-spec)
-    (set-face-attribute 'variable-pitch nil :font vp-font-spec)
-    (set-face-attribute 'fixed-pitch nil :font fp-font-spec))
+    (set-face-attribute 'variable-pitch nil :font variable-pitch-font-spec)
+    (set-face-attribute 'fixed-pitch nil :font fixed-pitch-font-spec))
   (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
                       charset

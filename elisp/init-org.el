@@ -79,9 +79,10 @@
   (require 'org-tempo)
   (+org-babel-setup)
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 4.0))
-  (set-face-attribute 'org-table nil :family +mono-ufont-family)
-  (set-face-attribute 'org-code nil :family +fixed-pitch-family)
-  (set-face-attribute 'org-block nil :family +fixed-pitch-family)
+  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+
   (add-hook 'org-mode-hook 'variable-pitch-mode)
   (require 'ob)
   (require 'ob-dot)
