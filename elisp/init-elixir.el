@@ -54,6 +54,7 @@
 (setq
  inf-iex-default-iex-command "iex -S mix phx.server")
 
+(autoload #'inf-iex-start "inf-iex" nil t)
 (autoload #'inf-iex-minor-mode "inf-iex")
 
 ;;; elixir-mode
@@ -70,10 +71,13 @@
                             ("\\_<_[a-zA-Z0-9]*\\_>" . '+elixir-dim-face)))
   (modify-syntax-entry ?& "'" elixir-mode-syntax-table)
 
-  (add-hook 'elixir-mode-hook #'+elixir-post-self-insert-hook-setup)
-  (add-hook 'elixir-mode-hook #'electric-pair-local-mode)
-  (add-hook 'elixir-mode-hook #'eglot-ensure)
 
+  (add-hook 'elixir-mode-hook #'+elixir-post-self-insert-hook-setup)
+  (add-hook 'elixir-mode-hook #'smartparens-mode)
+  (add-hook 'elixir-mode-hook #'eglot-ensure)
+  (add-hook 'elixir-mode-hook #'inf-iex-minor-mode)
+
+  (define-key elixir-mode-map (kbd "C-c C-z") #'inf-iex-start)
   (define-key elixir-mode-map (kbd "C-c C-f") 'elixir-format)
   (define-key elixir-mode-map (kbd "C-c C-t t") 'mix-test)
   (define-key elixir-mode-map (kbd "C-c C-t b") 'mix-test-current-buffer)

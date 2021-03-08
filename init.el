@@ -3,6 +3,7 @@
 (require 'init-util)
 
 (require 'init-modal)
+(require 'init-edit)
 (require 'init-dired)
 (require 'init-lsp)
 (require 'init-web)
