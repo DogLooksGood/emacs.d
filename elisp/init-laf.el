@@ -5,7 +5,6 @@
                :host github
                :repo "DogLooksGood/joker-theme"))
 
-(setq joker-theme-main-color "#B762DE")
 (require 'joker-theme)
 (require 'storybook-theme)
 (require 'printed-theme)
@@ -19,6 +18,7 @@
 ;;; No menu bar
 (menu-bar-mode -1)
 
+;;; Use window divider
 (window-divider-mode 1)
 
 ;;; No cursor blink
@@ -54,19 +54,21 @@
 ;;; Fonts
 
 (defvar +font-family "Fira Code")
-(defvar +ufont-family "WenQuanYi Micro Hei Mono")
-(defvar +mono-ufont-family "Sarasa Mono SC")
+(defvar +ufont-family "WenQuanYi Micro Hei")
+(defvar +fixed-pitch-family "Sarasa Mono SC")
+(defvar +variable-pitch-family "Sarasa Gothic SC")
 (defvar +font-size 11)
-(defvar +ufont-scale 1)
 
-(let* ((font-spec (format "%s-%d" +font-family +font-size)))
-  (add-to-list 'default-frame-alist `(font . ,font-spec)))
+;;; (+load-font)
 
 (defun +load-font ()
-  (let* ((font-spec (format "%s-%d" +font-family +font-size)))
-    (set-frame-font font-spec))
-  (setq-default face-font-rescale-alist `((,+ufont-family . ,+ufont-scale)))
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (let* ((font-spec (format "%s-%d" +font-family +font-size))
+         (variable-pitch-font-spec (format "%s-%d" +variable-pitch-family +font-size))
+         (fixed-pitch-font-spec (format "%s-%d" +fixed-pitch-family +font-size)))
+    (add-to-list 'default-frame-alist `(font . ,font-spec))
+    (set-face-attribute 'variable-pitch nil :font variable-pitch-font-spec)
+    (set-face-attribute 'fixed-pitch nil :font fixed-pitch-font-spec))
+  (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
                       charset
                       (font-spec :family +ufont-family))))

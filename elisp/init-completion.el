@@ -38,12 +38,12 @@
                      company-pseudo-tooltip-frontend
                      company-echo-metadata-frontend)
  company-begin-commands '(self-insert-command)
- company-idle-delay 0.2
+ company-idle-delay 0
  company-tooltip-limit 10
  company-tooltip-align-annotations t
  company-tooltip-width-grow-only t
- company-tooltip-idle-delay 0.1
- company-minimum-prefix-length 3
+ company-tooltip-idle-delay 0.4
+ company-minimum-prefix-length 5
  company-dabbrev-downcase nil
  company-abort-manual-when-too-short t
  company-require-match nil
@@ -78,6 +78,8 @@
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
 
+;; (setq tab-always-indent 'complete)
+
 (require 'selectrum)
 (require 'selectrum-prescient)
 (selectrum-mode t)
@@ -88,6 +90,15 @@
   (define-key selectrum-minibuffer-map (kbd "}") #'selectrum-next-candidate)
   (define-key selectrum-minibuffer-map (kbd "[") #'previous-history-element)
   (define-key selectrum-minibuffer-map (kbd "]") #'next-history-element))
+
+;; (require 'icomplete)
+;; (icomplete-mode 1)
+;;
+;; (with-eval-after-load "icomplete"
+;;   (define-key icomplete-minibuffer-map (kbd "}") #'icomplete-forward-completions)
+;;   (define-key icomplete-minibuffer-map (kbd "{") #'icomplete-backward-completions)
+;;   (define-key icomplete-minibuffer-map (kbd "[") #'previous-history-element)
+;;   (define-key icomplete-minibuffer-map (kbd "]") #'next-history-element))
 
 ;;; deadgrep
 

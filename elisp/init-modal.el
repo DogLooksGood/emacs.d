@@ -123,6 +123,7 @@
    '("%" . meow-query-replace-regexp)
    '("@" . recenter-top-bottom)
    '("^" . meow-pop-to-mark)
+   '("'" . repeat)
    '("<escape>" . meow-last-buffer)
    '("\\" . quoted-insert)
    '("<f2>" . meow-quick-kmacro)
@@ -141,8 +142,9 @@
                                    (meow-save . meow-save-empty)
                                    (meow-kill . meow-C-k)
                                    (meow-cancel . meow-keyboard-quit)
-                                   (meow-delete . meow-C-d))
- meow-cursor-type-insert '(bar . 1))
+                                   (meow-cancel-selection . meow-keyboard-quit)
+                                   (meow-reverse . meow-page-down)
+                                   (meow-delete . meow-C-d)))
 
 (require 'meow)
 

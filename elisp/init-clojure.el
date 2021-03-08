@@ -3,6 +3,8 @@
 (straight-use-package 'clojure-mode)
 (straight-use-package 'clj-refactor)
 (straight-use-package 'cider)
+(straight-use-package 'flycheck)
+(straight-use-package 'flycheck-clj-kondo)
 
 ;;; clojure-mode
 
@@ -17,8 +19,16 @@
 
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'clojure-mode-hook 'clj-refactor-mode)
+  (add-hook 'clojure-mode-hook 'flycheck-mode)
 
-  (define-key clojure-mode-map (kbd "C-c C-i") 'cider-inspect-last-result))
+  (define-key clojure-mode-map (kbd "C-c C-i") 'cider-inspect-last-result)
+
+  (require 'flycheck-clj-kondo))
+
+(with-eval-after-load "flycheck"
+  (define-key flycheck-mode-map (kbd "M-n") 'flycheck-next-error)
+  (define-key flycheck-mode-map (kbd "M-p") 'flycheck-previous-error)
+  (setq flycheck-idle-change-delay 1))
 
 ;;; clj-refactor
 

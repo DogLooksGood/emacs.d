@@ -10,6 +10,7 @@
    :host github
    :repo "DogLooksGood/org-html-themify"
    :files ("*.el" "*.js" "*.css")))
+(straight-use-package 'ob-restclient)
 
 ;;; Latex support
 ;;; install latex with
@@ -73,11 +74,29 @@
 
 (setq org-html-checkbox-type 'unicode)
 
-(with-eval-after-load "org"
+(with-eval-after-load  "org"
   (define-key org-mode-map (kbd "<f8>") 'org-latex-auto-toggle)
   (require 'org-tempo)
   (+org-babel-setup)
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 4.0)))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 4.0))
+  (custom-set-faces
+   '(org-table ((t :inherit 'fixed-pitch)))
+   '(org-code ((t :inherit 'fixed-pitch)))
+   '(org-block ((t :inherit 'fixed-pitch))))
+
+  (add-hook 'org-mode-hook 'variable-pitch-mode)
+  (require 'ob)
+  (require 'ob-dot)
+  (require 'ob-restclient)
+  (require 'ob-clojure))
+
+(with-eval-after-load "ob"
+  (org-babel-do-load-languages
+    'org-babel-load-languages
+    '((dot . t)
+     (restclient . t)
+     (python . t)
+     (clojure . t))))
 
 ;;; org-roam
 
