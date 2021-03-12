@@ -76,7 +76,7 @@
    '("B" . meow-back-symbol)
    '("c" . meow-change)
    '("C" . meow-change-save)
-   '("d" . meow-delete)
+   '("d" . meow-C-d)
    '("D" . meow-backward-delete)
    '("e" . meow-line)
    '("f" . meow-find)

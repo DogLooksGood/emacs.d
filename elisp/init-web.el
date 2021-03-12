@@ -20,6 +20,10 @@
 (add-to-list 'auto-mode-alist '("\\.leex\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.sface\\'" . web-mode))
 
+(with-eval-after-load "web-mode"
+  (setq web-mode-auto-pairs nil))
+
+
 ;;; emmet-mode
 
 (autoload #'emmet-mode "emmet-mode")
