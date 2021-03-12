@@ -102,7 +102,7 @@
 
 ;;; deadgrep
 
-(autoload #'deadgrep "deadgrep")
+(autoload #'deadgrep "deadgrep" nil t)
 
 (with-eval-after-load "deadgrep"
   (define-key deadgrep-mode-map (kbd "w") 'deadgrep-edit-mode)

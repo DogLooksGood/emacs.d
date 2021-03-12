@@ -5,7 +5,7 @@
 
 ;;; flymake
 
-(autoload #'flymake-mode "flymake")
+(autoload #'flymake-mode "flymake" nil t)
 
 (with-eval-after-load "flymake"
   (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)

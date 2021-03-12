@@ -1,21 +1,13 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'ace-window)
-
-;;; ace-window
-
-(setq
- aw-keys '(?a ?o ?e ?u ?i)
- aw-scope 'frame)
-
-(autoload #'ace-window "ace-window")
-(autoload #'ace-swap-window "ace-window")
-
-(windmove-default-keybindings 'meta)
-
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+(defun +rotate-window ()
+  (interactive)
+  (let* ((wl (window-list nil nil (minibuffer-window)))
+         (bl (reverse (mapcar (lambda (w) (window-buffer w)) wl)))
+         (nbl (append (cdr bl) (list (car bl)))))
+    (cl-loop for w in wl
+          for b in (reverse nbl)
+          do (set-window-buffer w b))
+    (select-window (next-window))))
 
 (provide 'init-window)

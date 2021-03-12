@@ -17,7 +17,6 @@
 (with-eval-after-load "clojure-mode"
   (modify-syntax-entry ?: "w" clojure-mode-syntax-table)
   (require 'init-clojure-highlight-fix)
-
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'clojure-mode-hook 'clj-refactor-mode)
   (add-hook 'clojure-mode-hook 'flycheck-mode)

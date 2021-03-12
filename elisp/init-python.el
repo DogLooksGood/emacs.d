@@ -28,7 +28,9 @@
 
 ;;; python-mode(built-in)
 
-(add-hook 'python-mode-hook #'+init-python-keybinding)
+(with-eval-after-load "python"
+  (add-hook 'python-mode-hook #'smartparens-mode)
+  (add-hook 'python-mode-hook #'+init-python-keybinding))
 
 ;;; conda
 
@@ -37,8 +39,8 @@
  (if (file-directory-p "/opt/anaconda/") "/opt/anaconda/" "/opt/miniconda3/")
  conda-env-home-directory (expand-file-name "~/.conda"))
 
-(autoload #'conda-env-activate "conda")
-(autoload #'conda-env-list "conda")
+(autoload #'conda-env-activate "conda" nil t)
+(autoload #'conda-env-list "conda" nil t)
 
 (with-eval-after-load "conda"
   (conda-env-initialize-interactive-shells)

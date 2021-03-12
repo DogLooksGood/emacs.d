@@ -12,21 +12,18 @@
 (setq
  web-mode-markup-indent-offset 2
  web-mode-code-indent-offset 2
- web-mode-css-indent-offset 2)
+ web-mode-css-indent-offset 2
+ web-mode-auto-pairs nil)
 
-(autoload #'web-mode "web-mode")
+(autoload #'web-mode "web-mode" nil t)
 
 (add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.leex\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.sface\\'" . web-mode))
 
-(with-eval-after-load "web-mode"
-  (setq web-mode-auto-pairs nil))
-
-
 ;;; emmet-mode
 
-(autoload #'emmet-mode "emmet-mode")
+(autoload #'emmet-mode "emmet-mode" nil t)
 
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)

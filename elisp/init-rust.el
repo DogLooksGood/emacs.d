@@ -65,15 +65,17 @@
   (define-key rust-mode-map (kbd "-") #'+rust-minus)
   (define-key rust-mode-map (kbd "<") #'+rust-lessthan)
   (define-key rust-mode-map (kbd "SPC") #'+rust-whitespace)
-  (define-key rust-mode-map (kbd ";") #'+rust-semicolon))
+  (define-key rust-mode-map (kbd ";") #'+rust-semicolon)
+  (require 'smartparens-rust)
+  (add-hook 'rust-mode-hook 'smartparens-mode))
 
 ;;; cargo
 
-(autoload #'cargo-process-run "cargo")
-(autoload #'cargo-process-current-test "cargo")
-(autoload #'cargo-process-current-file-tests "cargo")
-(autoload #'cargo-process-test "cargo")
-(autoload #'cargo-process-check "cargo")
+(autoload #'cargo-process-run "cargo" nil t)
+(autoload #'cargo-process-current-test "cargo" nil t)
+(autoload #'cargo-process-current-file-tests "cargo" nil t)
+(autoload #'cargo-process-test "cargo" nil t)
+(autoload #'cargo-process-check "cargo" nil t)
 
 (with-eval-after-load "cargo"
   (define-key rust-mode-map (kbd "C-c C-c") #'cargo-process-run)
